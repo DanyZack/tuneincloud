@@ -1,0 +1,159 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const categories = ['windows', 'ios', 'android', 'macos', 'securite', 'autre'];
+  return categories.map(cat => ({ params: { category: cat } }));
+}
+
+const { category } = Astro.params;
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(p => p.data.category === category)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const labels: Record<string, string> = {
+  windows: 'Windows',
+  ios: 'iOS / iPadOS',
+  android: 'Android',
+  macos: 'macOS',
+  securite: 'Sécurité',
+  autre: 'Autre',
+};
+---
+
+<html lang="fr">
+  <head>
+    <BaseHead title={`${labels[category]} — TuneInCloud`} description={`Articles ${labels[category]} sur Microsoft Intune`} />
+  </head>
+  <body>
+    <Header />
+
+    <main class="category-main">
+      <div class="category-header">
+        <span class="section-label">Catégorie</span>
+        <h1>{labels[category]}</h1>
+        <div class="hero-divider"></div>
+        <p>{posts.length} article{posts.length > 1 ? 's' : ''}</p>
+      </div>
+
+      <div class="articles-inner">
+        {posts.length === 0 ? (
+          <p class="empty">Aucun article dans cette catégorie pour le moment.</p>
+        ) : (
+          <div class="articles-grid">
+            {posts.map(post => (
+              <article class="post-card">
+                {post.data.heroImage && (
+                  <a href={`/blog/${post.id}/`} class="post-image-wrap">
+                    <img src={post.data.heroImage} alt={post.data.title} />
+                  </a>
+                )}
+                <div class="post-body">
+                  <div class="post-meta">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {post.data.pubDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </time>
+                  </div>
+                  <h2 class="post-title">
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                  </h2>
+                  <p class="post-desc">{post.data.description}</p>
+                  <a href={`/blog/${post.id}/`} class="post-cta">
+                    Lire l'article
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+.category-header {
+  background: #0e1a3d;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+}
+.category-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(184,151,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,151,42,0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+}
+.category-header .section-label {
+  position: relative; z-index: 2;
+  color: #d4af37;
+}
+.category-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #f5f0e8;
+  position: relative; z-index: 2;
+  margin: 0.5rem 0 0;
+}
+.hero-divider {
+  width: 50px; height: 2px;
+  background: linear-gradient(90deg, #b8972a, #8b1a2b);
+  margin: 1.5rem auto 1rem;
+  position: relative; z-index: 2;
+}
+.category-header p {
+  color: rgba(245,240,232,0.4);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  position: relative; z-index: 2;
+}
+
+.articles-inner {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.empty {
+  text-align: center;
+  color: #7a7a9a;
+  font-style: italic;
+  padding: 3rem;
+}
+
+/* Réutilise les styles de la grille définis dans global.css */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5px;
+  background: #d8cdb8;
+  border: 1px solid #d8cdb8;
+}
+.post-card { background: #f5f0e8; transition: background 0.3s; display: flex; flex-direction: column; }
+.post-card:hover { background: #fff; }
+.post-image-wrap { display: block; overflow: hidden; aspect-ratio: 16/7; }
+.post-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.post-card:hover .post-image-wrap img { transform: scale(1.03); }
+.post-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; position: relative; }
+.post-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #b8972a, #8b1a2b); transform: scaleX(0); transition: transform 0.4s; }
+.post-card:hover .post-body::after { transform: scaleX(1); }
+.post-meta { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: #b8972a; margin-bottom: 0.6rem; font-weight: 500; }
+.post-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; margin: 0 0 0.75rem; line-height: 1.25; }
+.post-title a { color: #1a2b5e; text-decoration: none; }
+.post-card:hover .post-title a { color: #b8972a; }
+.post-desc { font-size: 0.875rem; color: #3d3d5c; line-height: 1.65; font-weight: 300; flex: 1; margin-bottom: 1.25rem; }
+.post-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #1a2b5e; text-decoration: none; border-bottom: 1px solid rgba(184,151,42,0.4); padding-bottom: 2px; align-self: flex-start; transition: color 0.2s, border-color 0.2s; }
+.post-cta:hover { color: #b8972a; border-color: #b8972a; }
+</style>
