@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const categories = ['windows', 'ios', 'android', 'macos', 'securite', 'autre'];
+  const categories = ['actus', 'guides', 'dossiers'];
   return categories.map(cat => ({ params: { category: cat } }));
 }
 
@@ -17,12 +17,9 @@ const posts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const labels: Record<string, string> = {
-  windows: 'Windows',
-  ios: 'iOS / iPadOS',
-  android: 'Android',
-  macos: 'macOS',
-  securite: 'Sécurité',
-  autre: 'Autre',
+  actus: 'Actualités',
+  guides: 'Guides',
+  dossiers: 'Dossiers',
 };
 ---
 

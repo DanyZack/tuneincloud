@@ -9,13 +9,10 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     category: z.enum([
-      'windows',
-      'ios',
-      'android',
-      'macos',
-      'securite',
-      'autre'
-    ]).default('autre'),
+      'actus',
+      'guides',
+      'dossiers'
+    ]).default('actus'),
   }),
 });
 
