@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const categories = ['actus', 'guides', 'dossiers'];
+  const categories = ['actualites', 'guides', 'dossiers'];
   return categories.map(cat => ({ params: { category: cat } }));
 }
 
@@ -17,7 +17,7 @@ const posts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const labels: Record<string, string> = {
-  actus: 'Actualités',
+  actualites: 'Actualités',
   guides: 'Guides',
   dossiers: 'Dossiers',
 };
