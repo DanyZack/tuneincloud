@@ -8,11 +8,19 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
-    category: z.enum([
-      'actus',
-      'guides',
-      'dossiers'
-    ]).default('actus'),
+    category: z.enum(['actualites', 'guides', 'dossiers']),
+    subcategory: z.enum([
+      // Actualités
+      'breves',
+      'articles',
+      // Guides
+      'entra',
+      'intune',
+      'defender',
+      'purview',
+      'ia',
+      'autre',
+    ]).optional(),
   }),
 });
 
