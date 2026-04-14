@@ -3,7 +3,7 @@ title: "M365 E3/E5 : l'Intune Suite intégrée nativement dès juillet 2026"
 description: "Microsoft intègre les fonctionnalités de l'Intune Suite dans les licences M365 E3 et E5 à partir de juillet 2026. Ce que ça change concrètement pour votre organisation."
 pubDate: 2026-04-14
 category: "actualites"
-subcategory: "brebes"
+subcategory: "breves"
 ---
 À partir du 1er juillet 2026, les fonctionnalités de l'Intune Suite rejoignent le socle M365 E3 et E5. Pour les organisations qui hésitaient à franchir le pas depuis 2023, la question ne se pose plus vraiment.
 
