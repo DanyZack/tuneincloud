@@ -151,7 +151,7 @@ img { max-width: 100%; height: auto; display: block; }
 .dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 1rem);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: #0e1a3d;
@@ -161,8 +161,22 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0.5rem 0;
   margin: 0;
   z-index: 200;
+  /* Pont invisible qui comble le gap */
+  margin-top: 0;
 }
 
+/* Pont invisible entre le lien et le dropdown */
+.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+
+/* Petite flèche décorative */
 .dropdown::before {
   content: '';
   position: absolute;
@@ -192,4 +206,8 @@ img { max-width: 100%; height: auto; display: block; }
   background: rgba(184,151,42,0.06);
 }
 
-.has-dropdown:hover .dropdown { display: block; }
+/* Ouverture au hover — couvre aussi le pont */
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  display: block;
+}
