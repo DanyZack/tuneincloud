@@ -1,0 +1,234 @@
+---
+interface Props {
+  category: string;
+  subcategory?: string;
+  title: string;
+  pubDate: Date;
+  heroImage?: string;
+}
+
+const { category, subcategory, title, pubDate, heroImage } = Astro.props;
+
+const labels: Record<string, string> = {
+  breves: 'Brève',
+  articles: 'Article',
+  entra: 'Microsoft Entra',
+  intune: 'Microsoft Intune',
+  defender: 'Microsoft Defender',
+  purview: 'Microsoft Purview',
+  ia: 'Intelligence Artificielle',
+  autre: 'Autre',
+  actualites: 'Actualités',
+  guides: 'Guides',
+  dossiers: 'Dossiers',
+};
+
+const isBreve = subcategory === 'breves';
+const dateFormatted = pubDate.toLocaleDateString('fr-FR', {
+  day: 'numeric', month: 'long', year: 'numeric'
+});
+---
+
+<div class="article-banner">
+
+  <!-- Image de fond si fournie, sinon fond uni -->
+  {heroImage ? (
+    <div class="banner-bg-image">
+      <img src={heroImage} alt="" />
+    </div>
+  ) : (
+    <div class="banner-bg-solid"></div>
+  )}
+
+  <!-- Overlay bleu royal -->
+  <div class="banner-overlay"></div>
+
+  <!-- Motif grille décoratif -->
+  <div class="banner-pattern"></div>
+
+  <!-- Liseré tricolore -->
+  <div class="tricolor"></div>
+
+  <div class="banner-inner">
+
+    <div class="banner-badges">
+
+      <!-- Badge Brève avec icônes crayon + éclair -->
+      {isBreve && (
+        <span class="badge-breve">
+          <!-- Crayon -->
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          <!-- Éclair -->
+          <svg width="9" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2L4.5 13.5H11L10 22l9.5-11.5H13.5L13 2z"/>
+          </svg>
+          Brève
+        </span>
+      )}
+
+      <span class="badge-category">
+        {labels[category] ?? category}
+        {subcategory && subcategory !== 'breves' && (
+          <> · {labels[subcategory] ?? subcategory}</>
+        )}
+      </span>
+    </div>
+
+    <h1 class="banner-title">{title}</h1>
+
+    <div class="banner-divider"></div>
+
+    <time class="banner-date" datetime={pubDate.toISOString()}>
+      {dateFormatted}
+    </time>
+
+  </div>
+</div>
+
+<style>
+.article-banner {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image de fond — centrée, non déformée, max 250px */
+.banner-bg-image {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Fond uni quand pas d'image */
+.banner-bg-solid {
+  position: absolute;
+  inset: 0;
+  background: #0e1a3d;
+}
+
+/* Overlay bleu royal semi-transparent — appliqué par le site sur n'importe quelle image */
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 26, 61, 0.88) 0%,
+    rgba(14, 26, 61, 0.75) 50%,
+    rgba(139, 26, 43, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+/* Motif grille */
+.banner-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(184,151,42,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,151,42,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Liseré tricolore gauche */
+.tricolor {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    to bottom,
+    #1a2b5e 33%,
+    #f5f0e8 33% 66%,
+    #8b1a2b 66%
+  );
+  opacity: 0.8;
+  z-index: 3;
+}
+
+/* Contenu par dessus tout */
+.banner-inner {
+  position: relative;
+  z-index: 4;
+  max-width: 780px;
+  width: 100%;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.banner-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.badge-breve {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  background: #8b1a2b;
+  color: #f5f0e8;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid rgba(245,240,232,0.2);
+}
+
+.badge-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  background: transparent;
+  color: #d4af37;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid rgba(184,151,42,0.35);
+}
+
+.banner-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  color: #f5f0e8;
+  line-height: 1.2;
+  margin: 0 0 0.3rem;
+}
+
+.banner-divider {
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, #b8972a, #8b1a2b);
+  margin: 1rem auto;
+}
+
+.banner-date {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+  font-family: 'Raleway', sans-serif;
+}
+</style>

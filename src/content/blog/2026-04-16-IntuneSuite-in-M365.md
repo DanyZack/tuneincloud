@@ -4,6 +4,7 @@ description: "Microsoft intègre les fonctionnalités de l'Intune Suite dans les
 pubDate: 2026-04-14
 category: "actualites"
 subcategory: "breves"
+heroImage: "https://www.schneider.im/media/2023/03/SCHNEIDER-IT-MANAGEMENT-2023-03-17-Update-Microsoft-Intune-suite-available-website-picture.jpg"
 ---
 À partir du 1er juillet 2026, les fonctionnalités de l'Intune Suite rejoignent le socle M365 E3 et E5. Pour les organisations qui hésitaient à franchir le pas depuis 2023, la question ne se pose plus vraiment.
 
@@ -30,7 +31,6 @@ Microsoft tire la conclusion logique en intégrant ces fonctionnalités directem
 - ⚠️ Si votre organisation a souscrit l'Intune Suite en standalone, ce add-on reste disponible à l'achat pour les tenants hors M365 E3/E5. Pour les tenants E3/E5, vérifiez à votre prochaine facturation si la ligne add-on est encore présente après août 2026.
 - ⚠️ EPM, EAM et Cloud PKI sont réservés à M365 E5. Ils ne sont **pas** inclus dans EMS E5 seul ; la distinction est importante pour les organisations qui ont acheté EMS E5 indépendamment du M365 E5.
 - 💡 Le déploiement est automatique, mais le **paramétrage** ne l'est pas. Remote Help, EPM et Cloud PKI nécessitent une configuration explicite avant d'être opérationnels. Anticipez les phases de pilote avant la date d'activation dans votre tenant.
-- La hausse tarifaire de 3 $/utilisateur/mois sur M365 E3 et E5 entre en vigueur au même moment. Pour les clients sous Enterprise Agreement dont les remises volumétriques ont disparu depuis novembre 2025, l'impact budgétaire net peut être significatif.
 
 ## Source
 [Microsoft 365 Packaging and Pricing Updates FAQ](https://www.microsoft.com/en-us/licensing/news/2026-M365-Packaging-Pricing-Updates-FAQ)  
