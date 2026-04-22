@@ -1,0 +1,134 @@
+---
+title: "Configurer l'enrôlement automatique avec Samsung Knox"
+description: "Comprendre les moyens de faire de l'enrôlement automatique avec les périphériques Android sur Microsoft Intune"
+pubDate: 2023-03-08
+category: "guides"
+subcategory: "intune"
+coverImage: "titre-android3.png"
+---
+
+L'utilisation de Samsung Knox Mobile Enrollment (KME) permet de mettre en place un scénario d'enrôlement automatique au déballage de l'appareil. A l'instar de Autopilot pour les périphériques Windows, KME permet aux appareils Samsung (compatibles Knox) achetés par l'entreprise d'être pré affecté à un profil d'enrôlement Intune.
+
+En lieu et place de scanner le QR code fourni par Intune, la pré affectation du profil dans la console Samsung Knox permettra à l'appareil de se démarrer pour la première fois directement sur sa cinématique d'enrôlement professionnel sans aucune manipulation de l'utilisateur ou d'un administrateur.
+
+<figure>
+
+![](/images/old/enroll-auto-kme.png)
+
+<figcaption>
+
+Processus d'enrôlement automatique via Samsung Knox Enrollment
+
+</figcaption>
+
+</figure>
+
+"Samsung Knox Mobile Enrollment" est donc une solution d'enrôlement automatique tout comme "Android Zero Touch" (ZTE).
+
+**Avantage de KME :** Si un appareil possède un profil d'entreprise affecté via KME, ce dernier se retrouvera bloqué s'il ne s'est pas enrôlé correctement (par exemple : pas de connexion internet au déballage de l'appareil donc profil non appliqué). Dès lors que le périphérique se connectera à internet, KME bloquera le téléphone en lui exigeant une réinitialisation.
+
+**Inconvénients de KME :** Seuls les appareils Samsung (et compatibles Knox) peuvent être inscrits via ce scénario. Ce qui ne couvre qu'une partie de l'ensemble des périphériques Android existants.
+
+<!--more-->
+
+## I - Inscription à Samsung Knox
+
+Avant de commencer, il est nécessaire de créer un compte Samsung Knox pour son entreprise. A l'inverse de Android Zero Touch, cette opération doit se faire directement par l'entreprise via le lien suivant : [https://www2.samsungknox.com/en/register](https://www2.samsungknox.com/en/register)
+
+Il suffit de suivre les étapes et d'attendre la confirmation de Samsung _(cette confirmation peut prendre plusieurs jours)._
+
+_**Problèmes connus :** Attention ne pas oublier de saisir tous les champs (Ville / Etat / Numéro de téléphone). Si l'ensemble des champs ne sont pas renseignés, vous pourrez rencontrer des problèmes lors de l'activation des comptes d'autres administrateurs._
+
+## II - Configuration de l'enrôlement automatique
+
+### Prérequis :
+
+Les périphériques sur lesquels un scénario d'enrôlement automatique est souhaité doivent impérativement être présent sur la console KME. Pour ce faire, il existe deux façons :
+
+1. **Appareils ajoutés automatiquement par le revendeur** - Solution à privilégier. En indiquant sur la console KME vos différents revendeurs, ces derniers ont la possibilité d'ajouter de manière automatique les périphériques achetés sur Knox Enrollment. Aucune action administrateur n'est requise et aucun surcout n'est à prévoir.
+
+3. **Appareils ajoutés manuellement via l'application "Knox Deployment"** - Solution de contournement. Si certain appareils n'ont pas pu être intégrés de manière automatique il est possible de servir d'un périphérique Android d'administration qui servira d'interface entre la console KME et les autres périphériques à y intégrer. Pour ajouter des appareils via cette méthode il faut :
+    - Télécharger Knox Deployment sur l'Android d'administration et s'y connecter avec un compte Samsung ayant des droits d'administration (attention il faut des droits spécifique pour Knox Deployment) dans la console KME.
+    
+    - Facultatif : Sélectionner le profil KME souhaité. Dans ce cas, le périphérique pourra lancer directement l'enrôlement automatique via KME. Sinon le périphérique sera intégré à la console et sera prêt à recevoir un profil ultérieurement via affectation administrateur.
+    
+    - Choisir le mode d'interface pour l'ajout de nouveaux périphériques entre : NFC, Bluetooth et Wi-Fi direct
+    
+    - Lancer le déploiement en choisissant la durée d'appairage souhaité entre 30 minutes et 8 heures.
+    
+    - Depuis le périphérique client maintenant (celui qui doit être ajouté à la console) lancer la synchronisation avec l'appareil d'administration. Le mode d'appairage va dépendre du mode d'interface choisi. Pour le NFC il suffira de rapprocher son téléphone, pour le Wi-Fi direct se connecté au réseau Wi-Fi créé pour l'occasion et pour le Bluetooth lancer l'URL : [https://me.samsungknox.com](https://me.samsungknox.com/) depuis un navigateur.
+
+### A. Création du profil MDM Knox Enrollment
+
+L'objectif est maintenant de récupérer les profils d'enrôlement créés dans Microsoft Intune afin de les affecter automatiquement aux appareils présent dans la console KME.
+
+## Prérequis
+
+Disposer d'un accès à la [console Samsung Knox Enrollment](https://central.samsungknox.com/) et d'un profil d'enrôlement Android Entreprise déjà créé dans Microsoft Intune (COPE, COBO ou COSU).
+
+---
+
+## Étapes de configuration
+
+### 1. Connexion à la console Samsung Knox
+
+Se connecter à la console [Samsung Knox Enrollment](https://central.samsungknox.com/).
+
+---
+
+### 2. Accéder au service Knox Mobile Enrollment
+
+Dans le menu latéral gauche, se rendre dans le service **Knox Mobile Enrollment** et sélectionner le menu **"Profils"**. Cliquer ensuite sur le bouton **"Créer un profil"**.
+
+---
+
+### 3. Sélectionner le type de profil
+
+Sélectionner **"Android Entreprise"**. Dans la page suivante, indiquer le **nom du profil** KME souhaité et sélectionner **"Intune"** dans la liste déroulante "Sélection de votre MDM".
+
+![Sélection du MDM Intune dans Knox](/images/old/screen4.png)
+
+Confirmer en cliquant sur le bouton **"CONTINUER"**.
+
+---
+
+### 4. Configurer les paramètres MDM
+
+La page de paramètres du profil Android Entreprise s'ouvre. Dans la configuration MDM, ajouter les données JSON suivantes :
+
+```json
+{"com.google.android.apps.work.clouddpc.EXTRA_ENROLLMENT_TOKEN":"JetonDuProfilIntune"}
+```
+
+> Remplacer `JetonDuProfilIntune` par la valeur du jeton du profil d'enrôlement créé dans Intune. Cette valeur est accessible juste au-dessus du QR code dans la console Intune.
+
+---
+
+### 5. Finaliser la configuration du profil
+
+- **Facultatif** — Charger un certificat racine ou intermédiaire si nécessaire à l'enrôlement (Android 10 minimum pour prise en compte par une solution VPN).
+- **Facultatif** — Activer DualDAR. Il s'agit d'une configuration Knox payante permettant le chiffrement des données, peu utile avec Intune car le chiffrement y est activé par défaut.
+- **Facultatif** — Générer un QR Code KME. Ce QR code est différent de celui généré par Intune. Inutile si le périphérique est déjà présent dans la console Knox, mais peut s'avérer utile pour inscrire simultanément un appareil absent dans Intune et dans KME.
+- Dans la partie **"Applications système"**, choisir **"Laisser toutes les applications système activées"**.
+- **Facultatif** — Intégrer une "Politique de confidentialité, CLUF et conditions d'utilisation". Cette partie peut faire doublon avec la possibilité d'ajouter des conditions générales depuis Intune.
+- Définir le **nom de l'entreprise** qui apparaîtra durant la cinématique d'enrôlement.
+- **Facultatif** — Dans la partie **"Écrans d'inscription"**, cliquer sur "Modifier" pour ajouter les écrans de configuration Android Entreprise pouvant être ignorés (Android 12 minimum).
+
+---
+
+### 6. Créer le profil et l'affecter aux appareils
+
+Clôturer la création du profil en cliquant sur le bouton **"CRÉER"**. Dans la liste des appareils KME, sélectionner l'appareil souhaité et lui affecter le profil créé.
+
+### B. Affecter des profils d'inscription Intune aux périphériques dans KME
+
+Une fois les appareils présents dans la console et les profils d'inscription Intune liés, l'administrateur aura pour unique tâche d'associer le périphérique à son profil d'enrôlement souhaité. Pour ce faire :
+
+1. Depuis la **console KME**, se rendre dans la liste des **appareils**
+
+3. **Cocher** les cases des appareils souhaités et cliquer sur le bouton **Action** et sélectionner **"Configurer les appareils"**
+
+5. Dans la partie **"Profil"** : Choisir le **profil d'enrôlement souhaité** dans la liste déroulante
+
+7. Valider et cliquant sur le bouton **Enregistrer**.
+

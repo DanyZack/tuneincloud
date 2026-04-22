@@ -8,6 +8,8 @@ heroImage: "https://www.schneider.im/media/2023/03/SCHNEIDER-IT-MANAGEMENT-2023-
 ---
 À partir du 1er juillet 2026, les fonctionnalités de l'Intune Suite rejoignent le socle M365 E3 et E5. Pour les organisations qui hésitaient à franchir le pas depuis 2023, la question ne se pose plus vraiment.
 
+![Banniere](/images/banarticle/breve-intune1.png)
+
 ## Ce qui change
 
 Depuis son lancement en mars 2023, l'Intune Suite était disponible uniquement en add-on payant, facturé environ 10 $/utilisateur/mois. Conséquence directe : peu d'organisations ont déployé l'ensemble du catalogue. Les sondages informels aux conférences spécialisées indiquaient des taux d'adoption très faibles, et les quelques clients qui avaient souscrit négociaient des remises de l'ordre de 60 à 70 %.

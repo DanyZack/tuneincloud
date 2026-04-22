@@ -1,31 +1,34 @@
 ---
 title: "Microsoft Entra Agent ID : gouverner les agents IA comme des identités à part entière"
 description: "Entra Agent ID étend l'IAM Microsoft aux agents IA : Conditional Access, Identity Protection, gouvernance du cycle de vie. État de l'art, limitations et roadmap à connaître avant de déployer."
-pubDate: 2025-04-15
+pubDate: 2026-04-15
 category: "dossiers"
+heroImage: "https://learn.microsoft.com/fr-fr/entra/agent-id/media/index/hero-image-security-flow.png"
 ---
+
+![Banniere](/images/banarticle/dossier-entraagentid.png)
 
 Vos utilisateurs ont une identité dans Entra ID. Vos applications ont des service principals. 
 Vos agents IA, eux, avaient jusqu'ici... un app registration bricolé, ou rien du tout.
-Microsoft Entra Agent ID comble ce vide — et la question n'est pas de savoir si vous allez
+Microsoft Entra Agent ID comble ce vide, et la question n'est pas de savoir si vous allez
 en avoir besoin, mais quand.
 
-# SCHEMA 1
+![SCHEMA 1](/images/schemas/entraagentid-archiglobale.png)
+**Schéma 1** : *Architecture générale Entra Agent ID*
 
 ## Contexte et enjeux
 
 ### L'agent sprawl : le nouveau shadow IT
 
-IDC estime à 1,3 milliard le nombre d'agents IA déployés dans les organisations d'ici trois
+On estime à 1,3 milliard le nombre d'agents IA déployés dans les organisations d'ici trois
 ans. Le phénomène est déjà en cours : des agents sont créés dans Copilot Studio par les
 métiers, dans Azure AI Foundry par les développeurs, dans des outils tiers sans que l'IT en
-soit informé. Chacun accède à des ressources, dispose de permissions, et génère des actions
-— sans identité formelle, sans propriétaire assigné, sans traçabilité.
+soit informé. Chacun accède à des ressources, dispose de permissions, et génère des actions sans identité formelle, sans propriétaire assigné, sans traçabilité.
 
-C'est le "agent sprawl" : la prolifération non contrôlée d'agents autonomes, avec les mêmes
+C'est l'"agent sprawl" : la prolifération non contrôlée d'agents autonomes, avec les mêmes
 risques que le shadow IT SaaS des années 2010, mais avec un facteur aggravant. Un agent peut
 agir de manière autonome, à grande échelle, à toute heure. Une identité compromise ou un
-agent mal configuré ne génère pas une fuite de données ponctuelle — il peut exécuter des
+agent mal configuré ne génère pas une fuite de données ponctuelle : il peut exécuter des
 actions en continu sur des systèmes sensibles.
 
 ### Ce que les modèles d'identité existants ne couvrent pas
@@ -58,7 +61,7 @@ sécurité et de gouvernance.
 
 Entra Agent ID introduit quatre nouveaux types d'objets dans le répertoire Entra.
 
-**L'Agent Identity Blueprint** est le modèle — un template à partir duquel sont créées les
+**L'Agent Identity Blueprint** est le modèle : un template à partir duquel sont créées les
 identités agents individuelles. Il définit les politiques de sécurité qui s'appliquent à
 toutes ses instances filles. Techniquement, il se compose d'une application (Blueprint App)
 et d'un principal (Blueprint Principal), par analogie avec la relation App Registration /
@@ -71,7 +74,7 @@ peut disposer de permissions propres (Microsoft Graph, rôles Azure RBAC, rôles
 Un agent peut avoir une ou plusieurs identités selon son déploiement.
 
 **L'Agent User** est optionnel. Il s'agit d'un compte utilisateur Entra spécial, couplé en
-1:1 avec une Agent Identity, permettant à l'agent d'opérer avec un contexte utilisateur
+direct avec une Agent Identity, permettant à l'agent d'opérer avec un contexte utilisateur
 quand les systèmes cibles l'exigent. C'est le support du flux OBO (voir section
 authentification).
 
@@ -84,14 +87,14 @@ Registry avec la mention "Has Agent ID: No". Ils ne bénéficient pas des protec
 Agent ID (Conditional Access for Agents, Identity Protection). Microsoft a annoncé un outil
 de migration, sans date publiée à ce jour.
 
-# SCHEMA 2
+![SCHEMA 2](/images/schemas/entraagentid-hierachie.png)
 
 ### Les deux flux d'authentification
 
 Entra Agent ID supporte deux modèles d'authentification, dont les implications sur la
 gouvernance et la licence sont fondamentalement différentes.
 
-**Flux OBO — On-Behalf-Of (délégation)**
+**Flux OBO - On-Behalf-Of (délégation)**
 
 L'agent reçoit un token délégué de l'utilisateur humain et agit avec les permissions de cet
 utilisateur. C'est le modèle d'une automatisation Power Automate : l'agent ne dispose pas
@@ -103,7 +106,7 @@ Limite critique : si l'utilisateur quitte l'organisation ou voit sa licence supp
 l'agent cesse de fonctionner. C'est le problème historique des Power Automate cloud flows
 liés à un compte nominatif.
 
-**Flux autonome — Agent Identity Authentication (app-only)**
+**Flux autonome - Agent Identity Authentication (app-only)**
 
 L'agent s'authentifie avec ses propres credentials (credentials du blueprint), dispose de
 ses propres permissions et agit sans contexte utilisateur. C'est le modèle pour les tâches
@@ -119,22 +122,22 @@ URL, public client) ne sont pas supportés pour les agents.
 
 ### 1. Conditional Access for Agents
 
-L'extension du Conditional Access aux agents permet d'appliquer des politiques adaptatives
+Il s'agit très certainement de la fonctionnalitée principales pour les équipes sécurité. L'extension du Conditional Access aux agents permet d'appliquer des politiques adaptatives
 sur les tentatives d'accès des agents aux ressources. Les politiques s'articulent autour de
 deux scénarios principaux.
 
-**Scénario A — contrôle d'accès positif** : seuls les agents approuvés peuvent accéder à
+**Scénario A - contrôle d'accès positif** : seuls les agents approuvés peuvent accéder à
 une ressource donnée. La mise en œuvre recommandée passe par les Custom Security Attributes,
 assignés à l'agent et à la ressource, puis ciblés dans une politique de blocage avec
 exclusion. L'object picker dans l'admin center permet également une sélection directe par
 agent identity ou blueprint.
 
-**Scénario B — blocage basé sur le risque** : les agents détectés comme à risque élevé sont
+**Scénario B - blocage basé sur le risque** : les agents détectés comme à risque élevé sont
 bloqués automatiquement via une condition "Agent risk" (High / Medium / Low), alimentée par
 Identity Protection. Les managed policies Microsoft fournissent une baseline sécurisée pour
 ce scénario.
 
-Point d'attention : le Conditional Access s'applique à l'Agent Identity et à l'Agent User
+Point d'attention : le Conditional Access s'applique à **l'Agent Identity et à l'Agent User**
 lors de leurs tentatives d'acquisition de token, pas au Blueprint lui-même. La politique se
 configure sur le Blueprint pour couvrir toutes ses identités filles, mais c'est bien
 l'identité individuelle qui est évaluée.
@@ -165,7 +168,7 @@ preview.
 La gouvernance couvre l'ensemble du cycle de vie d'une identité agent, avec les mêmes
 mécanismes que pour les identités humaines.
 
-**Sponsor obligatoire** : chaque agent doit avoir un sponsor humain — la personne
+**Sponsor obligatoire** : chaque agent doit avoir un sponsor humain. La personne
 responsable de ses permissions et de ses actions. Les Lifecycle Workflows automatisent les
 notifications et la désactivation de l'agent en cas de départ ou de changement de rôle du
 sponsor. Un agent sans sponsor est identifiable dans le registre.
@@ -197,36 +200,35 @@ Access** (incluse dans l'Entra Suite ou le bundle E7).
 
 ## Prérequis et licences
 
-# SCHEMA 3
+![SCHEMA 3](/images/schemas/entraagentid-licence.png)
 
 **Conditions d'accès à la preview :**
 
 - Licence **Microsoft 365 Copilot** active sur le tenant (au minimum une licence).
 - Activation du programme **Frontier** : M365 admin center > Copilot > Settings > User access
-  > Copilot Frontier. Depuis novembre 2025, les assignments se font par utilisateur individuel
-  (plus de groupe Entra ID dans ce contrôle — cf. MC1181201).
+  > Copilot Frontier. Depuis novembre 2025, les assignments se font par utilisateur individuel.
 - Les tenants Frontier reçoivent automatiquement **25 licences Agent 365** valides jusqu'en
   décembre 2026.
 
 **Modèle de licence à la GA (1er mai 2026) :**
 
-Agent 365 est un SKU distinct, non inclus dans les plans M365 existants — y compris E5. Il
+Agent 365 est un SKU distinct, non inclus dans les plans M365 existants, y compris E5. Il
 est disponible à 15 $/utilisateur/mois en standalone, ou inclus dans M365 E7 à
 99 $/utilisateur/mois (annoncé le 9 mars 2026). La licence est assignée aux utilisateurs
 humains, pas aux agents eux-mêmes : elle couvre l'ensemble des agents OBO opérant pour le
 compte d'un utilisateur licensé. Les agents autonomes (Agent Identity Authentication) ne sont
-pas couverts par ce modèle de licence à la GA — leur pricing n'est pas encore annoncé.
+pas couverts par ce modèle de licence à la GA, leur pricing n'est pas encore annoncé.
 
 ---
 
-## Limitations actuelles (Preview — avril 2026)
+## Limitations actuelles (Preview - avril 2026)
 
 ### Limitations fonctionnelles
 
 **Agents "classic" exclus des protections avancées.** Les agents existants créés comme app
 registrations standard ne bénéficient pas du Conditional Access for Agents ni de l'Identity
 Protection for Agents. La migration vers des agent identities "modernes" n'est pas encore
-disponible en self-service — Microsoft annonce un outil, sans date publiée.
+disponible en self-service. Microsoft annonce un outil, sans date publiée.
 
 **Flux autonome (app-only) hors scope GA.** Le scénario où l'agent agit avec sa propre
 identité, indépendamment de tout utilisateur humain, reste en Frontier preview. C'est
@@ -255,14 +257,13 @@ période de preview. À prendre en compte avant tout déploiement en production.
 ### Limitations structurelles à anticiper
 
 **Le modèle OBO hérite des faiblesses du modèle délégué.** Un agent OBO cesse de fonctionner
-si l'utilisateur sponsor perd sa licence ou quitte l'organisation — exactement comme un cloud
+si l'utilisateur sponsor perd sa licence ou quitte l'organisation, exactement comme un cloud
 flow Power Automate lié à un compte nominatif. La résolution passe par des comptes "service
 accounts" dédiés, ce qui n'est ni élégant ni scalable pour des milliers d'agents.
 
 **La complexité du modèle objet nécessite une montée en compétence.** La relation Blueprint /
 Blueprint Principal / Agent Identity / Agent User est conceptuellement proche de App
-Registration / Enterprise Application, mais avec une couche de token exchange multi-étapes
-(FIC — Federated Identity Credentials) qui n'a pas d'équivalent dans les modèles existants.
+Registration / Enterprise Application, mais avec une couche de token exchange multi-étapes qui n'a pas d'équivalent dans les modèles existants.
 Les SDKs officiels (Microsoft.Identity.Web, Agent ID SDK) sont fortement recommandés : toute
 implémentation manuelle du protocole OAuth est décrite comme "complex and error-prone" par
 Microsoft lui-même.
@@ -276,14 +277,14 @@ nécessitent une intégration via API/SDK, avec une charge de développement sig
 
 ## Ce qui arrive : roadmap et signaux
 
-### Agent 365 GA — 1er mai 2026
+### Agent 365 GA - 1er mai 2026
 
 Le plan de contrôle OBO devient généralement disponible. En pratique : inventaire unifié
 dans l'admin center M365, Conditional Access for Agents opérationnel, Identity Governance
 (lifecycle, sponsors, access packages), audit logs des agents. C'est la fondation de
-gouvernance — pas encore le "digital worker" autonome.
+gouvernance, pas encore le "digital worker" autonome.
 
-### Agents autonomes avec identité propre — horizon Ignite 2026
+### Agents autonomes avec identité propre - horizon Ignite 2026
 
 Les "AI teammates" avec mailbox, OneDrive et identité indépendante restent dans Frontier
 preview jusqu'à au moins fin 2026. Les Frontier trial licenses ont été prolongées jusqu'en
@@ -317,7 +318,7 @@ nécessiter de licence Agent 365. C'est le prérequis à toute décision de gouv
 
 ### Ne pas confondre Agent 365 et la plateforme de construction d'agents
 
-Agent 365 est un plan de contrôle — il observe, gouverne et sécurise. Il ne construit pas
+Agent 365 est un plan de contrôle : il observe, gouverne et sécurise. Il ne construit pas
 d'agents. La construction reste dans Copilot Studio (low-code), Microsoft Foundry
 (pro-code), ou des outils tiers. Les coûts de consommation (tokens, messages) sont facturés
 séparément sur la facture Azure ou Copilot Studio. Agent 365 à 15 $/mois/utilisateur ne
@@ -329,7 +330,7 @@ La gouvernance des agents touche simultanément le RSSI (risques d'identité, ex
 la DSI (intégration IT, lifecycle management), les équipes conformité (audit, RGPD), et les
 métiers (qui créent des agents Copilot Studio sans en informer l'IT). L'alignement sur le
 modèle de propriété (qui est sponsor de quel agent), les standards d'accès et les exigences
-d'audit doit précéder le déploiement — pas le suivre.
+d'audit doit précéder le déploiement, pas le suivre.
 
 ### Traiter le flux OBO avec les mêmes précautions qu'un Power Automate cloud flow
 
@@ -351,20 +352,20 @@ fallback.
 
 | Dimension | Situation actuelle (avril 2026) |
 |---|---|
-| État général | Public Preview — pas de SLA |
+| État général | Public Preview - pas de SLA |
 | Flux OBO | GA le 1er mai 2026 (Agent 365) |
-| Flux autonome | Preview Frontier — horizon Ignite 2026 |
+| Flux autonome | Preview Frontier - horizon Ignite 2026 |
 | Licence d'accès preview | M365 Copilot + Frontier activé |
 | Licence GA | Agent 365 $15/u/mois · M365 E7 $99/u/mois |
-| Agents "classic" | Non protégés par Agent ID — migration à venir |
+| Agents "classic" | Non protégés par Agent ID - migration à venir |
 | Sponsor obligatoire | Oui, dès la preview |
 | Intégration native | Copilot Studio, Foundry, Security Copilot |
-| Intégration tiers | Via API/SDK — charge de dev non négligeable |
+| Intégration tiers | Via API/SDK - charge de dev non négligeable |
 | Détections IP disponibles | 2 (accès inhabituel, pic de connexions) |
 
 La plateforme est réelle, la direction est claire, et la problématique qu'elle adresse est
 urgente. Ce qui n'est pas encore là, c'est la maturité pour un déploiement en production
-critique — et la partie la plus prometteuse du produit (les agents avec identité propre)
+critique - et la partie la plus prometteuse du produit (les agents avec identité propre)
 reste derrière le rideau du programme Frontier.
 
 ---
@@ -384,14 +385,3 @@ reste derrière le rideau du programme Frontier.
 - [Agent 365 Licensing — SAMexpert](https://samexpert.com/agent-365/) — mars 2026 (croisé avec Microsoft Learn)
 - [May 1 GA is not yet the final frontier for Agent 365 — The Licensing Guide](https://licensing.guide/may-1-ga-is-not-yet-the-final-frontier-for-agent-365/) — mars 2026 (analyse indépendante)
 - [Microsoft Entra Agent ID : A Practical Guide to Blueprints — Thalpius Security Blog](https://thalpius.com/2026/03/28/microsoft-entra-agent-id-a-practical-guide-to-blueprints-and-agent-identities/) — mars 2026
-
-**Points à re-vérifier avant publication :**
-
-- Date effective de disponibilité GA (1er mai 2026 confirmé au 15 avril — à vérifier si
-  annonce complémentaire entre-temps).
-- Mise à jour du pricing Agent 365 et M365 E7 (susceptible d'évoluer avec les programmes
-  promotionnels Microsoft).
-- Catalogue des détections Identity Protection : Microsoft enrichit progressivement, aucune
-  feuille de route publique formelle.
-- État de l'outil de migration des agents "classic" vers "modern" — non disponible à date,
-  à surveiller dans les release notes Entra.

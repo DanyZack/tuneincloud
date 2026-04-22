@@ -8,6 +8,8 @@ heroImage: "https://dirteam.com/sander/wp-content/uploads/sites/2/2025/02/Entra.
 ---
 Microsoft intègre enfin nativement ce que les solutions tierces faisaient depuis des années : sauvegarder et restaurer les objets Entra ID. La fonctionnalité est disponible en **Public Preview** depuis l'Entra admin center.
 
+![Banniere](/images/banarticle/breve-entra1.png)
+
 ## Ce que ça change concrètement
 
 Jusqu'ici, récupérer un objet Entra supprimé par erreur, un groupe, un compte de service, une Conditional Access policy mal configurée : imposait soit de fouiller la corbeille (30 jours, mais limitée en types d'objets), soit de s'appuyer sur un outil tiers comme **EntraExporter**, **AzureAD Backup**, ou autre.
