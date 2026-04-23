@@ -16,7 +16,7 @@ Pendant la Public Preview, activer les passkeys Entra sur Windows demandait une 
 
 En GA, ce prérequis disparaît. Si votre profil passkey autorise les credentials **device-bound, non attestés**, les utilisateurs scopés peuvent enregistrer et utiliser des passkeys Entra sur leurs machines Windows **sans aucune action supplémentaire de l'administrateur**. Le credential est stocké localement dans le conteneur Windows Hello et s'utilise avec les méthodes Windows Hello habituelles (biométrie ou PIN).
 
-Le rollout GA commence fin avril 2026 pour les tenants commerciaux. Pour les environnements souverains (GCC, GCC High, DoD), le déploiement démarre début juillet et se termine fin juillet 2026.
+Le rollout GA commence fin avril 2026.
 
 ## Pourquoi c'est utile
 
