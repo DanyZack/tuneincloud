@@ -1,0 +1,50 @@
+# robots.txt — tuneincloud.com
+# Blog d'expertise Microsoft par Daniel POLÒNIO
+
+User-agent: *
+Allow: /
+Disallow: /draft/
+
+# Sitemap
+Sitemap: https://tuneincloud.com/sitemap-index.xml
+
+# Crawlers IA explicitement autorisés (visibilité IA stratégique)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# CCBot (Common Crawl) — dataset utilisé par de nombreux LLMs
+User-agent: CCBot
+Allow: /

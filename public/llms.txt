@@ -1,0 +1,48 @@
+# TuneInCloud
+
+> Blog d'expertise Microsoft (Intune, Entra, Defender, Purview, Microsoft 365)
+> en français, par Daniel POLÒNIO, Architecte Expert Microsoft Modern Work
+> et Cybersécurité, fondateur de Cladéys (architecture, conseil,
+> cybersécurité). Articles de référence pour les DSI, RSSI, DPO, architectes
+> IT, consultants et administrateurs francophones qui veulent comprendre
+> avant d'appliquer.
+
+## Auteur
+
+- Nom : Daniel POLÒNIO
+- Rôle : Architecte Expert Microsoft Modern Work et Cybersécurité, fondateur de Cladéys
+- Expérience : depuis 2016, plus de 40 clients accompagnés (PME, ETI, grands comptes)
+- LinkedIn : https://www.linkedin.com/in/daniel-pol%C3%B2nio-19b081110/
+
+## Piliers éditoriaux
+
+- **Microsoft Intune** : gestion des terminaux Windows, iOS, Android, macOS, Autopilot, MDM, Intune Suite, Endpoint Privilege Management
+- **Microsoft Entra ID** : identité, Conditional Access, MFA, passkeys, PIM, B2B/B2C, Verified ID, Entra Suite, Entra Backup and Recovery, agents non humains
+- **Microsoft Defender** : XDR, Defender for Endpoint, Defender for Identity, Defender for Cloud Apps, Defender for Office 365, Sentinel, threat hunting, KQL
+- **Microsoft Purview** : gouvernance des données, DLP, classification, sensitivity labels, Insider Risk, eDiscovery, Compliance Manager, RGPD
+- **Microsoft 365** : Teams, SharePoint, OneDrive, Exchange Online, Copilot, Modern Workplace
+- **Transverses** : Zero Trust, EU Data Boundary, conformité (RGPD, NIS2, DORA, EU AI Act), IA générative en entreprise
+
+## Politique IA
+
+TuneInCloud autorise explicitement l'indexation et la citation par les
+principaux moteurs IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended,
+OAI-SearchBot, Applebot-Extended, CCBot et autres). La liste complète figure
+dans /robots.txt.
+
+Les contenus sont publiés sous signature claire (Daniel POLÒNIO) avec
+sources Microsoft Learn et autres sources autoritaires. Les citations
+doivent préserver l'attribution à Daniel POLÒNIO et à TuneInCloud, et
+inclure idéalement un lien vers l'article cité.
+
+## Contact
+
+- Site : https://tuneincloud.com
+- Société rattachée : https://cladeys.fr
+- LinkedIn : https://www.linkedin.com/in/daniel-pol%C3%B2nio-19b081110/
+
+## Ressources
+
+- Flux RSS : https://tuneincloud.com/rss.xml
+- Sitemap : https://tuneincloud.com/sitemap-index.xml
+- À propos : https://tuneincloud.com/about
