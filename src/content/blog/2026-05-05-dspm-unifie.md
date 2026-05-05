@@ -27,7 +27,7 @@ La nouvelle version unifie les deux dans une expérience unique, AI-powered, org
 ## Calendrier et conditions
 
 - **Public Preview worldwide** : démarrée début décembre 2025, finalisée début avril 2026.
-- **GA worldwide** : démarrée début mai 2026, finalisation prévue fin mai 2026 (calendrier confirmé dans le Message Center MC1191257, mis à jour le 10 avril 2026 — initialement annoncé pour avril, repoussé à mai).
+- **GA worldwide** : démarrée début mai 2026, finalisation prévue fin mai 2026 (calendrier confirmé dans le Message Center MC1191257, mis à jour le 10 avril 2026 - initialement annoncé pour avril, repoussé à mai).
 - **Aucune action admin requise**. Pour les clients déjà onboardés sur DSPM classique ou DSPM for AI classique, les étapes d'onboarding sont automatiquement reportées sur la nouvelle expérience.
 - **Coexistence assurée jusqu'en juin 2026**. DSPM (classique) et DSPM for AI (classique) restent disponibles jusqu'en juin 2026, après quoi la nouvelle expérience devient la solution centralisée.
 
@@ -44,7 +44,7 @@ La nouvelle version unifie les deux dans une expérience unique, AI-powered, org
 > 📚 **À venir sur TuneInCloud** : un dossier complet sur le nouveau DSPM unifié, avec déploiement pas à pas, mapping des objectifs aux policies, retours d'expérience sur les workflows guidés, et analyse détaillée du modèle de licensing. Restez connectés.
 
 ## Source
-[Microsoft Tech Community — Beyond Visibility: The new Microsoft Purview DSPM experience](https://techcommunity.microsoft.com/blog/microsoft-security-blog/beyond-visibility-the-new-microsoft-purview-data-security-posture-management-dsp/4470984)  
-[MC1191257 — New Microsoft Purview data security posture management experience](https://mc.merill.net/message/MC1191257)  
-[Microsoft Learn — What's new in Microsoft Purview](https://learn.microsoft.com/en-us/purview/whats-new)  
-[Microsoft Tech Community — From Oversharing to Enforcement: A Practical Guide to AI Data Security with Microsoft Purview](https://techcommunity.microsoft.com/blog/microsoft-purview-blog/from-oversharing-to-enforcement-a-practical-guide-to-ai-data-security-with-micro/4513727)
+[Microsoft Tech Community - Beyond Visibility: The new Microsoft Purview DSPM experience](https://techcommunity.microsoft.com/blog/microsoft-security-blog/beyond-visibility-the-new-microsoft-purview-data-security-posture-management-dsp/4470984)  
+[MC1191257 - New Microsoft Purview data security posture management experience](https://mc.merill.net/message/MC1191257)  
+[Microsoft Learn - What's new in Microsoft Purview](https://learn.microsoft.com/en-us/purview/whats-new)  
+[Microsoft Tech Community - From Oversharing to Enforcement: A Practical Guide to AI Data Security with Microsoft Purview](https://techcommunity.microsoft.com/blog/microsoft-purview-blog/from-oversharing-to-enforcement-a-practical-guide-to-ai-data-security-with-micro/4513727)
