@@ -163,6 +163,8 @@ Les quatre passent désormais par Sentinel Data Lake, contrairement à la situat
 d'avril 2026 où Varonis pour Salesforce nécessitait un chemin d'activation distinct.
 D'autres sources sont annoncées "coming soon" sans calendrier précis.
 
+![SCHEMA 2](/images/schemas/schema-sentinel-data-lake.png)
+
 **Point de facturation critique** : ces signaux tiers sont facturés en pay-as-you-go
 via les compteurs de consommation Microsoft Sentinel. Ce n'est pas inclus dans la
 licence E5 ou E5 Compliance. L'administrateur doit configurer la facturation PAYG
@@ -185,6 +187,8 @@ Pour les fonctionnalités spécifiques aux agents IA (DSPM AI Observability et I
 Risk Management for Agents), la licence requise est **Microsoft 365 E7** ou
 **Agent 365** (15 $/utilisateur/mois en standalone). Agent 365 est passé en GA le 1er
 mai 2026. Ces capacités agents ne sont pas incluses dans E5.
+
+![SCHEMA 3](/images/schemas/schema-licences-agents.png)
 
 ### Prérequis techniques à activer avant le premier accès
 
