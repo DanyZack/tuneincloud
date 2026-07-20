@@ -8,7 +8,7 @@ heroImage: "https://i0.wp.com/workingtogether.fun/wp-content/uploads/2026/07/wn.
 ---
 La DLP Purview sait déjà atteindre les applications tierces : connecteurs API et session policies de Defender for Cloud Apps pour les apps sanctionnées, Endpoint DLP pour bloquer les uploads depuis les postes onboardés, intégration Edge for Business pour les interactions IA au niveau navigateur. Mais chacun de ces canaux a son angle mort : l'un inspecte la donnée après coup, l'autre exige une session navigateur fédérée, le troisième un poste managé. Microsoft ajoute le plan d'enforcement qui manquait : le réseau lui-même, via Entra Internet Access. La fonctionnalité, baptisée Purview Network Data Security, est en Public Preview.
 
-![Banniere](/images/banarticle/breve-purview1.png)
+![Banniere](/images/banarticle/breve-purview2.png)
 
 ## Ce qui change concrètement
 
