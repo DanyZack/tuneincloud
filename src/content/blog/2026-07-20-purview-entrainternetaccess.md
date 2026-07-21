@@ -31,13 +31,11 @@ Le rollout s'étale de juillet à octobre 2026, avec une GA worldwide annoncée 
 Côté prérequis, la liste est exigeante :
 
 1. **Entra Internet Access déployé** (Global Secure Access), avec les clients GSA sur les postes
-2. **TLS inspection activée** : sans déchiffrement du trafic, pas d'inspection de contenu. Cela suppose le déploiement du certificat racine Entra sur les appareils
-3. **Purview DLP** avec les classifieurs configurés
-4. **Facturation pay-as-you-go** : Purview Network Data Security s'appuie sur un modèle à la consommation, à provisionner via un abonnement Azure
+2. **Purview DLP** avec les classifieurs configurés
+3. **Facturation pay-as-you-go** : Purview Network Data Security s'appuie sur un modèle à la consommation, à provisionner via un abonnement Azure
 
 ## Points d'attention
 
-- ⚠️ **La TLS inspection est un projet en soi**. Déchiffrer le trafic des collaborateurs soulève des questions juridiques et sociales réelles en France : information des instances représentatives, exclusions à prévoir (santé, banque, syndicats), documentation CNIL. Le volet technique est le plus simple des deux.
 - ⚠️ **Modèle de coût à cadrer avant d'activer**. Le pay-as-you-go sur de l'inspection de trafic réseau peut chiffrer vite sur une flotte complète. Commencer par des collection policies en mode découverte sur un périmètre pilote donne une base de dimensionnement avant tout blocage.
 - ⚠️ **Preview jusqu'à l'automne**. Périmètre applicatif et comportements susceptibles d'évoluer avant la GA. Ne pas bâtir de contrôle de conformité opposable sur cette brique avant fin octobre 2026.
 - 💡 **Trois plans d'enforcement, trois périmètres**. Endpoint DLP reste nécessaire pour les canaux hors réseau (USB, impression, presse-papiers) et les postes hors GSA. La browser data security couvre Edge, y compris sur postes non onboardés. Les session policies MDCA gardent leur intérêt pour le contrôle fin des apps fédérées. La couche réseau complète l'ensemble : elle voit ce que les trois autres ne voient pas, sans les remplacer.
