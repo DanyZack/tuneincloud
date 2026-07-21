@@ -49,6 +49,6 @@ Côté prérequis, la liste est exigeante :
 - 💡 Pour les organisations déjà engagées sur le nouveau DSPM unifié, cette brique s'inscrit dans la même trajectoire : suivre la donnée là où elle circule, et non plus seulement là où elle repose. Le trio DSPM, DLP Copilot et DLP réseau commence à former une couverture cohérente du shadow AI.
 
 ## Source
-[Microsoft Entra Blog — Protect sensitive data in motion across SaaS and AI apps with Microsoft Purview and Microsoft Entra](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/protect-sensitive-data-in-motion-across-saas-and-ai-apps-with-microsoft-purview-/4529310)  
-[Microsoft Learn — Learn about Microsoft Purview Network Data Security](https://learn.microsoft.com/en-us/purview/dlp-network-data-security-learn)  
-[MC1419797 — Extend Purview data security to the network layer via Entra GSA integration](https://mc.merill.net/message/MC1419797)
+[Microsoft Entra Blog - Protect sensitive data in motion across SaaS and AI apps with Microsoft Purview and Microsoft Entra](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/protect-sensitive-data-in-motion-across-saas-and-ai-apps-with-microsoft-purview-/4529310)  
+[Microsoft Learn - Learn about Microsoft Purview Network Data Security](https://learn.microsoft.com/en-us/purview/dlp-network-data-security-learn)  
+[MC1419797 - Extend Purview data security to the network layer via Entra GSA integration](https://mc.merill.net/message/MC1419797)
