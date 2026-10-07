@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980">
+  <!--
+    Gabarit de schéma TuneInCloud. Conventions :
+    - fond ivoire, palette marine / or / bordeaux / bleu roi / vert foncé
+    - bandeau de section : petites capitales or, filet fin de part et d'autre
+    - bloc principal : rectangle plein fond, titre blanc en serif, détail en sans-serif
+    - sous-bloc : ivoire clair (#f6f1e6) bord marine fin, texte marine
+    - flèche verticale épaisse marine entre les étapes
+    Copier ce fichier, adapter le contenu, conserver les styles.
+  -->
+  <defs>
+    <style>
+      .bg { fill: #ede6d6; }
+      .section { font: 600 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 4px; fill: #b8972a; text-anchor: middle; }
+      .rule { stroke: #b8972a; stroke-width: 2; }
+      .block-navy { fill: #1a2b5e; }
+      .block-gold { fill: #b8972a; }
+      .block-bordeaux { fill: #8b1a2b; }
+      .block-royal { fill: #2748c4; }
+      .block-green { fill: #1a5c3a; }
+      .sub { fill: #f6f1e6; stroke: #1a2b5e; stroke-width: 2; }
+      .title-w { font: 700 34px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .body-w { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .title-n { font: 700 28px Georgia, 'Times New Roman', serif; fill: #1a2b5e; text-anchor: middle; }
+      .body-n { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .arrow { stroke: #1a2b5e; stroke-width: 8; fill: none; }
+      .arrow-head { fill: #1a2b5e; }
+      .legend { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; }
+      /* Compléments utiles */
+      .small-w { font: italic 400 20px 'Segoe UI', Arial, sans-serif; fill: #ffffff; fill-opacity: 0.85; text-anchor: middle; }
+      .tag-b { font: 700 20px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; fill: #8b1a2b; text-anchor: middle; }
+      .tag-g { font: 700 20px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; fill: #1a5c3a; text-anchor: middle; }
+      .arrow-thin { stroke: #1a2b5e; stroke-width: 3; fill: none; }
+      .divider-w { stroke: #ffffff; stroke-opacity: 0.35; stroke-width: 2; }
+    </style>
+    <marker id="head" markerWidth="5" markerHeight="5" refX="2.5" refY="1" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L5,0 L2.5,4 Z" class="arrow-head"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+
+  <!-- Bandeau de section 01 -->
+  <line class="rule" x1="80" y1="70" x2="560" y2="70"/>
+  <text class="section" x="800" y="78">01 — SOURCES</text>
+  <line class="rule" x1="1040" y1="70" x2="1520" y2="70"/>
+
+  <!-- Rangée de sous-blocs -->
+  <rect class="sub" x="80" y="110" width="330" height="120" rx="4"/>
+  <text class="title-n" x="245" y="160">Microsoft 365</text>
+  <text class="body-n" x="245" y="200">SharePoint · Teams · Exchange</text>
+
+  <rect class="sub" x="450" y="110" width="330" height="120" rx="4"/>
+  <text class="title-n" x="615" y="160">Azure</text>
+  <text class="body-n" x="615" y="200">Blob · SQL · Cosmos DB</text>
+
+  <rect class="sub" x="820" y="110" width="330" height="120" rx="4"/>
+  <text class="title-n" x="985" y="160">Multicloud</text>
+  <text class="body-n" x="985" y="200">AWS S3 · GCP · Salesforce</text>
+
+  <rect class="sub" x="1190" y="110" width="330" height="120" rx="4"/>
+  <text class="title-n" x="1355" y="160">On-premises</text>
+  <text class="body-n" x="1355" y="200">Partages · Serveurs · BDD</text>
+
+  <!-- Flèche -->
+  <line class="arrow" x1="800" y1="250" x2="800" y2="310" marker-end="url(#head)"/>
+
+  <!-- Bandeau 02 -->
+  <line class="rule" x1="80" y1="350" x2="520" y2="350"/>
+  <text class="section" x="800" y="358">02 — MOTEUR</text>
+  <line class="rule" x1="1080" y1="350" x2="1520" y2="350"/>
+
+  <!-- Bloc principal marine, pleine largeur -->
+  <rect class="block-navy" x="80" y="390" width="1440" height="200" rx="4"/>
+  <text class="title-w" x="800" y="450">Scanner Purview</text>
+  <text class="body-w" x="800" y="495">Analyse automatique, continue ou planifiée</text>
+  <line x1="80" y1="520" x2="1520" y2="520" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+  <text class="body-w" x="320" y="560">Découverte</text>
+  <text class="body-w" x="800" y="560">Classification</text>
+  <text class="body-w" x="1280" y="560">Cartographie</text>
+
+  <!-- Flèche -->
+  <line class="arrow" x1="800" y1="610" x2="800" y2="670" marker-end="url(#head)"/>
+
+  <!-- Bandeau 03 -->
+  <line class="rule" x1="80" y1="710" x2="500" y2="710"/>
+  <text class="section" x="800" y="718">03 — ACTIONS</text>
+  <line class="rule" x1="1100" y1="710" x2="1520" y2="710"/>
+
+  <!-- Quatre blocs colorés -->
+  <rect class="block-bordeaux" x="80" y="750" width="330" height="150" rx="4"/>
+  <text class="title-w" x="245" y="810">Étiquetage</text>
+  <text class="body-w" x="245" y="860">Labels MIP automatiques</text>
+
+  <rect class="block-royal" x="450" y="750" width="330" height="150" rx="4"/>
+  <text class="title-w" x="615" y="810">Politiques DLP</text>
+  <text class="body-w" x="615" y="860">Blocage du partage externe</text>
+
+  <rect class="block-green" x="820" y="750" width="330" height="150" rx="4"/>
+  <text class="title-w" x="985" y="810">Accès</text>
+  <text class="body-w" x="985" y="860">Révocation · chiffrement</text>
+
+  <rect class="block-gold" x="1190" y="750" width="330" height="150" rx="4"/>
+  <text class="title-w" x="1355" y="810">Rétention</text>
+  <text class="body-w" x="1355" y="860">Politiques ciblées · hold</text>
+
+  <text class="legend" x="80" y="950">Légende facultative : une ligne, en bas à gauche.</text>
+</svg>
