@@ -17,6 +17,10 @@ pas de publication. Ces étapes appartiennent à d'autres agents.
 
 ## Déroulé obligatoire
 
+0. **Si la demande désigne un sujet d'une revue de veille** (« sujet 2 de la veille
+   du 2026-10-12 »), ouvre `editorial/veille/<date>-revue.md`, prends la fiche du
+   sujet comme brief (angle recommandé, faits vérifiés, sources, points de
+   vigilance, ce que la communauté a déjà écrit) et pars de ses URLs.
 1. **Choisir le format** selon la demande, ou selon le « Format conseillé » si un
    brief de veille t'est fourni. En cas de doute, applique la grille : une seule
    nouveauté ponctuelle = brève ; une actualité qui mérite contexte et angle =
