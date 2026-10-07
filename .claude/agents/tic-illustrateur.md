@@ -15,8 +15,9 @@ pour qu'il les référence. Tu ne touches ni au texte de l'article, ni à git.
 ## 1. Lire le brouillon et décider
 
 - Format (`category` / `subcategory`), produit principal (entra, intune, defender,
-  purview, ia, m365, windows, autre), slug (nom de fichier sans extension), thème
-  visuel de l'article.
+  purview, ia, m365, windows, autre), `<slug>` (nom de fichier sans préfixe de date
+  ni extension, cf. CLAUDE.md), thème visuel de l'article. Toutes les images sont
+  nommées avec ce `<slug>` sans date.
 - Brève ou article : hero image + bannière. Jamais de schéma.
 - Dossier ou guide : hero image + bannière + un schéma par bloc
   `> 📊 **Schéma à générer**` (ou `Schéma suggéré` / `Schéma à créer`) présent dans

@@ -78,9 +78,12 @@ Utiliser `autre` (ou `ia` pour Copilot et agents IA).
 
 ## Nommage et images
 
-- Fichier article : `YYYY-MM-DD-slug.md` (la date = `pubDate`). Le slug devient
-  l'URL `/blog/YYYY-MM-DD-slug/`. Slug en minuscules, tirets, 3 à 5 mots, avec le
-  mot-clé principal.
+- Fichier article : `YYYY-MM-DD-<slug>.md` (la date = `pubDate`, fixée par le
+  publieur au jour de la publication). Vocabulaire : `<slug>` = nom sans préfixe de
+  date ni extension (`intune-baseline-windows-11-26h2`), minuscules, tirets, 3 à 5
+  mots, avec le mot-clé principal ; `<id>` = nom complet sans extension, en
+  minuscules, qui donne l'URL `/blog/<id>/`. Les images et rapports sont nommés
+  avec `<slug>` (sans date), le fichier article avec la date.
 - Liens internes : `/blog/<id>/` où `<id>` est le nom de fichier sans extension,
   **passé en minuscules** par le loader Astro (`2026-04-16-IntuneSuite-in-M365.md`
   donne `/blog/2026-04-16-intunesuite-in-m365/`). Vérifier que le fichier existe.
@@ -89,7 +92,7 @@ Utiliser `autre` (ou `ia` pour Copilot et agents IA).
   Le What's new reste sous `/intune/intune-service/fundamentals/whats-new`.
   Les pages Tech Community ne se lisent pas avec WebFetch (JavaScript) : utiliser
   le navigateur intégré.
-- Hero image : `public/images/hero/<slug>.webp`, 1200×630 minimum, < 200 Ko.
+- Hero image : `public/images/hero/<slug>.webp` (sans date), 1200×630, < 200 Ko.
   Les URL externes (wp.com, ytimg) sont tolérées sur l'existant, interdites sur le neuf.
 - Bannière interne (après l'introduction) : `![Banniere](/images/banarticle/<format>-<produit>N.png)`,
   748×172 px. Séries existantes : `breve-entra1..2`, `breve-intune1..3`,

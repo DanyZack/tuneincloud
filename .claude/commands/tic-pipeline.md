@@ -33,9 +33,12 @@ Lance `tic-illustrateur` sur le brouillon. Récupère la liste des fichiers cré
 ## Étape 4 : sauvegarde du brouillon et demande de relecture
 
 1. Commit du brouillon et de ses fichiers, puis push (le dossier `draft/` n'est pas
-   compilé par Astro, rien n'est publié) :
+   compilé par Astro, rien n'est publié). Ajoute les fichiers un par un, uniquement
+   ceux qui existent (jamais `-A`, jamais de motif sans correspondance) : le
+   brouillon, `public/images/hero/<slug>.webp`, la bannière, les schémas PNG et SVG
+   éventuels, le rapport `editorial/relectures/<slug>-*.md`.
    ```bash
-   git add src/content/draft/<fichier>.md public/images/hero/<...> public/images/banarticle/<...> public/images/schemas/<slug>-*.png editorial/schemas/<slug>-*.svg editorial/relectures/<slug>-*.md
+   git add <fichier1> <fichier2> ...
    git commit -m "Brouillon : <titre court>" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
    git push origin master
    ```
