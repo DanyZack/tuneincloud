@@ -7,7 +7,7 @@ category: "guides"
 subcategory: "entra"
 ---
 
-Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique Entra ID cesse d'être évalué. Rien n'est supprimé et Microsoft ne documente aucune alerte : les groupes concernés gardent leur dernière composition connue. Un groupe figé continue pourtant d'alimenter vos stratégies d'accès conditionnel, vos licences par groupe et vos affectations Intune. La panne ne se voit pas, la dérive commence le lendemain.
+Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique Entra ID cesse d'être évalué. Rien n'est supprimé et Microsoft ne documente aucune alerte : les groupes concernés gardent leur dernière composition connue. Un groupe figé continue pourtant d'alimenter vos stratégies d'accès conditionnel, vos licences par groupe, vos affectations Intune, Teams et SharePoint. La panne ne se voit pas, la dérive commence le lendemain.
 
 ![Banniere](/images/banarticle/guide-entra1.png)
 
@@ -24,10 +24,10 @@ Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique
 |---|---|---|
 | Juin 2022 | `memberOf` arrive en preview publique, jamais passé en GA | Office 365 IT Pros |
 | 5 août 2026 | MC1448379 : « Replace MemberOf rules by November 3, 2026 » | Message Center |
-| 5 octobre 2026 | MC1488834 : rappel final | Message Center |
-| 3 novembre 2026 | Les groupes, unités administratives et politiques d'attribution automatique basés sur `memberOf` cessent d'être mis à jour | Microsoft Learn |
+| 5 octobre 2026 | MC1488834 : rappel final, aucune exception | Message Center |
+| 3 novembre 2026 | Les groupes, unités administratives et politiques d'attribution automatique basés sur `memberOf` cessent d'être mis à jour | Message Center, Microsoft Learn |
 
-Motif officiel : pendant la preview, `memberOf` peut ralentir le traitement dynamique de **tous** les groupes du tenant. Un remplaçant est en développement, sans date.
+Motif officiel : pendant la preview, Microsoft a constaté que `memberOf` peut affecter le traitement dynamique de **tout le tenant**, même avec une seule règle `memberOf`. La fonctionnalité n'est pas recommandée en production. Learn évoque un remplaçant en développement, sans date ; le rappel final n'en annonce aucun.
 
 ![SCHEMA 1](/images/schemas/entra-memberof-groupes-dynamiques-1.png)
 *Schéma 1 : un groupe `memberOf` figé au 3 novembre 2026 continue d'alimenter accès conditionnel, licences, Intune et packages d'accès.*
@@ -87,13 +87,13 @@ Le filtre `memberof` est local, car `membershipRule` n'accepte pas `contains` en
 
 Pour les politiques d'attribution automatique, utiliser le script publié par Microsoft (section *Find automatic assignment policies that use the memberOf attribute* de la page Learn citée en source). Il produit `memberof-auto-assignment-policies.csv`.
 
-Microsoft Learn propose aussi un contrôle croisé par export des groupes dynamiques depuis le centre d'administration Microsoft Entra.
+Méthode Microsoft : export depuis le centre d'administration Microsoft Entra pour les groupes, Graph PowerShell pour les unités administratives et l'attribution automatique. Croisez le script avec cet export.
 
 > 🖼️ **Capture à insérer** : console PowerShell après exécution du script, tableau `Type / Name / Licences / CAPolicies` avec au moins une ligne. Noms de groupes anonymisés.
 
 ### Étape 2 : cartographier les dépendances
 
-Le script couvre l'accès conditionnel et les licences. Reste Intune, qui ne se voit pas depuis Entra.
+Le script couvre l'accès conditionnel et les licences. Restent Intune, invisible depuis Entra, puis Teams, SharePoint et les applications qui lisent l'appartenance au groupe.
 
 1. Pour chaque groupe de l'inventaire, d'**utilisateurs** comme d'**appareils** (règle en `user.memberof` ou `device.memberof`), ouvrir le **centre d'administration Intune** et contrôler les affectations des anneaux de mise à jour Windows, des applications (requises et désinstallations), des profils de configuration et des stratégies de conformité.
 2. Classer chaque groupe : **exclusion de sécurité**, **ciblage d'accès ou de licence**, **déploiement**.
@@ -110,7 +110,8 @@ Une règle `memberOf` ne peut pas être combinée avec un autre critère. Chaque
 | Aucun attribut existant ne convient | Attribut d'extension `extensionAttribute1` à `15`, alimenté par Entra Connect, le SIRH ou Graph, puis `user.extensionAttribute5 -eq "Finance"` |
 | Appareils | `device.extensionAttribute1` à `15`, à écrire sur l'objet appareil via Graph |
 | Deux ou trois groupes sources stables | Cibler directement les groupes sources dans la stratégie, la licence ou l'affectation |
-| Aucune logique d'attribut possible | Convertir en groupe attribué, maintenu par une automatisation (runbook planifié qui recopie les membres des groupes sources) |
+| Aucune logique d'attribut possible | Convertir en groupe attribué (repli recommandé par Microsoft), maintenu par une automatisation (runbook planifié qui recopie les membres des groupes sources) |
+| Groupe ou unité administrative sans usage | Le supprimer, comme le recommande Microsoft |
 
 Pour convertir sans casser les références :
 
@@ -119,15 +120,15 @@ Pour convertir sans casser les références :
 3. Dans **Membership type**, choisir **Assigned** (ou **Dynamic User** / **Dynamic Device** avec la nouvelle règle saisie via **Add dynamic query**).
 4. Cliquer sur **Save**.
 
-Le groupe garde son nom et son ID : accès conditionnel, licences et affectations Intune continuent de pointer dessus. Lors d'un passage vers une nouvelle règle dynamique, les membres qui ne la satisfont pas sont retirés et peuvent perdre leurs accès jusqu'à la fin du traitement : faites-le hors heures ouvrées.
+Le groupe garde son nom et son ID : accès conditionnel, licences et affectations Intune continuent de pointer dessus. La conservation des membres en **Assigned** n'est documentée que pour les unités administratives : comparez l'effectif au CSV. Lors d'un passage vers une nouvelle règle dynamique, les membres qui ne la satisfont pas sont retirés et peuvent perdre leurs accès jusqu'à la fin du traitement : faites-le hors heures ouvrées.
 
-Pour une unité administrative : **Properties → Membership type**, même logique. Pour un package d'accès, modifier la règle de la politique dans **ID Governance → Entitlement management → Access package**.
+Pour une unité administrative : **Properties → Membership type**, même logique. Pour un package d'accès, modifier la règle de la politique dans **ID Governance → Entitlement management → Access package** ; sans règle équivalente, Microsoft demande de prévoir une autre méthode d'attribution.
 
-### Étape 4 : contrôler après le 3 novembre
+### Étape 4 : contrôler après chaque remplacement et après le 3 novembre
 
 1. Relancer le script de l'étape 1 et celui des politiques d'attribution automatique : le résultat attendu est vide.
 2. Pour chaque groupe remplacé, ouvrir la page **Overview** et vérifier **Dynamic rule processing status** (`Update complete`) et **Last membership change**.
-3. Comparer l'effectif de chaque groupe avec le CSV d'inventaire.
+3. Comparer l'effectif de chaque groupe et unité administrative avec le CSV d'inventaire. Pour une unité administrative, vérifier aussi le périmètre administratif ; pour un package d'accès, ses attributions.
 4. Dans Intune, contrôler le statut de déploiement d'un anneau de mise à jour ou d'une application ciblant un groupe converti.
 
 Le traitement dynamique n'est pas instantané. Si aucune mise à jour dynamique n'est traitée dans le tenant pendant plus de 24 heures, une alerte apparaît au-dessus de **All groups**.
@@ -150,7 +151,7 @@ Si vous testez déjà la [sauvegarde native du tenant Entra](/blog/2026-04-14-en
 ## Source
 
 - [MC1448379, Microsoft Entra ID: Replace MemberOf rules by November 3, 2026 (5 août 2026)](https://mc.merill.net/message/MC1448379)
-- [MC1488834, Microsoft Entra ID: Final reminder to replace MemberOf rule operator configurations by November 3, 2026 (5 octobre 2026)](https://mc.merill.net/message/MC1488834)
+- [Message Center Microsoft, rappel final (MC1488834, 5 octobre 2026) : Microsoft Entra ID: Final reminder to replace MemberOf rule operator configurations by November 3, 2026](https://mc.merill.net/message/MC1488834)
 - [Configure dynamic membership groups with the memberOf operator (preview), Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-rule-member-of)
 - [Configure an automatic assignment policy for an access package, Microsoft Learn](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-access-package-auto-assignment-policy)
 - [Manage rules for dynamic membership groups, Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/users/groups-dynamic-membership)

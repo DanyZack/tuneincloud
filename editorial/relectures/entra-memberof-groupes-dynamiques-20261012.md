@@ -5,7 +5,9 @@
 **Date de publication prévue** : 2026-10-12
 **Date de relecture** : 2026-10-12
 **Mode** : brouillon (corrections en place, aucune opération git)
-**Verdict global** : ⚠️ Publiable après corrections (corrections appliquées ; **une décision bloquante** reste à prendre sur MC1488839, voir « Points pour Daniel »)
+**Verdict global** (révisé le 2026-10-12, passe n°2) : ⚠️ Publiable après corrections. Corrections de fond appliquées, point bloquant MC1488839 **levé** par le texte du rappel final lu par Daniel. Restent à l'illustrateur la bannière et la hero image, et deux arbitrages mineurs de Daniel (voir « Passe n°2 »).
+
+*Verdict initial (passe n°1) : ⚠️ Publiable après corrections, avec une décision bloquante sur MC1488839.*
 
 ## Synthèse
 
@@ -176,3 +178,158 @@ Sans objet (brouillon daté du jour). Voir toutefois MC1488839, évolution post�
 2. Bannière `guide-entra1.png` et hero image à produire (illustrateur).
 3. Ligne « Juin 2022 » du calendrier : source tierce non relue (Office 365 IT Pros). Conserver ou retirer.
 4. Tester en tenant la conversion d'un groupe `memberOf` en **Assigned** (membres conservés ?) avant de recommander ce repli sans réserve.
+
+---
+
+## Passe n°2 : recalage sur le rappel final du Message Center (2026-10-12)
+
+**Mode** : brouillon, corrections en place, aucune opération git.
+
+### Nouvelle source
+
+Daniel a copié depuis le Message Center de son tenant le texte intégral du rappel final (« Action requise d'ici le 3 nov. 2026 »). Ce texte renvoie explicitement à « MC1448379 (August 5, 2026) ». L'ID du message ne figure pas dans le copier-coller.
+
+| Source | État | Vérifié le | Commentaire |
+|---|---|---|---|
+| Rappel final, Message Center du tenant de Daniel | ✅ Lu (texte intégral fourni par Daniel) | 2026-10-12 | Échéance unique **3 novembre 2026, Worldwide**, pour groupes dynamiques, UA dynamiques **et** politiques d'attribution automatique d'Entitlement Management. Aucune exception, aucune prolongation, aucun remplaçant annoncé |
+| ID MC1488834 et date du 5 octobre 2026 | ⚠️ Cohérents, non lus dans le texte | 2026-10-12 | Le titre indexé (« Final reminder to replace MemberOf rule operator configurations by November 3, 2026 ») correspond au contenu fourni ; aucune source ne contredit l'ID ni la date. Citation retenue : « Message Center Microsoft, rappel final (MC1488834, 5 octobre 2026) » |
+| MC1448379, 5 août 2026 | ✅ Date confirmée | 2026-10-12 | Confirmée par le rappel final lui-même |
+| `mc.merill.net/message/MC1488834` | ⚠️ Non résolue | 2026-10-12 | Le proxy refuse la connexion (CONNECT 403). Lien conservé comme miroir public du message |
+
+### Point bloquant MC1488839 : levé
+
+Le rappel final lu dans le tenant fixe le 3 novembre 2026 pour tous les objets, Entitlement Management compris, sans exception ni remplaçant annoncé. MC1488839 (prolongation au 31/03/2027 pour les tenants Entra ID Governance) reste non vérifié et **n'est pas mentionné dans l'article**. Titre et calendrier maintenus au 3 novembre. Réserve : Daniel peut rechercher MC1488839 dans son tenant ; s'il existe et s'applique, le titre, l'introduction, le calendrier et le rollback seraient à nuancer pour les tenants Governance.
+
+### Corrections appliquées (passe n°2)
+
+#### Correction N°9 : Technique (introduction, services touchés)
+
+**Avant** :
+> …vos licences par groupe et vos affectations Intune.
+
+**Après** :
+> …vos licences par groupe, vos affectations Intune, Teams et SharePoint.
+
+**Raison** : le rappel final cite Teams, SharePoint et les applications dépendantes parmi les impacts.
+
+#### Correction N°10 : Source (calendrier)
+
+**Avant** :
+> | 5 octobre 2026 | MC1488834 : rappel final | Message Center |
+> | 3 novembre 2026 | … | Microsoft Learn |
+
+**Après** :
+> | 5 octobre 2026 | MC1488834 : rappel final, aucune exception | Message Center |
+> | 3 novembre 2026 | … | Message Center, Microsoft Learn |
+
+**Raison** : le rappel final ne prévoit aucune exception et fixe lui-même l'échéance.
+
+#### Correction N°11 : Technique (motif officiel)
+
+**Avant** :
+> Motif officiel : pendant la preview, `memberOf` peut ralentir le traitement dynamique de **tous** les groupes du tenant. Un remplaçant est en développement, sans date.
+
+**Après** :
+> Motif officiel : pendant la preview, Microsoft a constaté que `memberOf` peut affecter le traitement dynamique de **tout le tenant**, même avec une seule règle `memberOf`. La fonctionnalité n'est pas recommandée en production. Learn évoque un remplaçant en développement, sans date ; le rappel final n'en annonce aucun.
+
+**Raison** : « can affect dynamic membership processing across a tenant, even when only a single MemberOf rule is present » ; « not recommended for production use ». Le remplaçant n'apparaît que dans Learn (`ms.date` 04/08/2026), pas dans le rappel final.
+
+#### Correction N°12 : Technique (étape 1, méthode officielle par type d'objet)
+
+**Avant** :
+> Microsoft Learn propose aussi un contrôle croisé par export des groupes dynamiques depuis le centre d'administration Microsoft Entra.
+
+**Après** :
+> Méthode Microsoft : export depuis le centre d'administration Microsoft Entra pour les groupes, Graph PowerShell pour les unités administratives et l'attribution automatique. Croisez le script avec cet export.
+
+**Raison** : le rappel final prescrit une méthode par type d'objet ; l'export portail n'est pas un simple contrôle croisé pour les groupes, c'est la méthode officielle.
+
+#### Correction N°13 : Technique (étape 2, applications dépendantes)
+
+**Avant** :
+> Reste Intune, qui ne se voit pas depuis Entra.
+
+**Après** :
+> Restent Intune, invisible depuis Entra, puis Teams, SharePoint et les applications qui lisent l'appartenance au groupe.
+
+**Raison** : impacts listés par le rappel final, absents de la cartographie.
+
+#### Correction N°14 : Technique (étape 3, conversion et suppression)
+
+**Avant** :
+> | Aucune logique d'attribut possible | Convertir en groupe attribué, maintenu par une automatisation (…) |
+
+**Après** :
+> | Aucune logique d'attribut possible | Convertir en groupe attribué (repli recommandé par Microsoft), maintenu par une automatisation (…) |
+> | Groupe ou unité administrative sans usage | Le supprimer, comme le recommande Microsoft |
+
+**Raison** : « Convert groups to assigned membership if a supported dynamic rule alternative is not available » ; « Remove groups / administrative units that are no longer required ».
+
+#### Correction N°15 : Technique (étape 3, conservation des membres)
+
+**Avant** :
+> Le groupe garde son nom et son ID : accès conditionnel, licences et affectations Intune continuent de pointer dessus. Lors d'un passage…
+
+**Après** :
+> …continuent de pointer dessus. La conservation des membres en **Assigned** n'est documentée que pour les unités administratives : comparez l'effectif au CSV. Lors d'un passage…
+
+**Raison** : la conversion est désormais sourcée, la conservation des membres d'un groupe ne l'est toujours pas (ni Learn ni le rappel final).
+
+#### Correction N°16 : Technique (étape 3, packages d'accès)
+
+**Avant** :
+> Pour un package d'accès, modifier la règle de la politique dans **ID Governance → Entitlement management → Access package**.
+
+**Après** :
+> … ; sans règle équivalente, Microsoft demande de prévoir une autre méthode d'attribution.
+
+**Raison** : « Plan an alternate assignment approach if no equivalent rule is available ».
+
+#### Correction N°17 : Technique (étape 4, validation)
+
+**Avant** :
+> ### Étape 4 : contrôler après le 3 novembre
+> 3. Comparer l'effectif de chaque groupe avec le CSV d'inventaire.
+
+**Après** :
+> ### Étape 4 : contrôler après chaque remplacement et après le 3 novembre
+> 3. Comparer l'effectif de chaque groupe et unité administrative avec le CSV d'inventaire. Pour une unité administrative, vérifier aussi le périmètre administratif ; pour un package d'accès, ses attributions.
+
+**Raison** : « Validate membership results after making changes » ; « Validate both membership and administrative scope » (UA) ; « Validate access package assignments after making changes ».
+
+#### Correction N°18 : Source (liste des sources)
+
+**Avant** :
+> [MC1488834, Microsoft Entra ID: Final reminder … (5 octobre 2026)](https://mc.merill.net/message/MC1488834)
+
+**Après** :
+> [Message Center Microsoft, rappel final (MC1488834, 5 octobre 2026) : Microsoft Entra ID: Final reminder …](https://mc.merill.net/message/MC1488834)
+
+**Raison** : libellé de citation demandé ; ID et date cohérents avec l'index.
+
+Frontmatter, `title` et `pubDate` : **inchangés** lors de cette passe.
+
+### Pré-contrôles après passe n°2
+
+| Contrôle | Résultat |
+|---|---|
+| Tirets cadratins | 0 |
+| Nombre de mots du corps | 1 522 avant, **1 646** après (plafond fixé ~1 650 ; fourchette guide 800-2 500) |
+| Mention de MC1488839 dans l'article | 0 |
+| Bannière `guide-entra1.png` | toujours absente |
+| `heroImage` | toujours vide |
+| Schéma 1 | présent |
+
+### Non vérifié (passe n°2)
+
+- ID MC1488834 et date du 5 octobre 2026 : absents du copier-coller, cohérence établie uniquement par l'index de recherche.
+- MC1488839 : toujours non lu.
+- Page Learn « Create simpler, more efficient rules for dynamic membership groups », citée en « Learn more » du rappel final : non citée dans l'article, non ajoutée (rôle de relecture). À ajouter aux sources si Daniel le souhaite.
+- Conservation des membres lors de la conversion d'un groupe en Assigned : toujours non documentée.
+
+### Décisions restantes pour Daniel
+
+1. **MC1488839** (non bloquant) : le rechercher dans le Message Center du tenant. S'il existe, prévenir le rédac chef pour nuancer titre, introduction, calendrier et rollback.
+2. Ligne « Juin 2022 » du calendrier (source tierce non relue) : conserver ou retirer.
+3. Tester en tenant la conservation des membres lors du passage d'un groupe `memberOf` en **Assigned**.
+4. Bannière `guide-entra1.png` et hero image à produire (illustrateur) avant publication.
