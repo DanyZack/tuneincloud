@@ -4,6 +4,7 @@ description: "Le 3 novembre 2026, les groupes dynamiques Entra ID basés sur mem
 pubDate: 2026-10-12
 category: "guides"
 subcategory: "entra"
+heroImage: "https://sbd.org.uk/images/entra-directory-enumeration.webp" 
 ---
 
 Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique Entra ID cesse d'être évalué. Rien n'est supprimé et Microsoft ne documente aucune alerte : les groupes concernés gardent leur dernière composition connue. Un groupe figé continue pourtant d'alimenter vos stratégies d'accès conditionnel, vos licences par groupe, vos affectations Intune, Teams et SharePoint. La panne ne se voit pas, la dérive commence le lendemain.
