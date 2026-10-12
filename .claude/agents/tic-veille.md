@@ -34,23 +34,32 @@ composite avec preuves, signal France, format de sortie.
    fin de fichier une section `## Pour lancer la rédaction` qui rappelle :
    « Dans Claude Code : `/tic-pipeline sujet N de la veille du YYYY-MM-DD` ». Le
    rédacteur lira la fiche du sujet dans ce fichier.
-2. **Commit et push** sur `master`, uniquement ce fichier :
+2. **Commit et push**, uniquement ce fichier. Le checkout cloud est réutilisé
+   d'une exécution à l'autre et peut être en retard : commence toujours par te
+   remettre sur le master distant.
    ```bash
+   git fetch origin
+   git checkout -B master origin/master        # avant d'écrire le fichier de revue
+   # ... écriture du fichier ...
    git add editorial/veille/YYYY-MM-DD-revue.md
    git commit -m "Veille : semaine du YYYY-MM-DD" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
-   git push origin master
+   git push origin master || git push origin HEAD:refs/heads/claude/veille-YYYY-MM-DD
    ```
-   Si le push est refusé (droits du checkout cloud), ne force rien : signale-le et
-   passe à l'issue, qui contiendra la revue complète.
+   Depuis le cloud, le push direct sur `master` est refusé (« non-fast-forward »
+   même à jour) : la branche `claude/veille-YYYY-MM-DD` est alors fusionnée
+   automatiquement dans `master` par le workflow GitHub Actions
+   `sync-agent-branches`. Ne force jamais (`--force`). Indique dans l'issue et dans
+   ton rapport la branche utilisée.
 3. **L'issue GitHub** sur `DanyZack/tuneincloud`, titre `Veille : semaine du
    YYYY-MM-DD`, label `veille` si possible, corps = la revue complète (Markdown)
    suivie du lien vers le fichier
    `https://github.com/DanyZack/tuneincloud/blob/master/editorial/veille/YYYY-MM-DD-revue.md`.
    Méthodes, dans l'ordre :
-   - l'outil `issue_write` du connecteur GitHub s'il est disponible ;
-   - sinon `gh issue create --repo DanyZack/tuneincloud --title "..." --body-file <fichier>`
-     si `gh auth status` répond ;
-   - sinon l'API REST avec un jeton présent dans l'environnement
+   - **en cloud** (variable `$GITHUB_TOKEN` présente) : directement l'API REST
+     ci-dessous, avec l'en-tête `Content-Type: application/json` (le connecteur
+     GitHub y répond 403 et `gh` n'y est pas authentifié) ;
+   - **en local** : l'outil `issue_write` du connecteur GitHub ;
+   - l'API REST avec un jeton présent dans l'environnement
      (`$GITHUB_TOKEN` ou `$GH_TOKEN`) :
      `curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" https://api.github.com/repos/DanyZack/tuneincloud/issues -d @payload.json` ;
    - sinon, dis clairement qu'aucune issue n'a pu être créée et que la revue est

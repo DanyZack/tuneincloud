@@ -1,0 +1,59 @@
+# Les agents qui tournent dans le cloud (routine tic-veille, pipeline lancé depuis
+# claude.ai) ne peuvent pas pousser directement sur master : ils poussent sur une
+# branche claude/… et ce workflow la fusionne en avance rapide dans master, à
+# condition qu'elle ne touche que des fichiers éditoriaux non publiés
+# (editorial/, src/content/draft/, public/images/). Tout autre fichier bloque la
+# fusion : la branche reste en attente d'une revue manuelle.
+
+name: Sync agent branches into master
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-agent-branches
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Vérifier le périmètre des fichiers modifiés
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git fetch origin "$BRANCH"
+          changed=$(git diff --name-only "master...origin/$BRANCH")
+          echo "Fichiers modifiés par $BRANCH :"
+          echo "$changed"
+          if [ -z "$changed" ]; then echo "Rien à fusionner."; exit 0; fi
+          bad=$(echo "$changed" | grep -vE '^(editorial/|src/content/draft/|public/images/)' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Fichiers hors périmètre éditorial, fusion refusée :"
+            echo "$bad"
+            exit 1
+          fi
+
+      - name: Rebase sur master puis avance rapide
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "tic-sync"
+          git config user.email "noreply@anthropic.com"
+          git checkout -b incoming "origin/$BRANCH"
+          git rebase master
+          git checkout master
+          git merge --ff-only incoming
+          git push origin master
+          git push origin --delete "$BRANCH"
+          echo "Branche $BRANCH fusionnée dans master et supprimée."

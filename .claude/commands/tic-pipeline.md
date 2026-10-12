@@ -38,10 +38,19 @@ Lance `tic-illustrateur` sur le brouillon. Récupère la liste des fichiers cré
    brouillon, `public/images/hero/<slug>.webp`, la bannière, les schémas PNG et SVG
    éventuels, le rapport `editorial/relectures/<slug>-*.md`.
    ```bash
+   git fetch origin && git pull --rebase origin master
    git add <fichier1> <fichier2> ...
    git commit -m "Brouillon : <titre court>" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
-   git push origin master
+   git push origin master || git push origin HEAD:refs/heads/claude/brouillon-<slug>
    ```
+   Depuis un checkout cloud, le push sur `master` est refusé : la branche
+   `claude/brouillon-<slug>` est fusionnée automatiquement par le workflow
+   `sync-agent-branches`. Jamais de `--force`.
+
+   Cette commande est conçue pour le poste local (Canva, navigateur intégré,
+   Microsoft Learn accessibles). Lancée depuis une session cloud, l'illustrateur
+   n'a pas Canva et certains sites sont bloqués : préviens Daniel dans le compte
+   rendu et liste ce qui reste à faire en local (`/tic-illustrer <slug>`).
 2. Crée une issue GitHub (outil `issue_write`, owner `DanyZack`, repo `tuneincloud`,
    label `relecture` si possible) :
    - Titre : `Relecture : <titre de l'article>`
