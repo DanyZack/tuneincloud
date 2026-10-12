@@ -2,14 +2,11 @@
 title: "Entra ID : remplacer les règles memberOf avant le 3 novembre"
 description: "Le 3 novembre 2026, les groupes dynamiques Entra ID basés sur memberOf se figent. Inventaire Graph, dépendances CA, licences et Intune, remplacement, contrôle."
 pubDate: 2026-10-12
-heroImage: ""
 category: "guides"
 subcategory: "entra"
 ---
 
 Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique Entra ID cesse d'être évalué. Rien n'est supprimé et Microsoft ne documente aucune alerte : les groupes concernés gardent leur dernière composition connue. Un groupe figé continue pourtant d'alimenter vos stratégies d'accès conditionnel, vos licences par groupe, vos affectations Intune, Teams et SharePoint. La panne ne se voit pas, la dérive commence le lendemain.
-
-![Banniere](/images/banarticle/guide-entra1.png)
 
 ## Ce que ce guide couvre
 
@@ -88,8 +85,6 @@ Le filtre `memberof` est local, car `membershipRule` n'accepte pas `contains` en
 Pour les politiques d'attribution automatique, utiliser le script publié par Microsoft (section *Find automatic assignment policies that use the memberOf attribute* de la page Learn citée en source). Il produit `memberof-auto-assignment-policies.csv`.
 
 Méthode Microsoft : export depuis le centre d'administration Microsoft Entra pour les groupes, Graph PowerShell pour les unités administratives et l'attribution automatique. Croisez le script avec cet export.
-
-> 🖼️ **Capture à insérer** : console PowerShell après exécution du script, tableau `Type / Name / Licences / CAPolicies` avec au moins une ligne. Noms de groupes anonymisés.
 
 ### Étape 2 : cartographier les dépendances
 
