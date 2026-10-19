@@ -4,7 +4,7 @@ description: "MC1472007 : un paramètre Copilot restreint le téléversement d'a
 pubDate: 2026-10-19
 category: "actualites"
 subcategory: "breves"
-heroImage: ""
+heroImage: "/images/hero/copilot-televersement-agents-avances.webp"
 ---
 Microsoft demande aux administrateurs de décider, avant le 25 octobre 2026, qui peut téléverser des agents et plugins « avancés » dans Microsoft 365 Copilot. Sans réponse, la porte reste ouverte à tous les utilisateurs.
 
