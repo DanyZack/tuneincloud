@@ -5,7 +5,7 @@
 **Date de publication prévue** : 2026-10-19
 **Date de relecture** : 2026-10-19
 **Mode** : brouillon (corrections en place, aucune opération git)
-**Verdict global** : ⚠️ Publiable après corrections. Corrections appliquées. Restent l'illustration (bannière, hero) et trois arbitrages de Daniel. Aucune source n'a pu être lue en direct : tous les faits sont recoupés via des extraits de recherche web.
+**Verdict global (après deuxième passe)** : ✅ Publiable. Les faits de MC1472007 sont désormais vérifiés sur le texte intégral du Message Center fourni par Daniel (voir « Deuxième passe, 2026-10-19 » en fin de rapport). Verdict de la première passe : ⚠️ publiable après corrections.
 
 ## Synthèse
 
@@ -126,3 +126,106 @@ Sans objet (brouillon daté du jour).
 - Effet de l'option « aucun utilisateur » sur Microsoft 365 Agents Toolkit.
 - Libellés français de la console.
 - Existence de la bannière `breve-copilot1.png` (absente, à créer) et hero image (à fournir).
+
+---
+
+## Deuxième passe, 2026-10-19
+
+**Source primaire de référence** : texte intégral de MC1472007 copié par Daniel depuis le Message Center de son tenant le 2026-10-19 (mise à jour du message datée du 15/09/2026). Le lien de la brève reste le miroir `mc.merill.net/message/MC1472007`, désormais considéré comme vérifié par ce texte. Aucune autre source n'a été relue (pas de nouvel accès à Learn, Tech Community ni MC1484008).
+
+### Confrontation au texte du MC
+
+| Affirmation de la brève | Texte du MC | Résultat |
+|---|---|---|
+| Échéance du 25/10/2026, choix entre tous, aucun, utilisateurs/groupes Entra ID | « admins will have until October 25th to select their preference of all users, no users or specific users or groups » | ✅ |
+| Défaut permissif, comportement actuel conservé | « Starting October 25th, Advanced-package uploads will be enabled by default unless the admin has selected no users or specific users or groups » ; « No action is required to maintain current behavior » | ✅ |
+| GA mondiale, début 25/09, fin attendue fin octobre 2026 | « General Availability (Worldwide): Rollout begins September 25th » ; « Expected completion by the end of October 2026 » | ✅ Le 12/10 d'un miroir est écarté (décision 1 de la première passe tranchée) |
+| Définition avancé / basique | « a Declarative Agent with actions or with an MCP server. All other packages are considered basic » | ✅ |
+| Hors agents Microsoft et tiers | « only applicable to user uploaded packages and does not cover 1P or 3P built agents » | ✅ |
+| Chemin `Copilot > Settings > All settings > Advanced package uploads` | « visible in MAC under Copilot Settings » ; capture « Advanced package uploads » | ⚠️ Le niveau « All settings » n'est pas dans le MC (il venait d'un extrait Learn non lu en direct). Corrigé (N°6) |
+| Rôle et licence non précisés | « Microsoft 365 administrators responsible for managing Copilot agents and plugins » ; aucune licence | ✅ Formulation resserrée sans rien inventer (N°7) |
+| Agents Toolkit « cas non documenté » | « Platforms/Services: Microsoft 365 Copilot and Cowork surfaces, ATK » | ⚠️ L'ATK est dans le périmètre, l'effet n'est pas décrit. Reformulé (N°9) |
+| Non-rétroactivité, visibilité admin | « applies only to advanced agents and plugins uploaded after the control becomes available » ; « IT admins can view user uploaded packages as shared in MAC » | ➕ Absent de la brève, ajouté en remplacement de texte (N°8) |
+
+### Pré-contrôles mécaniques (deuxième passe)
+
+| Contrôle | Résultat |
+|---|---|
+| Tirets cadratins | 0 |
+| Faute « brebes » | aucune |
+| Liens internes | les deux fichiers cibles existent dans `src/content/blog/` |
+| Frontmatter | **inchangé** (titre et description restent exacts) ; `pubDate` 2026-10-19 inchangée |
+| Images | `public/images/hero/copilot-televersement-agents-avances.webp` et `public/images/banarticle/breve-copilot1.png` présents (le constat « absent » de la première passe est caduc) ; lignes d'images conservées |
+| Nombre de mots du corps | 500 avant, **498** après (432 hors section Source) ; fourchette brève 250-500 respectée |
+
+### Corrections appliquées
+
+#### Correction N°6 : Source / Technique (chemin de console)
+
+**Avant** :
+> le paramètre se trouve dans le Centre d'administration Microsoft 365 : **Copilot > Settings > All settings > Advanced package uploads**.
+
+**Après** :
+> le réglage **Advanced package uploads** se trouve dans le Centre d'administration Microsoft 365, sous **Copilot > Settings**.
+
+**Raison** : le MC atteste « Copilot Settings » et le libellé « Advanced package uploads », pas le niveau intermédiaire « All settings ».
+
+#### Correction N°7 : Technique (rôle et licence)
+
+**Avant** :
+> Le message ne précise ni la licence des utilisateurs concernés ni le rôle d'administration requis, à vérifier dans votre tenant.
+
+**Après** :
+> Le message ne nomme ni rôle d'administration ni licence : à vérifier dans votre tenant.
+
+**Raison** : le MC vise « Microsoft 365 administrators responsible for managing Copilot agents and plugins » sans rôle Entra précis et ne parle d'aucune licence. Formulation plus courte, sans invention.
+
+#### Correction N°8 : Technique (non-rétroactivité et visibilité admin, en remplacement)
+
+**Avant** :
+> Le paramètre ne vise que les packages téléversés par les membres de l'organisation : les agents publiés par Microsoft ou par des éditeurs tiers n'entrent pas dans son périmètre.
+
+**Après** :
+> Le paramètre ne vise que les packages téléversés par les utilisateurs, pas les agents conçus par Microsoft ou des éditeurs tiers. Il n'est pas rétroactif : seuls les packages téléversés après l'arrivée du contrôle sont concernés. Les packages des utilisateurs apparaissent comme « shared » dans le Centre d'administration, avec leurs composants.
+
+**Raison** : deux faits du MC utiles à l'administrateur (les agents avancés déjà téléversés ne sont pas touchés ; ils sont visibles dans le MAC). « Conçus » suit le « 1P or 3P built agents » du MC. Phrase du périmètre resserrée pour financer l'ajout.
+
+#### Correction N°9 : Technique (Agents Toolkit)
+
+**Avant** :
+> avec le Microsoft 365 Agents Toolkit (cas non documenté par Microsoft).
+
+**Après** :
+> avec le Microsoft 365 Agents Toolkit, que le message inclut dans son périmètre sans détailler l'effet.
+
+**Raison** : le MC liste « ATK » dans les plateformes concernées. L'impact sur les tests reste une hypothèse (verbe « risque » conservé). Lecture de « ATK » comme Microsoft 365 Agents Toolkit : interprétation de l'acronyme, non développé dans le MC.
+
+#### Correction N°10 : Style (rembourrage, arbitrage de longueur)
+
+**Avant** :
+> déploie un **registre de plugins** (fin septembre à fin octobre 2026) et remplace les boutons Agents, Agents & Skills et Customize par un bouton **Plugins** (fin octobre à fin novembre 2026).
+
+**Après** :
+> déploie un **registre de plugins** (fin septembre à fin octobre 2026).
+
+**Raison** : détail de MC1484008 hors sujet principal, retiré pour rester sous 500 mots après la correction N°8. MC1484008 reste cité en source.
+
+### Non retenu
+
+- Recommandations du MC (mettre à jour la documentation d'administration et du helpdesk, informer le support) : testées en fin de dernière puce, retirées faute de place. À réintégrer si Daniel préfère sacrifier une autre phrase (par exemple la phrase finale du troisième paragraphe).
+
+### Décisions pour Daniel (mises à jour)
+
+1. Date de début : **tranchée**, 25/09/2026 (texte du MC).
+2. Rôle d'administration : le MC n'en nomme aucun. Si vous le constatez dans votre tenant (AI Administrator, Global Administrator), vous pouvez l'ajouter en le présentant comme constat de terrain.
+3. Libellés en anglais : maintenus (« Copilot > Settings », « Advanced package uploads », « shared »). À remplacer si votre console en français affiche d'autres libellés.
+4. « Tout utilisateur peut téléverser un agent avancé » : exact au sens du MC (comportement actuel conservé), mais un tenant qui bloque déjà le chargement d'applications personnalisées par d'autres réglages n'est pas « ouvert ». Le MC ne traite pas ce cas ; laissé en l'état.
+5. Bouton Plugins de MC1484008 : retiré pour la longueur (N°10). À rétablir si vous préférez.
+
+### Ce qui n'a toujours PAS pu être vérifié
+
+- Pages Learn citées et billet Tech Community (non relus dans cette passe).
+- Texte intégral de MC1484008.
+- Licence et rôle requis (non précisés par le MC).
+- Effet concret de l'option « aucun utilisateur » sur Agents Toolkit.
+- Libellés français de la console.
