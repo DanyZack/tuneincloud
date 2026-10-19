@@ -120,6 +120,13 @@ Utiliser `autre` (ou `ia` pour Copilot et agents IA).
   Center, roadmap). Dates tierces signalées « à confirmer ».
 - Licence requise, statut GA/Preview, versions précises : toujours indiqués.
 - Vouvoiement, ton expert direct. Ironie rare et ciblée.
+- Blog d'un seul expert : jamais de « nous », « notre », « nos » pour parler de
+  TuneInCloud. Écrire « je », « mon dossier », « ce que je défends ».
+- Pas de point-virgule. Couper en deux phrases ou reformuler.
+- Pas de numéro de Message Center (MCxxxxxxx) dans le corps du texte : garder
+  l'idée, et citer les MC uniquement dans la section Source (sans lien si l'URL
+  n'est pas vérifiée).
+- Ne pas développer les sigles connus du lectorat (MCP, MDM, DLP, etc.).
 - `subcategory: "breves"` (jamais « brebes »).
 
 ## Commandes utiles
