@@ -295,3 +295,43 @@ Faits de MC1484008 non repris faute de place (brève à 500 mots) : gestion cent
 - Pages Learn citées : non relues.
 - Licence et rôle requis, effet de « aucun utilisateur » sur Agents Toolkit, libellés français de la console : inchangé.
 - Articulation entre le réglage Advanced package uploads et les plugins publiés via le registre par les administrateurs : non documentée par Microsoft.
+
+## Quatrième passe, 2026-10-19
+
+**Verdict : ⚠️ publiable après corrections** (inchangé ; les points non vérifiés listés plus haut restent ouverts).
+
+**Décision explicite de Daniel** : intégrer les faits de MC1484008 laissés de côté en troisième passe. **Pour cette brève uniquement, Daniel lève la limite de 500 mots.** Le dépassement de la fourchette brève (250-500 mots) est donc assumé et ne constitue pas un écart à corriger. Aucune coupe compensatoire n'a été faite ailleurs.
+
+Source : texte intégral de MC1484008 fourni par Daniel depuis le Message Center de son tenant (2026-10-19).
+
+### Correction N°14 : Technique / Source (MC1484008, ajout décidé par Daniel)
+
+**Avant** : (absent)
+
+**Après** (nouvelle puce dans « Avis d'expert », juste après la puce MC1484008) :
+> **Côté administration**, toujours selon MC1484008 : les plugins se découvrent, se publient, se gouvernent et se gèrent de façon centrale sous **Tools**, dans le Centre d'administration Microsoft 365 et dans **Microsoft Agent 365** ; les agents restent gérés dans les **Agents settings**. Aucune action ni migration technique n'est requise. Microsoft recommande de mettre à jour documentation interne, formation et supports d'adoption qui mentionnent **Agents**, **Agents & Skills** ou **Customize**, de préparer les utilisateurs au bouton **Plugins** et de revoir quelles capacités de plugins rendre disponibles selon votre gouvernance.
+
+**Correspondance avec le texte primaire** :
+
+| Phrase ajoutée | Texte de MC1484008 | État |
+|---|---|---|
+| Gestion centrale sous Tools, Centre d'administration et Agent 365 | « discover, publish, govern, and manage plugins centrally under Tools in the Microsoft 365 admin center and Microsoft Agent 365 » | ✅ Exact |
+| Agents gérés dans Agents settings | « Admins will continue to manage agents in the Agents settings within the Microsoft 365 admin center and Microsoft Agent 365 » | ✅ Exact |
+| Aucune action ni migration | « No action or setup is required to enable this change, and no technical migration is required » | ✅ Exact |
+| Trois recommandations | « Update internal documentation, training, and adoption materials… » ; « Prepare users… new Plugins button » ; « Review which plugin capabilities should be available to users based on your organization's governance requirements » | ✅ Exact |
+
+**Raison** : décision de Daniel. Aucun lien ajouté avec le réglage Advanced package uploads au-delà de la phrase existante de la puce précédente. Libellés de console en anglais. Aucune nouvelle source (MC1484008 est déjà listée).
+
+### Pré-contrôles mécaniques (quatrième passe)
+
+1. Tirets cadratins : 0.
+2. Liens internes : `dossier-2026-04-15-entra-agent-id` et `2026-04-29-article-claude-copilot-m365` existent.
+3. Frontmatter : inchangé (title, description, pubDate, heroImage, category, subcategory). Lignes d'images inchangées.
+4. Mots du corps : 500 avant, **588** après (au-delà de la fourchette brève, par décision explicite de Daniel).
+5. « brebes » : absent.
+
+### Décisions pour Daniel (quatrième passe)
+
+- Décision 2 de la troisième passe (Tools, Agents settings) : close par N°14.
+- Décision 3 de la troisième passe (plafond 500 mots) : levée par Daniel pour cette brève.
+- Aucune nouvelle décision ouverte. Les points de « Ce qui n'a toujours PAS pu être vérifié » restent valables.
