@@ -229,3 +229,69 @@ Sans objet (brouillon daté du jour).
 - Licence et rôle requis (non précisés par le MC).
 - Effet concret de l'option « aucun utilisateur » sur Agents Toolkit.
 - Libellés français de la console.
+
+## Troisième passe, 2026-10-19
+
+**Verdict** : ⚠️ publiable après corrections (corrections appliquées dans le brouillon ; reste les décisions ci-dessous).
+
+### Confrontation à MC1484008 (texte intégral fourni par Daniel)
+
+| Affirmation de la brève (avant) | Texte de MC1484008 | État |
+|---|---|---|
+| Registre de plugins déployé fin septembre à fin octobre 2026 | « Plugin registry: Rollout began in late September 2026 and is expected to complete by late October 2026 », GA mondiale | ✅ Exact |
+| Un plugin peut regrouper agents, compétences, connecteurs et serveurs MCP | « Plugins can bundle agents, skills, connectors, and Model Context Protocol (MCP) servers into a single package » | ✅ Exact (« compétences » = skills) |
+| « Le téléversement avancé d'aujourd'hui est le plugin de demain » | Le MC ne relie pas le registre au réglage Advanced package uploads et ne parle pas de remplacement | ❌ Extrapolation non sourcée, retirée |
+| (absent) Deuxième déploiement : bouton Plugins | « User interface changes: Rollout begins in late October 2026 and is expected to complete by late November 2026 » ; Agents, Agents & Skills et Customize remplacés par Plugins | Rétabli (décision 5 de la 2e passe) |
+
+Lien avec le sujet, vérifié sur MC1472007 : « An advanced agent is a package that has either a Declarative Agent with actions or with an MCP server », réglage limité aux « user uploaded packages », plateformes listant « Copilot plugins ». Un plugin téléversé par un utilisateur et contenant un serveur MCP entre donc dans la définition. La brève ne dit rien de l'application du réglage aux plugins publiés via le registre par les administrateurs : MC1484008 ne le traite pas.
+
+Faits de MC1484008 non repris faute de place (brève à 500 mots) : gestion centrale sous **Tools** dans le Centre d'administration Microsoft 365 et dans Microsoft Agent 365 ; gestion des agents maintenue dans **Agents settings** ; aucune action ni migration requise ; recommandations (mettre à jour documentation et supports de formation, préparer les utilisateurs au bouton Plugins, revoir les capacités de plugins à ouvrir). Candidats si Daniel préfère sacrifier une autre phrase.
+
+### Pré-contrôles mécaniques (troisième passe)
+
+1. Tirets cadratins : 0.
+2. Liens internes : `dossier-2026-04-15-entra-agent-id` et `2026-04-29-article-claude-copilot-m365` existent.
+3. Frontmatter : inchangé, valeurs valides.
+4. Mots du corps : 498 avant, **500** après (plafond de la brève atteint).
+5. « brebes » : absent.
+
+### Corrections appliquées
+
+#### Correction N°11 : Technique / Source (MC1484008)
+
+**Avant** :
+> 💡 Avec **MC1484008**, Microsoft déploie un **registre de plugins** (fin septembre à fin octobre 2026). Un plugin peut regrouper agents, compétences, connecteurs et serveurs MCP : le téléversement avancé d'aujourd'hui est le plugin de demain.
+
+**Après** :
+> 💡 **MC1484008** : un **registre de plugins** arrive (fin septembre à fin octobre 2026), puis un bouton **Plugins** remplace **Agents**, **Agents & Skills** et **Customize** d'ici fin novembre. S'il embarque un serveur MCP, un plugin téléversé par un utilisateur est « avancé » au sens de MC1472007.
+
+**Raison** : la formule « le téléversement avancé d'aujourd'hui est le plugin de demain » n'a aucun appui dans MC1484008. Remplacée par un lien vérifiable avec la définition de MC1472007, limité aux téléversements par les utilisateurs. Bouton Plugins rétabli d'après le texte primaire. Libellés de console en anglais.
+
+#### Correction N°12 : Style (longueur, compensation)
+
+**Avant** :
+> Le déploiement, annoncé en disponibilité générale (GA) mondiale, a commencé le 25 septembre 2026 et doit s'achever fin octobre.
+
+**Après** :
+> Déploiement en disponibilité générale (GA) mondiale, prévu du 25 septembre à fin octobre 2026.
+
+**Raison** : même information (« prévu » conserve le caractère prévisionnel de « Expected completion »), six mots de moins.
+
+#### Correction N°13 : Style (longueur, compensation)
+
+**Avant** : « tous les autres sont **basiques** » ; « après l'arrivée du contrôle sont concernés ».
+**Après** : « les autres sont **basiques** » ; « après son arrivée sont concernés ».
+**Raison** : trois mots gagnés sans perte de sens.
+
+### Décisions pour Daniel (troisième passe)
+
+1. Bouton Plugins : **rétabli** (N°11). Décision 5 de la deuxième passe close.
+2. Gestion sous **Tools** et maintien d'**Agents settings** : utiles à l'admin, non repris faute de place. Pour les intégrer, sacrifier par exemple la phrase « Les packages des utilisateurs apparaissent comme « shared »… » ou la dernière phrase du troisième paragraphe.
+3. Brève à 500 mots pile : toute addition impose une coupe.
+
+### Ce qui n'a toujours PAS pu être vérifié
+
+- Miroirs mc.merill.net et billet Tech Community : non résolus dans cette passe (résolution DNS impossible depuis l'environnement). Le contenu de MC1484008 est vérifié sur le texte fourni par Daniel ; l'URL du miroir et la date du billet (30/09/2026) restent à confirmer.
+- Pages Learn citées : non relues.
+- Licence et rôle requis, effet de « aucun utilisateur » sur Agents Toolkit, libellés français de la console : inchangé.
+- Articulation entre le réglage Advanced package uploads et les plugins publiés via le registre par les administrateurs : non documentée par Microsoft.
