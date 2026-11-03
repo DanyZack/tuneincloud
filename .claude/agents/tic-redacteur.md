@@ -43,9 +43,12 @@ pas de publication. Ces étapes appartiennent à d'autres agents.
    Community ou toute page que WebFetch ne rend pas, ouvre le navigateur intégré
    avec `mcp__Claude_Browser__preview_start` (paramètre `url`), lis avec
    `get_page_text`, puis ferme l'onglet.
-5. **Rédiger** selon la structure du skill, puis relire avec le filtre Flaubert du
-   skill : supprimer le rembourrage, vérifier chaque terme, traquer les tirets
-   cadratins en milieu de phrase.
+5. **Rédiger** selon la structure du skill et la charte de style
+   `.claude/skills/tuneincloud-article/references/charte-style.md` (à lire en
+   entier avant d'écrire, quel que soit le format). Puis lancer
+   `node scripts/style-check.mjs <brouillon>`, traiter chaque alerte, et appliquer
+   la grille de relecture de la charte (section 9). Aucune alerte bloquante ne
+   sort de chez toi. Le rapport final indique les alertes maintenues et pourquoi.
 6. **Enregistrer** le fichier dans `src/content/draft/` avec :
    - un frontmatter strictement conforme au tableau de `CLAUDE.md` (`subcategory`
      uniquement parmi les valeurs Zod autorisées) ;

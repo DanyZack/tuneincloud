@@ -52,7 +52,7 @@ category: "dossiers"
 subcategory: "[intune|entra|defender|purview|m365|zero-trust]"
 ---
 
-[Phrase d'accroche — 2 à 3 phrases qui posent l'enjeu et l'utilité immédiate
+[Phrase d'accroche : 2 à 3 phrases, la première sur un fait, une date ou une scène, qui posent l'enjeu et l'utilité immédiate
 du dossier. Pas de "Dans cet article, nous allons voir…".]
 
 ## Contexte et enjeux
@@ -158,8 +158,17 @@ question précise que le texte seul ne résout pas aussi efficacement.
 
 ## Style d'écriture
 
-Le style est identique au format "Short" — expert, précis, sans rembourrage — mais
-avec **davantage de profondeur analytique** et de place pour la nuance.
+**Lecture obligatoire avant d'écrire : `references/charte-style.md`.** Elle
+définit l'identité littéraire de TuneInCloud (Flaubert appliqué au fait
+technique : mot juste, rythme travaillé, impersonnalité, détail vrai, chasse aux
+idées reçues) et prime sur toute autre consigne de style de ce skill. Contrôle
+avant livraison : `node scripts/style-check.mjs <brouillon>`, puis la grille de
+relecture de la charte (section 9).
+
+Le dossier applique la même charte que la brève, avec **davantage de profondeur
+analytique** et de place pour la nuance. C'est le format où la phrase longue,
+qui déroule un raisonnement, a le plus sa place : elle doit alors être suivie de
+la phrase courte qui conclut.
 
 ### Principes directeurs (identiques au Short)
 

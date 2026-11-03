@@ -85,8 +85,9 @@ category: "actualites"
 subcategory: "articles"
 ---
 
-[Chapeau — 2 à 4 phrases qui posent le sujet, l'enjeu, et donnent envie de lire
-la suite. Style journalistique, sans "Dans cet article nous allons voir".]
+[Chapeau : 2 à 4 phrases. La première est un fait, une date, un chiffre ou une
+scène. L'angle se lit dans l'ordre des faits, pas dans une phrase qui l'annonce.
+Jamais "Dans cet article", jamais de contexte général.]
 
 ## [Titre de section — angle d'attaque]
 
@@ -110,13 +111,13 @@ l'écosystème existant. 2 à 3 paragraphes.]
 
 [Section critique : limites, pièges, angles morts, ce que Microsoft ne dit pas
 explicitement. C'est ici que la valeur ajoutée éditoriale s'exprime. 2 à 4
-paragraphes ou liste structurée.]
+paragraphes de prose, le "je" de Daniel au moment de la recommandation.]
 
 ## [Conclusion — optionnelle, si elle apporte une vraie clé de lecture]
 
-[Une section finale uniquement si elle ajoute quelque chose : une mise en
-perspective historique, une projection à 6-12 mois, un appel à la prudence
-argumenté. Sinon, on s'arrête à la section précédente.]
+[Une section finale uniquement si elle ajoute quelque chose : la prochaine date,
+l'action à faire, la question qui reste ouverte. Elle finit sur une chute plate
+et factuelle, jamais sur une maxime. Sinon, on s'arrête à la section précédente.]
 
 ## Sources
 
@@ -135,8 +136,10 @@ argumenté. Sinon, on s'arrête à la section précédente.]
 
 **Règle sur les titres de sections** : les titres de section sont éditoriaux,
 pas génériques. On évite "Introduction", "Conclusion", "Pour aller plus loin".
-On préfère des titres qui portent un angle : "Une refonte qui ne dit pas son
-nom", "Ce que la documentation ne dit pas", "Un calendrier qui interroge".
+On préfère des titres qui disent ce que la section établit : "La DLP couvre le
+prompt, pas la réponse", "Microsoft renonce aux unités administratives",
+"Deux mois de preview avant la facture". Pas de question rhétorique, pas de
+formule ternaire ("Trois options, deux pièges, une décision").
 
 ---
 
@@ -154,20 +157,29 @@ techniques. Ils n'ont pas besoin qu'on leur explique ce qu'est Entra ID. Ils ont
 besoin qu'on leur dise **ce que cette annonce change vraiment pour eux**, en
 quoi elle s'inscrit dans une trajectoire, et où sont les angles morts.
 
-### Style inspiré de Flaubert : le mot juste, sans concession
+### Identité littéraire : Flaubert appliqué au fait technique
 
-- **Précision chirurgicale** : chaque terme technique est celui qui convient,
-  pas son approximation. On ne dit pas "paramètre" quand on veut dire "propriété
-  de stratégie de conformité". On ne dit pas "ça marche mieux" quand on veut
-  dire "le délai de synchronisation passe de 8h à 15 minutes".
-- **Pas de rembourrage** : chaque phrase porte quelque chose. Si une phrase peut
-  être supprimée sans que le texte perde de sens, elle est supprimée.
-- **Pas de synonymes approximatifs** : on choisit le terme exact et on s'y tient.
-  La cohérence terminologique est une marque de sérieux.
-- **La syntaxe au service du sens** : phrases courtes pour les affirmations
-  nettes, phrases longues pour les nuances. On ne mélange pas les deux à tort.
-- **Zéro jargon marketing** : "révolutionnaire", "game-changer", "disruptif" :
-  ces mots n'ont pas leur place. Les faits se défendent seuls.
+**Lecture obligatoire avant d'écrire : `references/charte-style.md`.** Elle
+prime sur toute autre consigne de style de ce skill. En résumé :
+
+- **Le mot juste** : le libellé exact de la console, le chiffre exact, le verbe
+  précis (jamais « permettre de », « offrir », « mettre en place » quand une
+  action réelle existe).
+- **Le gueuloir** : des phrases de longueurs variées à dessein, la phrase courte
+  qui tranche, aucun connecteur de remplissage (« Par ailleurs », « En outre »).
+- **L'impersonnalité** : le jugement passe par le choix et l'ordre des faits,
+  pas par des adjectifs. Le « je » de Daniel arrive au moment décisif.
+- **Le détail vrai** plutôt que la généralité. **La chute plate** et factuelle
+  plutôt que la maxime de fin de paragraphe.
+- **La chasse aux idées reçues** : liste noire de la charte (section 5), dont
+  les tics de texte généré (« Le vrai sujet », « Concrètement : », « Ne rien
+  faire, c'est… », « Ce n'est pas X, c'est Y »).
+- **L'ironie par juxtaposition** : la formule de Microsoft posée à côté du fait
+  documenté, sans commentaire.
+- **La page sobre** : gras rare, prose plutôt que puces, aucun émoji sauf un
+  seul ⚠️, pas de point-virgule, pas de tiret cadratin en milieu de phrase.
+- **Contrôle** : `node scripts/style-check.mjs <brouillon>` avant livraison,
+  puis la grille de relecture de la charte (section 9).
 
 ### Spécificité du format article : l'angle
 
@@ -193,7 +205,7 @@ L'ironie est autorisée et bienvenue dans trois situations précises :
    faisait en 2012. Chaque chose en son temps.").
 3. **Quand le lecteur s'attendait à plus** et qu'on lui doit l'honnêteté d'un
    commentaire sec (ex. : "La fonctionnalité est en preview depuis dix-huit
-   mois. Microsoft parle de GA 'prochainement'. Nous aussi.").
+   mois. Microsoft annonce la GA « prochainement ». Le mot a dix-huit mois.").
 
 L'humour ne doit **jamais** masquer une imprécision technique. Dans le format
 article, l'ironie a plus de place que dans une brève, parce qu'on a la
@@ -210,6 +222,8 @@ plus de deux ou trois pointes par article.
   l'article en tribune.
 - **Pas de "vous" de majesté, pas de tutoiement** : le "vous" est la norme,
   utilisé avec naturel, sans cérémonie.
+- **Le "je" de l'auteur** : deux à quatre fois par article, là où Daniel engage
+  sa lecture ou sa recommandation. Jamais "nous".
 
 ### Règle de ponctuation absolue
 
@@ -294,9 +308,10 @@ attendre validation avant d'attaquer la rédaction.
    l'angle.
 2. **Structurer en 3 à 5 sections** avec des titres éditoriaux.
 3. **Rédiger en suivant la structure type** et le style défini ci-dessus.
-4. **Relecture stylistique** : appliquer le filtre Flaubert (supprimer tout ce
-   qui peut l'être), vérifier la précision de chaque terme technique, traquer
-   et éliminer **tous les tirets cadratins** en milieu de phrase.
+4. **Relecture stylistique** : lancer `node scripts/style-check.mjs <brouillon>`,
+   traiter chaque alerte, puis appliquer la grille de relecture de
+   `references/charte-style.md` (section 9) : ouverture, fins de paragraphe,
+   rythme, verbes faibles, gras, juxtaposition, voix.
 5. **Relecture d'angle** : vérifier que l'angle annoncé dans le chapeau est
    tenu jusqu'au bout, et qu'aucune section ne s'en écarte sans raison.
 
@@ -344,6 +359,9 @@ Indiquer en fin de document (en commentaire ou section séparée, hors article) 
 | Tiret cadratin en milieu de phrase | Virgule, point, parenthèses, ou restructuration |
 | Humour à chaque paragraphe | Ironie ponctuelle, deux ou trois pointes maximum sur l'article entier |
 | Livrer sans frontmatter Astro | Toujours inclure le bloc `---` complet |
+| Mise en scène de texte généré ("Le vrai sujet", "Concrètement :", "Et c'est là que") | Écrire le fait directement (charte, section 5) |
+| Sections d'avis en puces, gras sur chaque ligne | Prose, gras rare, "je" au moment décisif |
+| Chaque section qui finit sur une maxime | Chute plate : un fait, une date, un nom |
 | Article qui dépasse 2000 mots | Resserrer ou basculer en format dossier |
 | Article en dessous de 600 mots | Élargir le contexte ou rebasculer en short |
 
@@ -359,14 +377,25 @@ Indiquer en fin de document (en commentaire ou section séparée, hors article) 
 > fonctionnalité sera disponible prochainement et permettra d'automatiser
 > certaines tâches. Nous allons voir dans cet article comment cela fonctionne.
 
-**Bon (style TuneInCloud, angle assumé)** :
+**Mauvais aussi (texte généré « propre »)** :
 
-> Microsoft annonce le passage en GA des scripts de remédiation Intune sans
-> packaging Win32. Sur le papier, c'est un gain net pour les équipes de
-> production. Dans la pratique, c'est surtout l'aboutissement d'un chantier de
-> trois ans, pendant lesquels les administrateurs ont continué à empaqueter
-> manuellement ce que SCCM faisait nativement depuis 2012. Le retour sur
-> investissement est réel, le calendrier interroge.
+> Sur le papier, c'est un gain net pour les équipes de production. Dans la
+> pratique, c'est surtout l'aboutissement d'un chantier de trois ans. Le retour
+> sur investissement est réel, le calendrier interroge.
+
+Antithèses mécaniques (« Sur le papier / Dans la pratique »), adjectifs
+d'appréciation (« net », « réel »), maxime finale en balancier : aucun fait.
+
+**Bon (TuneInCloud, angle assumé)** :
+
+> Intune 2403 déploie les scripts de remédiation sans package Win32. Il aura
+> fallu trois ans de preview et de contournements pour que la console fasse ce
+> que Configuration Manager faisait en 2012. Les administrateurs qui ont empaqueté
+> leurs scripts à la main pendant ce temps ont désormais des packages Win32 en
+> trop, et un inventaire à faire.
+
+L'angle (le retard, et le ménage à faire) se lit dans l'ordre des faits. Le
+dernier mot est une action.
 
 ---
 
@@ -448,7 +477,8 @@ Avant de livrer, vérifier point par point :
 3. ☐ Longueur entre 800 et 1500 mots.
 4. ☐ Angle éditorial clairement posé dès le chapeau.
 5. ☐ Titres de sections éditoriaux, jamais génériques.
-6. ☐ Aucun tiret cadratin en milieu de phrase.
+6. ☐ `node scripts/style-check.mjs` sans alerte bloquante, alertes restantes
+    justifiées. Grille de relecture de la charte appliquée.
 7. ☐ Toutes les versions, licences, états (GA/Preview) précisés.
 8. ☐ Au moins une source officielle Microsoft Learn ou release notes.
 9. ☐ Section de notes de livraison (sources, date de consultation, points à

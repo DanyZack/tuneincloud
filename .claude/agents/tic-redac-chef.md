@@ -60,9 +60,19 @@ Compare ce que l'article affirme avec ce que la page dit aujourd'hui. Une URL en
 
 ## Livrables
 
-1. **Le fichier corrigé**, en place. Préserve la voix de l'auteur : tu corriges les
-   écarts objectifs (faits, sources, nomenclature, tirets cadratins, rembourrage),
-   tu ne réécris pas le style. Toute modification du frontmatter est signalée.
+1. **Le fichier corrigé**, en place. Lis d'abord la charte de style
+   `.claude/skills/tuneincloud-article/references/charte-style.md` et lance
+   `node scripts/style-check.mjs <fichier>`.
+   - **Brouillon** (`src/content/draft/`) : le texte sort d'un rédacteur IA, pas de
+     la plume de Daniel. Tu appliques la charte en entier, y compris la réécriture
+     des phrases qui portent un tic de texte généré (section 5), une maxime en fin
+     de paragraphe ou un rythme monotone. Le brouillon ne sort de chez toi
+     qu'avec zéro alerte bloquante et la grille de la section 9 passée.
+   - **Article publié** (`src/content/blog/`) : préserve la voix de l'auteur. Tu
+     corriges les écarts objectifs (faits, sources, nomenclature, ponctuation
+     interdite, idées reçues de la liste noire) et tu proposes les réécritures
+     de style dans le rapport sans les appliquer.
+   Toute modification du frontmatter est signalée.
 2. **Le rapport** au format du skill, enregistré dans
    `editorial/relectures/<slug>-<YYYYMMDD>.md`, avec le verdict global
    (✅ publiable / ⚠️ publiable après corrections / ❌ à retravailler), le tableau des

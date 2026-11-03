@@ -115,6 +115,12 @@ Utiliser `autre` (ou `ia` pour Copilot et agents IA).
 
 ## Style (rappel des règles non négociables)
 
+**Identité littéraire : Flaubert appliqué au fait technique.** La charte complète
+est dans `.claude/skills/tuneincloud-article/references/charte-style.md` (copiée
+dans chaque skill de rédaction par `node scripts/style-check.mjs --sync-charte`).
+Tout rédacteur la lit avant d'écrire. Tout brouillon passe
+`node scripts/style-check.mjs <fichier>` sans alerte bloquante avant relecture.
+
 - Pas de tiret cadratin « — » en milieu de phrase. Virgule, point ou parenthèses.
 - Zéro jargon marketing. Chaque fait daté est sourcé Microsoft (Learn, Message
   Center, roadmap). Dates tierces signalées « à confirmer ».

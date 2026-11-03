@@ -61,7 +61,7 @@ category: "guides"
 subcategory: "[intune|entra|defender|purview|m365|zero-trust]"
 ---
 
-[Phrase d'accroche — 2 à 3 phrases qui posent ce que le guide permet de faire et
+[Phrase d'accroche : 2 à 3 phrases, la première sur le résultat obtenu ou le problème réglé, qui posent ce que le guide permet de faire et
 dans quel contexte on l'applique. Pas de "Dans ce tutoriel, nous allons voir…".]
 
 ## Ce que ce guide couvre
@@ -232,8 +232,14 @@ graphique Cladéys x TuneInCloud.
 
 ## Style d'écriture
 
-Le style reste celui de TuneInCloud : expert, précis, sans rembourrage. Mais le
-guide a ses propres inflexions, parce qu'il sert l'action, pas la réflexion.
+**Lecture obligatoire avant d'écrire : `references/charte-style.md`.** Le guide
+applique la charte TuneInCloud (mot juste, détail vrai, chasse aux idées reçues,
+voix de Daniel) avec ses propres inflexions, parce qu'il sert l'action, pas la
+réflexion. Exceptions propres au guide : les étapes numérotées et les listes de
+prérequis sont la norme, et le gras sert aux chemins de navigation. La prose
+d'introduction, les encadrés d'explication et l'avis final restent soumis à toute
+la charte. Contrôle avant livraison : `node scripts/style-check.mjs <brouillon>`
+(les alertes de densité de gras et de puces sont attendues dans les étapes).
 
 ### Principes directeurs
 

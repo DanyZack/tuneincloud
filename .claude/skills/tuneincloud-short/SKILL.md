@@ -35,20 +35,24 @@ category: "actualites"
 subcategory: "breves"
 heroImage: ""
 ---
-Phrase d'introduction — accroche directe, 1 à 2 phrases maximum. Pose le sujet sans
-détour.
+Phrase d'introduction : 1 à 2 phrases qui commencent par le fait, la date ou le
+chiffre. Pas de contexte général, pas de formule d'annonce.
 
 ![Banniere](/images/banarticle/breve-XXXX.png)
 
-## Phrase d'accroche
+## [Intertitre informatif : ce que la section établit]
 [Corps principal de l'article : contexte, ce que ça change, comment ça fonctionne,
 prérequis, comportements bords, état GA/Preview, prérequis de licence.
-2 à 4 paragraphes ou liste structurée.]
+2 à 4 paragraphes de prose. Une liste seulement pour des éléments parallèles
+(options d'un menu, prérequis).]
 
-## Points d'attention / Avis d'expert (si nécessaire uniquement)
+## Avis d'expert (si nécessaire uniquement)
 [Section optionnelle. À inclure uniquement si la fonctionnalité présente des limites
 importantes, des pièges d'implémentation, ou mérite un commentaire critique.
-Format : bullets Zero Trust / ⚠️ Warning / 💡 Tip selon pertinence.]
+Format : un à trois paragraphes de prose, à la première personne au moment de la
+recommandation ("Je recommande…", "Sur les tenants que j'administre…"). Un seul ⚠️
+autorisé devant un piège qui peut casser la production. Plus de puces Zero Trust /
+💡 Tip : la puce fragmente le raisonnement et signe le texte généré.]
 
 ## Source
 [Notes de version officielles Microsoft](URL vers doc Microsoft officielle)
@@ -84,23 +88,29 @@ IT qui ont déjà les mains dans la console — et qui n'ont pas besoin qu'on le
 explique ce qu'est Azure AD, mais qui apprécient qu'on leur dise exactement *pourquoi*
 la nouvelle politique de conditional access mérite leur attention ce mois-ci.
 
-### Style inspiré de Flaubert : le mot juste, sans concession
+### Identité littéraire : Flaubert appliqué au fait technique
 
-- **Précision chirurgicale** : chaque terme technique est celui qui convient, pas son
-  approximation. On ne dit pas "paramètre" quand on veut dire "propriété de stratégie
-  de conformité". On ne dit pas "ça marche mieux" quand on veut dire "le délai de
-  synchronisation passe de 8h à 15 minutes".
-- **Pas de rembourrage** : chaque phrase porte quelque chose. Si une phrase peut être
-  supprimée sans que le texte perde de sens, elle est supprimée.
-- **Pas de synonymes approximatifs** : on choisit le terme exact, et on s'y tient.
-  La cohérence terminologique est une marque de sérieux.
-- **La syntaxe au service du sens** : les phrases courtes pour les affirmations nettes,
-  les phrases longues pour les nuances. On ne mélange pas les deux à tort.
-- **Zéro jargon marketing** : "révolutionnaire", "game-changer", "disruptif" — ces
-  mots n'ont pas leur place ici. Les faits se défendent seuls.
-- **Pas de tiret cadratin " — " en milieu de phrase** dans le corps des articles :
-  reformuler avec une virgule, un point, des parenthèses ou une restructuration de
-  la phrase.
+**Lecture obligatoire avant d'écrire : `references/charte-style.md`.** Elle
+prime sur toute autre consigne de style de ce skill. En résumé :
+
+- **Le mot juste** : le libellé exact de la console, le chiffre exact, le verbe
+  précis (jamais « permettre de », « offrir », « mettre en place » quand une
+  action réelle existe).
+- **Le gueuloir** : des phrases de longueurs variées à dessein, la phrase courte
+  qui tranche, aucun connecteur de remplissage (« Par ailleurs », « En outre »).
+- **L'impersonnalité** : le jugement passe par le choix et l'ordre des faits,
+  pas par des adjectifs. Le « je » de Daniel arrive au moment décisif.
+- **Le détail vrai** plutôt que la généralité. **La chute plate** et factuelle
+  plutôt que la maxime de fin de paragraphe.
+- **La chasse aux idées reçues** : liste noire de la charte (section 5), dont
+  les tics de texte généré (« Le vrai sujet », « Concrètement : », « Ne rien
+  faire, c'est… », « Ce n'est pas X, c'est Y »).
+- **L'ironie par juxtaposition** : la formule de Microsoft posée à côté du fait
+  documenté, sans commentaire.
+- **La page sobre** : gras rare, prose plutôt que puces, aucun émoji sauf un
+  seul ⚠️, pas de point-virgule, pas de tiret cadratin en milieu de phrase.
+- **Contrôle** : `node scripts/style-check.mjs <brouillon>` avant livraison,
+  puis la grille de relecture de la charte (section 9).
 
 ### Humour et ironie : avec parcimonie, avec élégance
 
@@ -114,7 +124,7 @@ L'ironie est autorisée — et bienvenue — dans trois situations précises :
    en 2012. Chaque chose en son temps.").
 3. **Quand le lecteur s'attendait à plus** et qu'on lui doit l'honnêteté d'un
    commentaire sec (ex. : "La fonctionnalité est en preview depuis dix-huit mois.
-   Microsoft parle de GA 'prochainement'. Nous aussi.").
+   Microsoft annonce la GA « prochainement ». Le mot a dix-huit mois.").
 
 L'humour ne doit **jamais** masquer une imprécision technique. S'il y a un doute,
 on supprime la vanne et on garde le fait.
@@ -128,6 +138,8 @@ on supprime la vanne et on garde le fait.
   sans transformer l'article en tribune.
 - **Pas de "vous" de majesté, pas de tutoiement** : le "vous" est la norme, utilisé
   avec naturel, sans cérémonie.
+- **Le "je" de l'auteur** : une à trois fois par brève, au moment où Daniel
+  engage sa recommandation. Jamais "nous".
 
 ---
 
@@ -191,8 +203,9 @@ Une fois le sujet validé par Daniel :
 2. **Vérification des faits** : version minimale, prérequis, état GA/Preview,
    comportements bords documentés.
 3. **Rédaction** en suivant la structure type et le style défini ci-dessus.
-4. **Relecture stylistique** : appliquer le filtre "Flaubert" — supprimer tout ce
-   qui peut l'être, vérifier la précision de chaque terme.
+4. **Relecture stylistique** : lancer `node scripts/style-check.mjs <brouillon>`,
+   traiter chaque alerte, puis appliquer la grille de relecture de
+   `references/charte-style.md` (section 9). Supprimer tout ce qui peut l'être.
 
 ### Étape 3 — Livraison
 
@@ -237,26 +250,40 @@ Indiquer en fin de document (en commentaire ou section séparée, hors article) 
 | `subcategory: "brebes"` | `subcategory: "breves"` — toujours |
 | Inventer une URL pour `heroImage` | Laisser `heroImage: ""` — Daniel la complète |
 | Livrer sans frontmatter Astro | Toujours inclure le bloc `---` avec title, description, pubDate, category, subcategory, heroImage |
-| Section "Points d'attention" systématique | Ne l'inclure que si elle apporte une valeur réelle |
+| Section "Avis d'expert" systématique | Ne l'inclure que si elle apporte une valeur réelle |
+| Puces à émojis (💡, Zero Trust, ⚠️ multiples) | Prose à la première personne, un seul ⚠️ au plus |
+| Gras sur chaque fait | Gras réservé aux libellés de console et à un fait décisif par section |
+| "Le vrai sujet est…", "Concrètement :", "Ne rien faire, c'est…" | Supprimer la mise en scène, écrire le fait (charte, section 5) |
+| Phrase finale en maxime ("Un paramètre par défaut reste un choix") | Chute plate : un fait, une date, une action |
 
 ---
 
 ## Exemple de calibrage stylistique
 
-**Mauvais (style générique)** :
+**Mauvais (texte générique)** :
 > Microsoft a annoncé une nouvelle fonctionnalité dans Intune qui permet aux
 > administrateurs de mieux gérer les appareils. C'est une amélioration très
 > intéressante pour les entreprises qui utilisent des appareils Windows.
 
-**Bon (style TuneInCloud)** :
-> Depuis le cycle de mise à jour Intune **2403** (mars 2024), il est possible de
-> déployer des scripts de remédiation directement depuis le portail sans passer par
-> un package Win32 intermédiaire. Concrètement : les scripts PowerShell de détection
-> et de remédiation s'exécutent dans le contexte système ou utilisateur, avec un
-> intervalle d'exécution configurable de 1 heure à 24 heures. Prérequis : licence
-> Intune Plan 1. Les appareils inscrits en BYOD (sans jonction Entra ID) ne sont pas
-> concernés, ce qui, dans la vraie vie, exclut une bonne partie des flottes BYOD
-> mobiles. Microsoft documente le cas, ce qui est déjà appréciable.
+**Mauvais aussi (texte généré « propre », le piège le plus fréquent)** :
+> Le vrai sujet, c'est la valeur par défaut. **Concrètement**, si rien n'est
+> configuré, **tous les utilisateurs** gardent l'accès. Ne rien faire, c'est
+> laisser la porte ouverte. Un paramètre par défaut reste un choix, simplement
+> non documenté.
+
+Tout y est faux sans qu'aucun fait ne le soit : la mise en scène (« Le vrai
+sujet »), le gras décoratif, l'annonce (« Concrètement »), la formule
+d'équivalence (« Ne rien faire, c'est »), la maxime finale.
+
+**Bon (TuneInCloud)** :
+> Depuis le cycle Intune 2403, un script de remédiation se déploie depuis le
+> portail, sans package Win32. Détection et remédiation restent deux scripts
+> distincts, exécutés en contexte système ou utilisateur, toutes les heures ou
+> une fois par jour au plus. La licence Intune Plan 1 suffit. Les appareils
+> personnels inscrits sans jonction Entra ID, eux, n'en verront rien.
+
+Le jugement (la limite BYOD) arrive en dernier, porté par un fait, sans
+adjectif.
 
 ---
 
@@ -264,46 +291,45 @@ Indiquer en fin de document (en commentaire ou section séparée, hors article) 
 
 ```markdown
 ---
-title: "Intune 2403 : déploiement de scripts de remédiation sans package Win32"
-description: "Depuis mars 2024, Intune permet de déployer des scripts PowerShell de remédiation directement depuis le portail, sans packaging intermédiaire."
+title: "Intune 2403 : scripts de remédiation sans package Win32"
+description: "Depuis mars 2024, Intune déploie les scripts PowerShell de remédiation depuis le portail, sans packaging Win32. Licence Plan 1, appareils joints Entra ID."
 pubDate: 2024-03-15
 category: "actualites"
 subcategory: "breves"
 heroImage: ""
 ---
-Depuis le cycle Intune 2403, les scripts de remédiation se déploient directement
-depuis le portail, sans passer par un package Win32. Un gain de temps réel pour
-les équipes qui gèrent des flottes Windows en production.
+Depuis le cycle Intune 2403, un script de remédiation PowerShell se déploie
+depuis le portail. Le package Win32 qui l'enveloppait jusqu'ici disparaît.
 
 ![Banniere](/images/banarticle/breve-intune4.png)
 
-## Ce que ça change concrètement
+## Les remédiations quittent le packaging Win32
 
-Jusqu'ici, automatiser une détection/remédiation PowerShell nécessitait d'encapsuler
-le script dans un package Win32, avec les contraintes de packaging, de test et de
-déploiement associées. Depuis le cycle **2403** (mars 2024), Intune expose nativement
-les **Remédiation scripts** (anciennement "Proactive Remediations") sans cette couche
-intermédiaire.
+Automatiser une détection et sa correction supposait d'encapsuler le script dans
+un package Win32, de le tester comme une application et de le déployer comme
+tel. Le cycle 2403 expose directement les **Remediations** (l'ancien nom,
+Proactive Remediations, survit dans les tutoriels).
 
-Les scripts s'exécutent dans le contexte **système ou utilisateur** selon la
-configuration, avec un intervalle ajustable de **1 heure à 24 heures**. La détection
-et la remédiation restent deux scripts distincts, ce qui permet de dissocier le
-diagnostic de l'action corrective.
+Détection et remédiation restent deux scripts. Le premier constate, le second
+corrige, et l'on peut lire le diagnostic sans avoir rien modifié. Ils s'exécutent
+en contexte système ou utilisateur, selon une fréquence réglable d'une heure à
+vingt-quatre heures.
 
-**Prérequis** : licence **Intune Plan 1** minimum. Les appareils inscrits en BYOD
-sans jonction Entra ID ne sont pas éligibles, ce qui, dans la vraie vie, exclut
-une partie non négligeable des flottes mobiles mixtes.
+La licence Intune Plan 1 suffit. Les appareils personnels inscrits sans jonction
+Entra ID ne sont pas éligibles, ce qui écarte une bonne part des flottes mixtes.
 
-## Points d'attention / Avis d'expert
+## Avis d'expert
 
-- 💡 Idéal pour les vérifications de conformité légères (registre, services, fichiers)
-  sans impacter le cycle de déploiement applicatif.
-- ⚠️ Les scripts s'exécutent avec les droits du contexte configuré : tester en
-  contexte utilisateur avant de basculer en contexte système sur des flottes en
-  production.
-- L'historique d'exécution est consultable par appareil dans le portail Intune,
-  pratique pour le troubleshooting, insuffisant pour un audit formalisé.
+Je réserve ces scripts aux vérifications légères (une clé de registre, un
+service arrêté, un fichier manquant) qui n'ont pas à attendre le cycle de
+déploiement applicatif.
+
+⚠️ Un script testé en contexte utilisateur ne se comporte pas de la même façon
+en contexte système. Testez dans le contexte cible avant tout déploiement large.
+
+L'historique d'exécution par appareil suffit au dépannage. Pour un audit, il
+faudra exporter.
 
 ## Source
-[Notes de version Intune 2403 — Microsoft Learn](https://learn.microsoft.com/fr-fr/mem/intune/fundamentals/whats-new)
+[Nouveautés Intune 2403 (Microsoft Learn)](https://learn.microsoft.com/fr-fr/mem/intune/fundamentals/whats-new)
 ```

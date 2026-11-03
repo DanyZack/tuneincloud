@@ -176,8 +176,16 @@ avec pour chacune la correction exacte et la source qui la justifie.
 
 ### 3. Style et ton TuneInCloud
 
-Appliquer le filtre stylistique inspiré de Flaubert, déjà défini dans les
-skills de rédaction :
+Référence : `references/charte-style.md` (identité littéraire de TuneInCloud,
+liste noire des idées reçues, calibrage avant/après, grille de relecture). La
+lire en entier, puis lancer `node scripts/style-check.mjs <fichier>` : chaque
+alerte bloquante est une correction obligatoire, chaque alerte simple est
+examinée. Sur un brouillon généré, traquer en priorité les tics de texte généré
+(mise en scène, gras décoratif, puces à émojis, maxime de fin de paragraphe,
+rythme monotone) et les réécrire selon la charte. Sur un article publié, les
+proposer dans le rapport sans réécrire la voix de Daniel.
+
+Rappel des points de base :
 
 - **Précision chirurgicale** : chaque terme technique est celui qui convient.
   Pas d'approximation.
