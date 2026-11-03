@@ -25,15 +25,15 @@ Le 3 novembre 2026, l'opérateur `memberOf` des règles d'appartenance dynamique
 | 5 octobre 2026 | MC1488834 : rappel final, aucune exception | Message Center |
 | 3 novembre 2026 | Les groupes, unités administratives et politiques d'attribution automatique basés sur `memberOf` cessent d'être mis à jour | Message Center, Microsoft Learn |
 
-Motif officiel : pendant la preview, Microsoft a constaté que `memberOf` peut affecter le traitement dynamique de **tout le tenant**, même avec une seule règle `memberOf`. La fonctionnalité n'est pas recommandée en production. Learn évoque un remplaçant en développement, sans date ; le rappel final n'en annonce aucun.
+Motif officiel : pendant la preview, Microsoft a constaté que `memberOf` peut affecter le traitement dynamique de **tout le tenant**, même avec une seule règle `memberOf`. La fonctionnalité n'est pas recommandée en production. Learn évoque un remplaçant en développement, sans date. Le rappel final n'en annonce aucun.
 
 ![SCHEMA 1](/images/schemas/entra-memberof-groupes-dynamiques-1.png)
 *Schéma 1 : un groupe `memberOf` figé au 3 novembre 2026 continue d'alimenter accès conditionnel, licences, Intune et packages d'accès.*
 
 ## Prérequis
 
-- **Licence** : Microsoft Entra ID P1 (ou Intune for Education) pour chaque utilisateur membre d'un groupe dynamique ; P1 ou P2 pour les membres et administrateurs d'unités administratives dynamiques. Les politiques d'attribution automatique relèvent de Microsoft Entra ID Governance ou Microsoft Entra Suite.
-- **Rôles** : Global Reader pour l'inventaire ; Groups Administrator pour modifier le type d'appartenance d'un groupe ; Privileged Role Administrator pour une unité administrative dynamique ; Identity Governance Administrator pour les packages d'accès ; Intune Administrator pour les affectations.
+- **Licence** : Microsoft Entra ID P1 (ou Intune for Education) pour chaque utilisateur membre d'un groupe dynamique. P1 ou P2 pour les membres et administrateurs d'unités administratives dynamiques. Les politiques d'attribution automatique relèvent de Microsoft Entra ID Governance ou Microsoft Entra Suite.
+- **Rôles** : Global Reader pour l'inventaire, Groups Administrator pour modifier le type d'appartenance d'un groupe, Privileged Role Administrator pour une unité administrative dynamique, Identity Governance Administrator pour les packages d'accès, Intune Administrator pour les affectations.
 - **Outils** : module Microsoft Graph PowerShell, consentement aux scopes `Group.Read.All`, `AdministrativeUnit.Read.All`, `Policy.Read.All` et `EntitlementManagement.Read.All`.
 
 ## Procédure
@@ -118,13 +118,13 @@ Pour convertir sans casser les références :
 
 Le groupe garde son nom et son ID : accès conditionnel, licences et affectations Intune continuent de pointer dessus. La conservation des membres en **Assigned** n'est documentée que pour les unités administratives : comparez l'effectif au CSV. Lors d'un passage vers une nouvelle règle dynamique, les membres qui ne la satisfont pas sont retirés et peuvent perdre leurs accès jusqu'à la fin du traitement : faites-le hors heures ouvrées.
 
-Pour une unité administrative : **Properties → Membership type**, même logique. Pour un package d'accès, modifier la règle de la politique dans **ID Governance → Entitlement management → Access package** ; sans règle équivalente, Microsoft demande de prévoir une autre méthode d'attribution.
+Pour une unité administrative : **Properties → Membership type**, même logique. Pour un package d'accès, modifier la règle de la politique dans **ID Governance → Entitlement management → Access package**. Sans règle équivalente, Microsoft demande de prévoir une autre méthode d'attribution.
 
 ### Étape 4 : contrôler après chaque remplacement et après le 3 novembre
 
 1. Relancer le script de l'étape 1 et celui des politiques d'attribution automatique : le résultat attendu est vide.
 2. Pour chaque groupe remplacé, ouvrir la page **Overview** et vérifier **Dynamic rule processing status** (`Update complete`) et **Last membership change**.
-3. Comparer l'effectif de chaque groupe et unité administrative avec le CSV d'inventaire. Pour une unité administrative, vérifier aussi le périmètre administratif ; pour un package d'accès, ses attributions.
+3. Comparer l'effectif de chaque groupe et unité administrative avec le CSV d'inventaire. Pour une unité administrative, vérifier aussi le périmètre administratif. Pour un package d'accès, ses attributions.
 4. Dans Intune, contrôler le statut de déploiement d'un anneau de mise à jour ou d'une application ciblant un groupe converti.
 
 Le traitement dynamique n'est pas instantané. Si aucune mise à jour dynamique n'est traitée dans le tenant pendant plus de 24 heures, une alerte apparaît au-dessus de **All groups**.
@@ -142,7 +142,7 @@ Si vous testez déjà la [sauvegarde native du tenant Entra](/blog/2026-04-14-en
 - **Le groupe est déjà faux.** Learn le précise : la suppression d'un groupe source ou le retrait d'un de ses membres ne met pas à jour le groupe `memberOf` tant que la règle n'est pas modifiée. Comparez les effectifs avant de figer quoi que ce soit.
 - **Seuls les membres directs comptent.** Un remplacement par attribut peut faire entrer des utilisateurs que `memberOf` ne voyait pas (membres de sous-groupes). Vérifiez l'effectif avant d'activer.
 - **Les anneaux de mise à jour.** Un nouveau poste ajouté au groupe source ne rejoindra plus l'anneau pilote et ne recevra pas sa configuration. Même logique pour une [baseline de sécurité Intune](/blog/2026-10-08-intune-baseline-windows-11-26h2/) affectée par ce biais.
-- **Le quota.** Un groupe dynamique recréé compte dans la limite de 15 000 par tenant ; préférez la conversion, qui garde l'ID.
+- **Le quota.** Un groupe dynamique recréé compte dans la limite de 15 000 par tenant. Préférez la conversion, qui garde l'ID.
 
 ## Source
 
