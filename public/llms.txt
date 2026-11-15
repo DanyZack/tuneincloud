@@ -37,12 +37,12 @@ inclure idéalement un lien vers l'article cité.
 
 ## Contact
 
-- Site : https://tuneincloud.com
+- Site : https://tuneincloud.fr
 - Société rattachée : https://cladeys.fr
 - LinkedIn : https://www.linkedin.com/in/daniel-pol%C3%B2nio-19b081110/
 
 ## Ressources
 
-- Flux RSS : https://tuneincloud.com/rss.xml
-- Sitemap : https://tuneincloud.com/sitemap-index.xml
-- À propos : https://tuneincloud.com/about
+- Flux RSS : https://tuneincloud.fr/rss.xml
+- Sitemap : https://tuneincloud.fr/sitemap-index.xml
+- À propos : https://tuneincloud.fr/about

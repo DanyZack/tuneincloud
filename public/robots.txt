@@ -1,4 +1,4 @@
-# robots.txt — tuneincloud.com
+# robots.txt — tuneincloud.fr
 # Blog d'expertise Microsoft par Daniel POLÒNIO
 
 User-agent: *
@@ -6,7 +6,7 @@ Allow: /
 Disallow: /draft/
 
 # Sitemap
-Sitemap: https://tuneincloud.com/sitemap-index.xml
+Sitemap: https://tuneincloud.fr/sitemap-index.xml
 
 # Crawlers IA explicitement autorisés (visibilité IA stratégique)
 User-agent: GPTBot
