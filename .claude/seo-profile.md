@@ -82,3 +82,4 @@ SEO local, e-commerce, Shopify, Google Business Profile, hreflang
 ## Historique des audits
 | Date | Commande | Score | Rapport |
 |---|---|---|---|
+| 2026-11-15 | audit | 53/100 | `editorial/seo/2026-11-15-audit/SYNTHESE.md` |

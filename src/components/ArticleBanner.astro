@@ -34,7 +34,7 @@ const dateFormatted = pubDate.toLocaleDateString('fr-FR', {
   <!-- Image de fond si fournie, sinon fond uni -->
   {heroImage ? (
     <div class="banner-bg-image">
-      <img src={heroImage} alt="" />
+      <img src={heroImage} alt="" width="1200" height="630" fetchpriority="high" decoding="async" />
     </div>
   ) : (
     <div class="banner-bg-solid"></div>

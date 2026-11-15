@@ -5,14 +5,24 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import ArticleBanner from '../components/ArticleBanner.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+  pageType?: 'article' | 'profile';
+};
 
-const { title, description, pubDate, updatedDate, category, subcategory, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, category, subcategory, heroImage, pageType = 'article' } = Astro.props;
+const isArticle = pageType === 'article';
 ---
 
 <html lang="fr">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={heroImage}
+      type={pageType}
+      pubDate={isArticle ? pubDate : undefined}
+      updatedDate={isArticle ? updatedDate : undefined}
+    />
   </head>
 
   <body>
@@ -31,6 +41,11 @@ const { title, description, pubDate, updatedDate, category, subcategory, heroIma
 
         <!-- Contenu de l'article -->
         <div class="prose">
+          {isArticle && (
+            <p class="byline">
+              Par <a href="/about/" rel="author">Daniel POLÒNIO</a>
+            </p>
+          )}
           {updatedDate && (
             <p class="last-updated">
               Mis à jour le {updatedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -61,6 +76,24 @@ main {
   font-weight: 400;
   line-height: 1.8;
   color: #3d3d5c;
+}
+
+.byline {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: #7a7a9a;
+  margin-bottom: 0.5rem;
+}
+
+.byline a {
+  color: #1a2b5e;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184, 151, 42, 0.4);
+}
+
+.byline a:hover {
+  color: #b8972a;
 }
 
 .last-updated {

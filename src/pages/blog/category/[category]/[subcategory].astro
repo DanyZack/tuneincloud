@@ -38,6 +38,7 @@ const labels: Record<string, string> = {
     <BaseHead
       title={`${labels[subcategory]} — ${labels[category]} — TuneInCloud`}
       description={`Articles ${labels[subcategory]} sur TuneInCloud`}
+      noindex={posts.length === 0}
     />
   </head>
   <body>

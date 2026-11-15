@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "health_score": 53,
+    "business_type": "publisher",
+    "audited_url": "https://tuneincloud.fr",
+    "top_findings": [
+      "Note interne publiée sur le dossier DSPM",
+      "Aucune donnée structurée JSON-LD",
+      "Aucun auteur visible ni balisé sur les articles",
+      "og:image placeholder et og:type website sur tous les articles",
+      "5 liens internes cassés vers les URLs WordPress 2023"
+    ],
+    "quick_wins": [
+      "Transmettre heroImage et type article à BaseHead",
+      "lastmod dans le sitemap",
+      "public/_headers et public/_redirects",
+      "llms.txt généré au build avec la liste des articles",
+      "Dates en fr-FR et largeur responsive de /blog/"
+    ]
+  },
+  "categories": [
+    {"name": "Technical SEO", "score": 66, "details": "findings/technical.md"},
+    {"name": "Content Quality", "score": 62, "details": "findings/content.md"},
+    {"name": "On-Page SEO", "score": 46, "details": "findings/content.md"},
+    {"name": "Schema / Structured Data", "score": 4, "details": "findings/schema.md"},
+    {"name": "Performance (CWV)", "score": 68, "details": "findings/performance.md", "note": "estimation statique, sans CrUX ni Lighthouse"},
+    {"name": "AI Search Readiness", "score": 59, "details": "findings/geo.md"},
+    {"name": "Images", "score": 45, "details": "findings/performance.md"}
+  ],
+  "artifacts": {"findings_dir": "findings/", "screenshots_dir": "screenshots/", "synthesis": "SYNTHESE.md"}
+}
