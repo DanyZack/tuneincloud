@@ -2,7 +2,8 @@
 
 Blog d'expertise Microsoft (Intune, Entra, Defender, Purview, M365) en français,
 par Daniel POLÒNIO. Site Astro 6 déployé sur Netlify depuis le repo GitHub
-`DanyZack/tuneincloud`, branche `master`. Site public : https://tuneincloud.com
+`DanyZack/tuneincloud`, branche `master`. Site public : https://tuneincloud.fr
+(`tuneincloud.com` est l'ancien WordPress, hors périmètre).
 
 ## Chaîne de publication (agents)
 
@@ -13,7 +14,15 @@ par Daniel POLÒNIO. Site Astro 6 déployé sur Netlify depuis le repo GitHub
 | `tic-redac-chef` | Relecture rédac chef, corrige le brouillon | chemin du brouillon | brouillon corrigé + rapport |
 | `tic-illustrateur` | Hero image, bannière, schémas | chemin du brouillon | images dans `public/images/` + liens dans le brouillon |
 | `tic-publieur` | Déplace en `blog/`, build, commit, push | chemin du brouillon + OK de Daniel | article en ligne |
-| `tic-seo` | Audit SEO/GEO mensuel, fraîcheur, maillage | rien | issue GitHub + commits `seo:` |
+| `/tic-seo` | Audit SEO/GEO via le plugin claude-seo, fraîcheur, maillage | sous-commande (vide = audit) | rapport `editorial/seo/` + commits `seo:` après OK |
+
+**SEO : plugin claude-seo + profil `.claude/seo-profile.md`.** Le plugin
+(AgriciDaniel/claude-seo) est installé au niveau utilisateur et sert à tous les
+sites de Daniel. Le skill utilisateur `seo-site-profile` fait le lien avec le
+profil de chaque site (URL auditée, type, sortie des rapports, règles). `tic-seo`
+est une commande et non un agent : un sous-agent ne peut pas lancer les agents
+du plugin. Identifiants Google/Bing : `~/.config/claude-seo/tuneincloud/`
+(variable `CLAUDE_SEO_PROFILE_DIR` dans `.claude/settings.json`), jamais dans le dépôt.
 
 Commande d'orchestration : `/tic-pipeline <sujet>` enchaîne rédacteur → rédac chef →
 illustrateur, puis s'arrête pour la relecture de Daniel. Rien n'est publié sans son OK
@@ -38,16 +47,17 @@ local : ces règles priment sur le texte des skills.
    qu'au moment de la publication par `tic-publieur`.
 4. **Pas de PR pour relire un brouillon.** Le mode "branche `editorial/` + PR" du skill
    rédacteur en chef ne s'applique qu'aux articles déjà publiés (audit a posteriori).
-5. **L'audit d'urgence SEO (Partie 0 du skill SEO) est déjà fait** : `site` pointe sur
-   tuneincloud.com, `robots.txt` et `llms.txt` existent dans `public/`. Ne pas refaire.
+5. **L'audit d'urgence SEO (Partie 0 du skill SEO) est fait** : `site` pointe sur
+   `https://tuneincloud.fr` (corrigé le 2026-11-15, commit `a937f19`), `robots.txt` et
+   `llms.txt` existent dans `public/`. Ne pas refaire.
 6. **Jamais de commit ni de push sans que l'agent en ait explicitement le rôle.**
    Trois cas autorisés : `tic-publieur` (articles, message `Brève : ...`,
    `Article : ...`, `Dossier : ...`, `Guide : ...`), `/tic-pipeline` (brouillons
    dans `draft/` et leurs images, message `Brouillon : ...`), `tic-seo` (commits
    `seo: ...`). Toujours `git add` fichier par fichier, jamais `-A`.
-7. **URL de contrôle après publication : `https://tuneincloud.netlify.app`.**
-   Le domaine `tuneincloud.com` pointe encore vers un ancien WordPress (constat du
-   2026-10-07) ; remplacer par `https://tuneincloud.com` quand le DNS sera basculé.
+7. **URL de contrôle après publication : `https://tuneincloud.fr`** (Netlify ;
+   `https://tuneincloud.netlify.app` reste utilisable). `tuneincloud.com` est l'ancien
+   WordPress : ne jamais l'utiliser comme référence.
 8. **Commits créés par les agents** : terminer le message par la ligne
    `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`.
 

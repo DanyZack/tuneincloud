@@ -2,7 +2,7 @@
 name: tuneincloud-datajournaliste
 description: >
   Skill de veille et d'analyse de tendances pour le blog TuneInCloud
-  (tuneincloud.com), tenu par Daniel POLÒNIO. Véritable datajournaliste, il
+  (tuneincloud.fr), tenu par Daniel POLÒNIO. Véritable datajournaliste, il
   collecte les signaux de la communauté technique Modern Work et cybersécurité
   (Reddit, Microsoft Tech Community, blogs MVP, Hacker News, newsletters
   spécialisées, presse IT française) pour identifier les sujets qui font réagir

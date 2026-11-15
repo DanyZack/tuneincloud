@@ -2,7 +2,7 @@
 name: tuneincloud-redacteur-en-chef
 description: >
   Skill de relecture éditoriale approfondie pour les articles déjà publiés sur
-  le blog TuneInCloud (tuneincloud.com), tenu par Daniel POLÒNIO. Ce skill joue
+  le blog TuneInCloud (tuneincloud.fr), tenu par Daniel POLÒNIO. Ce skill joue
   le rôle d'un rédacteur en chef : il relit les brèves, dossiers et guides,
   vérifie l'exactitude technique, contrôle la fraîcheur des sources Microsoft
   Learn, traque les dérives stylistiques par rapport à la charte TuneInCloud,

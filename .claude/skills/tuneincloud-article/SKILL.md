@@ -2,7 +2,7 @@
 name: tuneincloud-article
 description: >
   Skill de rédaction d'articles "format presse" pour le blog TuneInCloud
-  (tuneincloud.com), tenu par Daniel POLÒNIO, spécialisé Microsoft (Intune,
+  (tuneincloud.fr), tenu par Daniel POLÒNIO, spécialisé Microsoft (Intune,
   Entra, Defender, Purview, M365). Format intermédiaire entre la brève (short)
   et le dossier complet : un véritable article de presse spécialisée avec mise
   en contexte, analyse, perspectives et regard critique d'expert. Déclenche

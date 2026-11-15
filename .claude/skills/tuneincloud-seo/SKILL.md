@@ -1,7 +1,7 @@
 ---
 name: tuneincloud-seo
 description: >
-  Skill SEO + GEO pour le blog TuneInCloud (tuneincloud.com), tenu par Daniel
+  Skill SEO + GEO pour le blog TuneInCloud (tuneincloud.fr), tenu par Daniel
   POLÒNIO sur Astro et le repo GitHub DanyZack/tuneincloud. Couvre la
   visibilité Google (SERP + AI Overviews) et les moteurs IA (ChatGPT,
   Perplexity, Gemini, Claude.ai) : recherche de mots-clés, briefs SEO en
@@ -20,7 +20,7 @@ description: >
 # Skill — TuneInCloud : SEO + GEO
 
 Tu es l'agent SEO **et** GEO (Generative Engine Optimization) pour
-**tuneincloud.com**. Tu optimises la visibilité sur Google (SERP classique +
+**tuneincloud.fr**. Tu optimises la visibilité sur Google (SERP classique +
 AI Overviews) ET sur les moteurs IA (ChatGPT, Perplexity, Gemini, Claude.ai).
 En 2026, ces deux canaux fusionnent : une stratégie SEO moderne cible les
 deux, et la topical authority écrase l'autorité de domaine généraliste.
@@ -38,7 +38,7 @@ deux, et la topical authority écrase l'autorité de domaine généraliste.
   "rédacteur expert".
 - **Auteur** : **Daniel POLÒNIO**, fondateur de Cladéys (architecture, conseil,
   cybersécurité). Asset clé E-E-A-T : signature, expertise, retours terrain.
-- **Site rattaché** : tuneincloud.com est un satellite de cladeys.fr (voir le
+- **Site rattaché** : tuneincloud.fr est un satellite de cladeys.fr (voir le
   pied de page pour la mention).
 - **Concurrents directs** (à surveiller pour positionnement, gap analysis,
   benchmark de structure) :
@@ -156,7 +156,7 @@ Scopes valides : `frontmatter`, `head`, `schema`, `sitemap`, `robots`, `llms`,
 Exemples :
 - `seo: frontmatter — title intune-datawarehouse optimisé 58 chars`
 - `seo: head — ajout JSON-LD Article + Person sur BlogPost`
-- `seo: config — fix site URL example.com → tuneincloud.com`
+- `seo: config — fix site URL example.com → tuneincloud.fr`
 - `seo: linking — maillage 3 liens internes article phishing-triage`
 - `seo: freshness — refresh dossier entra-agent-id avril 2026`
 
@@ -187,14 +187,14 @@ vers un domaine inexistant. Le ranking est sabordé.
 ```js
 // astro.config.mjs — CORRECTIF
 export default defineConfig({
-  site: 'https://tuneincloud.com',
+  site: 'https://tuneincloud.fr',
   integrations: [mdx(), sitemap()],
   // ... reste inchangé
 });
 ```
 
 C'est **le tout premier commit** que ce skill doit pousser dès la première
-session, message : `seo: config — fix site URL example.com → tuneincloud.com`.
+session, message : `seo: config — fix site URL example.com → tuneincloud.fr`.
 
 ### 0.2 Absence de `robots.txt`
 
@@ -594,8 +594,8 @@ Template TuneInCloud :
 
 ## Articles principaux
 [à régénérer dynamiquement, voir script de régénération ci-dessous]
-- [Titre article 1](https://tuneincloud.com/blog/slug-1)
-- [Titre article 2](https://tuneincloud.com/blog/slug-2)
+- [Titre article 1](https://tuneincloud.fr/blog/slug-1)
+- [Titre article 2](https://tuneincloud.fr/blog/slug-2)
 - ...
 
 ## Politique IA
@@ -605,7 +605,7 @@ publiés sous signature claire et avec sources. Les citations doivent
 préserver l'attribution à Daniel POLÒNIO et à TuneInCloud.
 
 ## Contact
-- Site : https://tuneincloud.com
+- Site : https://tuneincloud.fr
 - Société : https://cladeys.fr
 ```
 
@@ -614,7 +614,7 @@ préserver l'attribution à Daniel POLÒNIO et à TuneInCloud.
 Politique AI crawlers proposée :
 
 ```
-# robots.txt — tuneincloud.com
+# robots.txt — tuneincloud.fr
 # Dernière mise à jour : [date]
 
 User-agent: *
@@ -622,7 +622,7 @@ Allow: /
 Disallow: /draft/
 
 # Sitemap
-Sitemap: https://tuneincloud.com/sitemap-index.xml
+Sitemap: https://tuneincloud.fr/sitemap-index.xml
 
 # Crawlers IA explicitement autorisés (visibilité IA stratégique)
 User-agent: GPTBot
@@ -704,7 +704,7 @@ sites WordPress. Les CWV devraient être bons par défaut, à condition de :
 
 ```bash
 # Lighthouse sur un article
-npx lighthouse https://tuneincloud.com/blog/2026-04-29-article-claude-copilot-m365 \
+npx lighthouse https://tuneincloud.fr/blog/2026-04-29-article-claude-copilot-m365 \
   --only-categories=performance,seo,accessibility,best-practices \
   --output=json --output-path=audit-claude-copilot.json
 
@@ -742,11 +742,11 @@ page.
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": "https://tuneincloud.com",
+  "url": "https://tuneincloud.fr",
   "name": "TuneInCloud",
   "description": "Blog d'expertise Microsoft par Daniel POLÒNIO",
   "publisher": {
-    "@id": "https://tuneincloud.com/#publisher"
+    "@id": "https://tuneincloud.fr/#publisher"
   },
   "inLanguage": "fr-FR"
 }
@@ -767,9 +767,9 @@ page.
   "dateModified": "{{ updatedDate || pubDate ISO 8601 }}",
   "author": {
     "@type": "Person",
-    "@id": "https://tuneincloud.com/about#daniel-polonio",
+    "@id": "https://tuneincloud.fr/about#daniel-polonio",
     "name": "Daniel POLÒNIO",
-    "url": "https://tuneincloud.com/about",
+    "url": "https://tuneincloud.fr/about",
     "jobTitle": "Consultant IT, fondateur de Cladéys",
     "worksFor": {
       "@type": "Organization",
@@ -792,11 +792,11 @@ page.
   },
   "publisher": {
     "@type": "Organization",
-    "@id": "https://tuneincloud.com/#publisher",
+    "@id": "https://tuneincloud.fr/#publisher",
     "name": "TuneInCloud",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://tuneincloud.com/tuneincloud.png"
+      "url": "https://tuneincloud.fr/tuneincloud.png"
     }
   },
   "mainEntityOfPage": {
@@ -1105,7 +1105,7 @@ autonomie via `GitHub:get_file_contents` sur le repo.
 
 ### Technique
 
-- [ ] `astro.config.mjs` pointe bien sur `https://tuneincloud.com`
+- [ ] `astro.config.mjs` pointe bien sur `https://tuneincloud.fr`
 - [ ] `sitemap-index.xml` accessible et listant tous les articles publiés
 - [ ] `robots.txt` à jour
 - [ ] `llms.txt` à jour

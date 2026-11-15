@@ -1,0 +1,5 @@
+{
+  "env": {
+    "CLAUDE_SEO_PROFILE_DIR": "~/.config/claude-seo/tuneincloud"
+  }
+}

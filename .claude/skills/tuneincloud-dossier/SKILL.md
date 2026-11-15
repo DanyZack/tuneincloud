@@ -1,7 +1,7 @@
 ---
 name: tuneincloud-dossier
 description: >
-  Skill de rédaction de "dossiers complets" pour le blog TuneInCloud (tuneincloud.com),
+  Skill de rédaction de "dossiers complets" pour le blog TuneInCloud (tuneincloud.fr),
   tenu par Daniel POLÒNIO, spécialisé dans l'écosystème Microsoft (Intune, Entra,
   Defender, Purview, Microsoft 365). Utilise ce skill dès que l'utilisateur demande
   un dossier complet, un article de fond, un guide approfondi, une analyse technique

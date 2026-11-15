@@ -2,7 +2,7 @@
 name: tuneincloud-guide
 description: >
   Skill de rédaction de "guides de configuration" pour le blog TuneInCloud
-  (tuneincloud.com), tenu par Daniel POLÒNIO, spécialisé dans l'écosystème
+  (tuneincloud.fr), tenu par Daniel POLÒNIO, spécialisé dans l'écosystème
   Microsoft (Intune, Entra, Defender, Purview, Microsoft 365). Utilise ce skill
   dès que l'utilisateur demande un guide de configuration, un tutoriel pas à pas,
   une procédure d'exploitation, un how-to, un mode opératoire, un runbook, ou
