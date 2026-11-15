@@ -7,7 +7,7 @@ subcategory: "intune"
 coverImage: "titre-windows-autopilotfullcloud-1.png"
 ---
 
-Windows Autopilot est un service permettant l'inscription d'appareils Windows sur Microsoft Intune. Même s'il existe différentes façons d'inscrire ses appareils dans Intune (voir article : [Inscription Windows](https://tuneincloud.fr/2023/03/20/inscription-windows/)) est LE service à privilégier pour faire de l'enrôlement moderne.
+Windows Autopilot est un service permettant l'inscription d'appareils Windows sur Microsoft Intune. Même s'il existe différentes façons d'inscrire ses appareils dans Intune (voir article : [Inscription Windows](/blog/old-windowsenroll/)) est LE service à privilégier pour faire de l'enrôlement moderne.
 
 Windows Autopilot permet de maîtriser l'inscription, la réinitialisation et la réinscription des appareils sans nécessiter de disposer d'une quelconque infrastructure.
 

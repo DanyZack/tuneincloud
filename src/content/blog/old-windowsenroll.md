@@ -17,7 +17,7 @@ Cet article expliquera donc les différents chemins possibles afin d'inscrire le
 
 ## I - Les méthodes d'inscription dans Microsoft Intune
 
-Comme évoqué dans l'article : ["Modes de jonctions des appareils dans Azure AD"](https://tuneincloud.fr/2023/02/27/modes-de-jonctions-des-appareils-dans-azure-ad/), les appareils gérés par Microsoft Intune peuvent être en mode "Full Cloud" ou en mode "Hybride". Mais quoi qu'il en soit, ils ont une gestion cloud via un service SaaS.
+Comme évoqué dans l'article : ["Modes de jonctions des appareils dans Azure AD"](/blog/old-modejonctionwindows/), les appareils gérés par Microsoft Intune peuvent être en mode "Full Cloud" ou en mode "Hybride". Mais quoi qu'il en soit, ils ont une gestion cloud via un service SaaS.
 
 Ce qui signifie que le seul prérequis à un enrôlement Intune est une connexion à internet. Dans le schéma ci-dessous, vous trouverez l'ensemble des méthodes d'enrôlement possibles pour des périphériques Windows :
 
@@ -27,7 +27,7 @@ Ce qui signifie que le seul prérequis à un enrôlement Intune est une connexio
 
 Afin d'en savoir plus sur l'ensemble de ces méthodes d'enrôlement, vous trouverez ci-après la liste des articles dédiés :
 
-- [Inscription via Windows Autopilot](https://tuneincloud.fr/2023/03/24/i/)
+- [Inscription via Windows Autopilot](/blog/old-enrollautopilotcloud/)
 
 - Inscription via Portail Entreprise par l'utilisateur - _en cours de rédaction_
 
@@ -97,7 +97,7 @@ Par défaut, Intune est l'autorité MDM lors de la création d'un tenant Microso
 
 #### 2\. Activer l'inscription automatique dans Microsoft Intune
 
-Comme vu dans l'article "[Modes de jonctions des appareils dans Azure AD](https://tuneincloud.fr/2023/02/27/modes-de-jonctions-des-appareils-dans-azure-ad/)", c'est le service Azure Active Directory qui fait office de référentiel sur l'inscription des périphériques. Afin de s'assurer que chaque périphérique opérant une jonction AAD conforme puisse s'inscrire automatiquement dans Microsoft Intune, il est nécessaire de configurer l'inscription automatique des appareils.
+Comme vu dans l'article "[Modes de jonctions des appareils dans Azure AD](/blog/old-modejonctionwindows/)", c'est le service Azure Active Directory qui fait office de référentiel sur l'inscription des périphériques. Afin de s'assurer que chaque périphérique opérant une jonction AAD conforme puisse s'inscrire automatiquement dans Microsoft Intune, il est nécessaire de configurer l'inscription automatique des appareils.
 
 Afin d'activer l'inscription Automatique il suffit de :
 

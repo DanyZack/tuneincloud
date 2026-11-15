@@ -39,7 +39,7 @@ Les périphériques sur lesquels un scénario d’enrôlement automatique est so
 
 1. Appareils ajoutés automatiquement par le revendeur - Solution à privilégier. En indiquant sur la console ABM vos différents revendeurs, ces derniers ont la possibilité d'ajouter de manière automatique les périphériques achetés sur l'Apple Business Manager. Aucune action d’administrateur n'est requise et aucun surcoût n'est à prévoir.
 
-3. Appareils ajoutés manuellement via Apple Configurator - Solution de contournement. Si certains appareils n'ont pas pu être intégrés de manière automatique, il est possible de servir d'un périphérique macOS d'administration qui servira d'interface entre la console ABM et les autres périphériques Apple à y intégrer. Pour plus d'informations sur cette méthode d'intégration : se rendre sur l'article ["Configurer l'ajout d'appareils professionnels avec Apple Configurator"](https://tuneincloud.fr/2023/03/17/configurer-lajout-dappareils-professionnels-avec-apple-configurator/).
+3. Appareils ajoutés manuellement via Apple Configurator - Solution de contournement. Si certains appareils n'ont pas pu être intégrés de manière automatique, il est possible de servir d'un périphérique macOS d'administration qui servira d'interface entre la console ABM et les autres périphériques Apple à y intégrer.
 
 ### A. Ajouter son serveur MDM (Intune) dans ABM
 
