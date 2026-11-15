@@ -15,6 +15,7 @@ interface Props {
 	pubDate?: Date;
 	updatedDate?: Date;
 	noindex?: boolean;
+	jsonLd?: Record<string, unknown>;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -27,6 +28,7 @@ const {
 	pubDate,
 	updatedDate,
 	noindex = false,
+	jsonLd,
 } = Astro.props;
 
 const imageURL = new URL(typeof image === 'string' ? image : image.src, Astro.site);
@@ -82,3 +84,8 @@ const imageURL = new URL(typeof image === 'string' ? image : image.src, Astro.si
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageURL} />
+
+<!-- Données structurées Schema.org -->
+{jsonLd && (
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
+)}

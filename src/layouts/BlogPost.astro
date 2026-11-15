@@ -4,6 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import ArticleBanner from '../components/ArticleBanner.astro';
+import FallbackImage from '../assets/blog-placeholder-1.jpg';
+import { articleGraph, profileGraph } from '../lib/schema';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   pageType?: 'article' | 'profile';
@@ -11,6 +13,9 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { title, description, pubDate, updatedDate, category, subcategory, heroImage, pageType = 'article' } = Astro.props;
 const isArticle = pageType === 'article';
+const jsonLd = isArticle
+  ? articleGraph(Astro.props, Astro.url.pathname, FallbackImage.src)
+  : profileGraph();
 ---
 
 <html lang="fr">
@@ -22,6 +27,7 @@ const isArticle = pageType === 'article';
       type={pageType}
       pubDate={isArticle ? pubDate : undefined}
       updatedDate={isArticle ? updatedDate : undefined}
+      jsonLd={jsonLd}
     />
   </head>
 
