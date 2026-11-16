@@ -1,0 +1,261 @@
+---
+// Liste paginée de tous les articles (/blog/ et /blog/page/N/), un article par ligne.
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from './BaseHead.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  currentPage: number;
+  lastPage: number;
+  total: number;
+}
+
+const { posts, currentPage, lastPage, total } = Astro.props;
+
+const pageUrl = (n: number) => (n === 1 ? '/blog/' : `/blog/page/${n}/`);
+const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : undefined;
+const nextUrl = currentPage < lastPage ? pageUrl(currentPage + 1) : undefined;
+
+const labels: Record<string, string> = {
+  actualites: 'Actualités',
+  guides: 'Guide',
+  dossiers: 'Dossier',
+  breves: 'Brève',
+  articles: 'Article',
+  entra: 'Entra',
+  intune: 'Intune',
+  defender: 'Defender',
+  purview: 'Purview',
+  ia: 'IA',
+  autre: 'Autre',
+};
+
+function tag(post: CollectionEntry<'blog'>) {
+  const { category, subcategory } = post.data;
+  if (category === 'actualites') return labels[subcategory ?? ''] ?? labels.actualites;
+  return subcategory && subcategory !== 'autre'
+    ? `${labels[category]} · ${labels[subcategory]}`
+    : labels[category];
+}
+
+const title =
+  currentPage === 1
+    ? 'Tous les articles — TuneInCloud'
+    : `Tous les articles, page ${currentPage} — TuneInCloud`;
+const description =
+  currentPage === 1
+    ? `Les ${total} articles de TuneInCloud sur Intune, Entra, Defender, Purview et Microsoft 365, du plus récent au plus ancien.`
+    : `Archives TuneInCloud, page ${currentPage} sur ${lastPage} : brèves, articles, guides et dossiers sur l'écosystème Microsoft.`;
+---
+
+<html lang="fr">
+  <head>
+    <BaseHead title={title} description={description} />
+    {prevUrl && <link rel="prev" href={prevUrl} />}
+    {nextUrl && <link rel="next" href={nextUrl} />}
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <div class="list-header">
+        <span class="section-label">Archives</span>
+        <h1>Tous les articles</h1>
+        <div class="hero-divider"></div>
+        <p>{total} article{total > 1 ? 's' : ''}{lastPage > 1 && ` · page ${currentPage} sur ${lastPage}`}</p>
+      </div>
+
+      <div class="list-inner">
+        <ol class="post-list">
+          {posts.map((post) => (
+            <li class="post-row">
+              <a href={`/blog/${post.id}/`} class="row-thumb" tabindex="-1" aria-hidden="true">
+                {post.data.heroImage
+                  ? <img src={post.data.heroImage} alt="" loading="lazy" />
+                  : <span class="thumb-empty">✦</span>}
+              </a>
+              <div class="row-body">
+                <div class="row-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </time>
+                  <span class="row-tag">{tag(post)}</span>
+                </div>
+                <h2 class="row-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+                <p class="row-desc">{post.data.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        {lastPage > 1 && (
+          <nav class="pagination" aria-label="Pagination">
+            {prevUrl
+              ? <a href={prevUrl} class="page-step" rel="prev">← Articles plus récents</a>
+              : <span class="page-step disabled">← Articles plus récents</span>}
+            <ul class="page-numbers">
+              {Array.from({ length: lastPage }, (_, i) => i + 1).map((n) => (
+                <li>
+                  {n === currentPage
+                    ? <span class="page-num current" aria-current="page">{n}</span>
+                    : <a href={pageUrl(n)} class="page-num">{n}</a>}
+                </li>
+              ))}
+            </ul>
+            {nextUrl
+              ? <a href={nextUrl} class="page-step" rel="next">Articles plus anciens →</a>
+              : <span class="page-step disabled">Articles plus anciens →</span>}
+          </nav>
+        )}
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+.list-header {
+  background: #0e1a3d;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+}
+.list-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(184,151,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,151,42,0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+}
+.list-header .section-label { position: relative; z-index: 2; color: #d4af37; }
+.list-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #f5f0e8;
+  position: relative; z-index: 2;
+  margin: 0.5rem 0 0;
+}
+.hero-divider {
+  width: 50px; height: 2px;
+  background: linear-gradient(90deg, #b8972a, #8b1a2b);
+  margin: 1.5rem auto 1rem;
+  position: relative; z-index: 2;
+}
+.list-header p {
+  color: rgba(245,240,232,0.4);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  position: relative; z-index: 2;
+}
+
+.list-inner { max-width: 960px; margin: 3rem auto 4rem; padding: 0 2rem; }
+
+.post-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  border-top: 1px solid #d8cdb8;
+}
+.post-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #d8cdb8;
+  transition: background 0.3s;
+}
+.post-row:hover { background: #fff; }
+
+.row-thumb {
+  display: block;
+  aspect-ratio: 1200/630;
+  overflow: hidden;
+  background: #0e1a3d;
+}
+.row-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.post-row:hover .row-thumb img { transform: scale(1.04); }
+.thumb-empty {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  color: #b8972a; font-size: 1.5rem;
+}
+
+.row-meta {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #b8972a;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.row-tag { color: #8b1a2b; }
+
+.row-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.4rem;
+}
+.row-title a { color: #1a2b5e; text-decoration: none; transition: color 0.2s; }
+.post-row:hover .row-title a { color: #b8972a; }
+
+.row-desc {
+  font-size: 0.875rem;
+  color: #3d3d5c;
+  line-height: 1.6;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.page-step {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1a2b5e;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,151,42,0.4);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+a.page-step:hover { color: #b8972a; border-color: #b8972a; }
+.page-step.disabled { color: #b5afa0; border-color: transparent; }
+
+.page-numbers { display: flex; gap: 0.4rem; list-style: none; margin: 0; padding: 0; }
+.page-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.2rem; height: 2.2rem;
+  font-size: 0.85rem;
+  color: #1a2b5e;
+  text-decoration: none;
+  border: 1px solid #d8cdb8;
+  transition: all 0.2s;
+}
+a.page-num:hover { border-color: #b8972a; color: #b8972a; }
+.page-num.current { background: #1a2b5e; border-color: #1a2b5e; color: #f5f0e8; }
+
+@media (max-width: 640px) {
+  .list-inner { padding: 0 1rem; }
+  .post-row { grid-template-columns: 1fr; gap: 0.9rem; padding: 1.25rem 0.25rem; }
+  .pagination { justify-content: center; }
+  .page-step { order: 2; }
+  .page-numbers { order: 1; width: 100%; justify-content: center; }
+}
+</style>

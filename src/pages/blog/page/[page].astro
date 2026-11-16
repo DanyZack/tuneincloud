@@ -1,0 +1,29 @@
+---
+// Pages 2 et suivantes de la liste des articles (la page 1 est /blog/).
+import { getCollection } from 'astro:content';
+import ArticleList from '../../../components/ArticleList.astro';
+import { POSTS_PER_PAGE } from '../../../consts';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  const lastPage = Math.ceil(all.length / POSTS_PER_PAGE);
+  return Array.from({ length: Math.max(0, lastPage - 1) }, (_, i) => {
+    const page = i + 2;
+    return {
+      params: { page: String(page) },
+      props: {
+        posts: all.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE),
+        currentPage: page,
+        lastPage,
+        total: all.length,
+      },
+    };
+  });
+}
+
+const { posts, currentPage, lastPage, total } = Astro.props;
+---
+
+<ArticleList posts={posts} currentPage={currentPage} lastPage={lastPage} total={total} />
