@@ -1,7 +1,7 @@
 ---
 title: "Panne Microsoft 365 du 12 novembre : chronologie et leçons"
 description: "Le 12 novembre 2026, Exchange Online est tombé près de 24 heures. Cause racine, chronologie UTC, impacts et ce que les administrateurs doivent préparer."
-pubDate: 2026-11-16
+pubDate: 2026-11-17
 heroImage: "/images/hero/panne-microsoft-365-12-novembre.webp"
 category: "dossiers"
 subcategory: "autre"
