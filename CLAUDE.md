@@ -38,8 +38,9 @@ citabilité, E-E-A-T, liens entrants, simulation). Mémoire SEO :
 `editorial/seo/suivi.md` (contrôles J+7 et J+30). Contrôle déterministe :
 `node scripts/seo-check.mjs <fichier> --stage draft|final` (bloquant, comme
 `style-check`), rejoué sur tout le site par la CI GitHub (`seo-check.yml`). Le SEO
-propose, le rédac chef arbitre avec la charte. Routines : `/tic-seo hebdo` (lundi) et
-`/tic-seo mensuel` (premier lundi), en tâches planifiées locales. DataForSEO n'est pas
+propose, le rédac chef arbitre avec la charte. Routines : `/tic-seo hebdo` (mardi 11 h) et
+`/tic-seo mensuel` (premier mardi), tâche planifiée locale `tic-seo-hebdo`, un jour
+après la veille du lundi. DataForSEO n'est pas
 branché (choix de Daniel) : les analyses de SERP sont des estimations.
 
 Les skills éditoriaux sont dans `.claude/skills/tuneincloud-*` (version de référence,

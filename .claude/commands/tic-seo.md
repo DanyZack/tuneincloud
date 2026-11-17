@@ -67,7 +67,7 @@ Le lanceur est
 `L="C:/Users/Dany/.claude/plugins/cache/agricidaniel-claude-seo/claude-seo/2.6.2/scripts/claude-seo"`.
 DataForSEO n'est pas branché : n'appelle aucun outil `mcp__dataforseo__*`.
 
-### `hebdo` (chaque lundi, après la veille)
+### `hebdo` (chaque mardi à 11 h, au lendemain de la veille)
 
 Sortie : `editorial/seo/YYYY-MM-DD-hebdo/RAPPORT.md`. Coût faible : scripts,
 sans agent du plugin, sauf `seo-google` si Search Console est configurée.
@@ -110,7 +110,7 @@ sans agent du plugin, sauf `seo-google` si Search Console est configurée.
    `seo: suivi — semaine du YYYY-MM-DD`. C'est le seul commit autorisé à une
    routine : il ne touche ni au site ni aux articles.
 
-### `mensuel` (premier lundi du mois)
+### `mensuel` (premier mardi du mois, à la place de `hebdo`)
 
 Exécute la section 2 avec la commande `audit` complète (mêmes agents que
 l'audit du 2026-11-15, sortie `editorial/seo/YYYY-MM-DD-audit/`), puis :

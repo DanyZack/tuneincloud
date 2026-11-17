@@ -85,8 +85,8 @@ SEO local, e-commerce, Shopify, Google Business Profile, hreflang
 |---|---|---|
 | Chaque article | `/tic-pipeline` | carte des mots-clés, `seo-cluster`, `seo-sxo`, brief (`seo-content-brief`, FLOW), `seo-check`, `seo-geo`, `seo-content`, `seo-image-gen` (audit), liens entrants, simulation du HTML. Intensité selon le format |
 | Publication | `tic-publieur` | `seo-check` final, liens entrants (`seo: linking`), contrôle en ligne, IndexNow, drift baseline, ligne de suivi J+7 et J+30 |
-| Lundi 11 h | tâche planifiée locale `tic-seo-hebdo` (à créer, cf. ci-dessous) | `/tic-seo hebdo` : seo-check du site, drift, fraîcheur, suivis échus, issue numérotée |
-| Premier lundi du mois | même tâche | `/tic-seo mensuel` à la place de `hebdo` : audit complet comparé au précédent, révision des clusters |
+| Mardi 11 h | tâche planifiée locale `tic-seo-hebdo` | `/tic-seo hebdo` : seo-check du site, drift, fraîcheur, suivis échus, issue numérotée |
+| Premier mardi du mois | même tâche | `/tic-seo mensuel` à la place de `hebdo` : audit complet comparé au précédent, révision des clusters |
 | Chaque push | GitHub Actions `seo-check.yml` | `seo-check --published`, échoue sur alerte bloquante |
 
 - IndexNow : clé publique `public/45ba0dc631fa4ff33464fd5a18bb8a46.txt` (non
