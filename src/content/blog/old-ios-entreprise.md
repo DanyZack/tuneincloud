@@ -177,7 +177,7 @@ Se connecter au portail **[Apple Push Certificates](http://go.microsoft.com/fwli
 
 Dans la page de création du certificat, cliquer sur **"Choisir un fichier"** et importer le fichier CSR Intune précédemment téléchargé. Valider en cliquant sur **"Upload"**.
 
-![Import du fichier CSR dans le portail Apple Push Certificates](/images/old/pushmdmapplescreen.png)
+![Import du fichier CSR dans le portail Apple Push Certificates](/images/old/pushmdmapplescreen.webp)
 
 Une fois le certificat généré, le récupérer en cliquant sur le bouton **"Download"**. Le certificat est au format PEM.
 

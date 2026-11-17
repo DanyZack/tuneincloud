@@ -91,7 +91,7 @@ Confirmer en cliquant sur le bouton **"Enregistrer"**.
 
 Le serveur MDM est maintenant ajouté à la liste dans Apple Business Manager. Se rendre dans le serveur MDM créé et récupérer le jeton ABM en cliquant sur **"Télécharger le jeton"**.
 
-![Bouton de téléchargement du jeton ABM](/images/old/capture-decran-2023-03-20-105329.png)
+![Bouton de téléchargement du jeton ABM](/images/old/capture-decran-2023-03-20-105329.webp)
 
 *Un jeton au format P7M se télécharge sur l'appareil.*
 
