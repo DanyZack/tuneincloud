@@ -1,0 +1,46 @@
+# Filet de sécurité SEO : rejoue scripts/seo-check.mjs sur tous les articles publiés
+# à chaque push qui touche au contenu. Échoue sur une alerte bloquante (lien interne
+# cassé, image introuvable, valeur hors schéma Zod, ancienne URL WordPress).
+# Les alertes non bloquantes sont listées dans le résumé du job.
+
+name: SEO check
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'src/content/**'
+      - 'public/images/**'
+      - 'scripts/seo-check.mjs'
+  pull_request:
+    paths:
+      - 'src/content/**'
+      - 'public/images/**'
+      - 'scripts/seo-check.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Articles publiés
+        run: |
+          set -o pipefail
+          node scripts/seo-check.mjs --published | tee seo-check.txt
+      - name: Brouillons (informatif)
+        if: always()
+        run: |
+          shopt -s nullglob
+          drafts=(src/content/draft/*.md)
+          if [ ${#drafts[@]} -gt 0 ]; then node scripts/seo-check.mjs "${drafts[@]}" --stage draft || true; fi
+      - name: Résumé
+        if: always()
+        run: |
+          { echo '## SEO check'; echo '```'; tail -n 1 seo-check.txt 2>/dev/null; grep BLOQUANT seo-check.txt 2>/dev/null || true; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

@@ -147,8 +147,21 @@ Pour chaque bloc « Schéma à générer » :
    superposition, contraste suffisant, lisibilité à 50 % de zoom. Corrige le SVG
    et régénère tant que ce n'est pas propre.
 5. Remplace le bloc « Schéma à générer » par
-   `![SCHEMA n](/images/schemas/<slug>-<n>.png)` suivi d'une ligne de légende en
-   italique (`*Schéma n : ...*`).
+   `![<alt descriptif>](/images/schemas/<slug>-<n>.png)` suivi d'une ligne de
+   légende en italique (`*Schéma n : ...*`). L'`alt` décrit ce que montre le
+   schéma en une phrase de 80 à 125 caractères, avec les noms de produits
+   exacts (exemple : « Architecture d'Entra Agent ID : agent, identité
+   d'agent, Conditional Access et Identity Protection »). Jamais `SCHEMA n` :
+   les moteurs IA lisent l'`alt` pour comprendre et citer un schéma, et
+   `seo-check` le signale.
+
+## 4 bis. Contrôle SEO des images
+
+Avant le rapport final, lance
+`node scripts/seo-check.mjs <brouillon> --stage final`. Aucune alerte bloquante
+liée aux images ne doit rester (hero externe, absent, de plus de 200 Ko, image
+introuvable). Le hero est en `.webp`. Si `/tic-pipeline` te renvoie le rapport
+`editorial/seo/articles/<slug>/images.md`, applique ses corrections d'`alt`.
 
 ## 5. Rapport final
 

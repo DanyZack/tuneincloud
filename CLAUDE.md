@@ -24,9 +24,23 @@ est une commande et non un agent : un sous-agent ne peut pas lancer les agents
 du plugin. Identifiants Google/Bing : `~/.config/claude-seo/tuneincloud/`
 (variable `CLAUDE_SEO_PROFILE_DIR` dans `.claude/settings.json`), jamais dans le dépôt.
 
-Commande d'orchestration : `/tic-pipeline <sujet>` enchaîne rédacteur → rédac chef →
-illustrateur, puis s'arrête pour la relecture de Daniel. Rien n'est publié sans son OK
+Commande d'orchestration : `/tic-pipeline <sujet>` enchaîne brief SEO → rédacteur →
+contrôles SEO → rédac chef → illustrateur → liens entrants → simulation avant
+publication, puis s'arrête pour la relecture de Daniel. Rien n'est publié sans son OK
 explicite.
+
+**SEO intégré au pipeline** (depuis le 2026-11-17). Les agents du plugin claude-seo
+(`seo-cluster`, `seo-sxo`, `seo-geo`, `seo-content`, `seo-image-gen`) sont lancés par
+`/tic-pipeline` lui-même, entre les étapes éditoriales, avec une intensité qui dépend
+du format. Sorties par article : `editorial/seo/articles/<slug>/` (brief, SERP,
+citabilité, E-E-A-T, liens entrants, simulation). Mémoire SEO :
+`editorial/seo/mots-cles.md` (un mot-clé principal par page) et
+`editorial/seo/suivi.md` (contrôles J+7 et J+30). Contrôle déterministe :
+`node scripts/seo-check.mjs <fichier> --stage draft|final` (bloquant, comme
+`style-check`), rejoué sur tout le site par la CI GitHub (`seo-check.yml`). Le SEO
+propose, le rédac chef arbitre avec la charte. Routines : `/tic-seo hebdo` (lundi) et
+`/tic-seo mensuel` (premier lundi), en tâches planifiées locales. DataForSEO n'est pas
+branché (choix de Daniel) : les analyses de SERP sont des estimations.
 
 Les skills éditoriaux sont dans `.claude/skills/tuneincloud-*` (version de référence,
 copiée depuis Cowork). Les agents les invoquent via l'outil Skill ou lisent le
@@ -52,9 +66,13 @@ local : ces règles priment sur le texte des skills.
    `llms.txt` existent dans `public/`. Ne pas refaire.
 6. **Jamais de commit ni de push sans que l'agent en ait explicitement le rôle.**
    Trois cas autorisés : `tic-publieur` (articles, message `Brève : ...`,
-   `Article : ...`, `Dossier : ...`, `Guide : ...`), `/tic-pipeline` (brouillons
-   dans `draft/` et leurs images, message `Brouillon : ...`), `tic-seo` (commits
-   `seo: ...`). Toujours `git add` fichier par fichier, jamais `-A`.
+   `Article : ...`, `Dossier : ...`, `Guide : ...`, plus le commit
+   `seo: linking — liens entrants vers <id>` couvert par le même « OK publie »),
+   `/tic-pipeline` (brouillons dans `draft/`, leurs images et leurs fichiers
+   `editorial/seo/`, message `Brouillon : ...`), `tic-seo` (commits `seo: ...` après
+   OK, et le seul commit sans OK `seo: suivi — ...` des routines, limité aux rapports
+   et aux fichiers `editorial/seo/`). Toujours `git add` fichier par fichier, jamais
+   `-A`.
 7. **URL de contrôle après publication : `https://tuneincloud.fr`** (Netlify ;
    `https://tuneincloud.netlify.app` reste utilisable). `tuneincloud.com` est l'ancien
    WordPress : ne jamais l'utiliser comme référence.
@@ -108,7 +126,9 @@ Utiliser `autre` (ou `ia` pour Copilot et agents IA).
   748×172 px. Séries existantes : `breve-entra1..2`, `breve-intune1..3`,
   `breve-purview1..2`, `article-copilot1`, `article-defender1`, `dossier-entraagentid`.
 - Schémas (dossiers et guides uniquement, jamais dans les brèves) :
-  `public/images/schemas/<slug>-<n>.png`, insérés par `![SCHEMA n](/images/schemas/...)`.
+  `public/images/schemas/<slug>-<n>.png`, insérés par
+  `![<alt descriptif de 80 à 125 caractères>](/images/schemas/...)` (plus de
+  `![SCHEMA n]` : les moteurs IA lisent l'`alt`).
   Style imposé : fond ivoire `#ede6d6`, paysage, blocs colorés plein fond, flèches
   épaisses, palette bleu marine `#1a2b5e`, or `#b8972a`, bordeaux `#8b1a2b`,
   bleu roi `#2748c4`, vert foncé `#1a5c3a`. Référence : `public/images/schemas/purview-dspm-archiglobale.png`.

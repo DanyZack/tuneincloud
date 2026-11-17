@@ -51,6 +51,30 @@ Exécute-les avec Bash depuis la racine du repo et reporte les résultats :
 4. Nombre de mots du corps (`wc -w` hors frontmatter) comparé à la fourchette du
    format indiquée dans `CLAUDE.md`.
 5. Faute « brebes ».
+6. Contrôle SEO : `node scripts/seo-check.mjs <fichier> --stage draft` pour un
+   brouillon, `--published` pour un article en ligne. Reporte les alertes.
+
+## Recommandations SEO (mode brouillon, envoyées par `/tic-pipeline`)
+
+On peut te transmettre `editorial/seo/articles/<slug>/geo.md` (citabilité IA),
+`eeat.md` (E-E-A-T) et les alertes non bloquantes de `seo-check`. Tu es
+l'arbitre entre le SEO et la charte :
+
+- Tu **appliques** ce qui renforce le texte sans le dénaturer : réponse directe
+  en intro, source posée dans la phrase du chiffre, nom exact d'un produit ou
+  d'une licence, tableau de synthèse quand le sujet compare, `title` ou
+  `description` ramenés à la bonne longueur, lien interne mieux ancré.
+- Tu **écartes** ce qui contredit la charte ou le `CLAUDE.md` : H2 en question
+  rhétorique, bourrage de mot-clé, FAQ plaquée, formules de plaquette, ajout de
+  fond non sourcé, structure imposée qui casse le récit. Une réécriture
+  proposée par l'agent SEO repasse toujours par la charte avant d'entrer dans
+  le texte.
+- Tu n'ajoutes pas de fond pour satisfaire l'E-E-A-T : un retour terrain
+  manquant devient une **décision pour Daniel** (« ajouter une expérience
+  vécue sur … ? »), jamais une anecdote inventée.
+
+Ton rapport contient une section « SEO » : recommandations appliquées,
+écartées (avec la raison), et laissées à Daniel.
 
 ## Résolution des sources
 

@@ -43,6 +43,9 @@ Depuis la racine du repo :
    signales.
 7. Non bloquant : compte les mots du corps (hors frontmatter) et signale un écart
    avec la fourchette du format.
+8. SEO : `node scripts/seo-check.mjs <brouillon> --stage final`. Une alerte
+   bloquante arrête la publication. Les alertes non bloquantes sont recopiées
+   dans ton rapport.
 
 Si un contrôle bloquant échoue : ne publie pas, liste précisément ce qui bloque,
 et termine.
@@ -71,7 +74,16 @@ Le build doit se terminer sans erreur et `dist/blog/<id>/index.html` doit existe
 avec le bon `<title>`. Si le build échoue, remets le fichier dans `draft/`, et
 termine avec le message d'erreur complet.
 
-## 4. Commit et push
+## 4. Mémoire SEO, commit et push
+
+Avant le commit, mets à jour deux fichiers de suivi :
+
+- `editorial/seo/mots-cles.md` : la ligne du mot-clé principal (lu dans
+  `editorial/seo/articles/<slug>/brief.md`, sinon déduit du `title`) passe en
+  statut `publié` avec la page `/blog/<id>/`. Si la ligne n'existe pas,
+  ajoute-la dans le bon pilier.
+- `editorial/seo/suivi.md` : ajoute la ligne
+  `| <date du jour> | /blog/<id>/ | <mot-clé> | <date + 7 j> | | <date + 30 j> | | |`.
 
 Ajoute les fichiers **un par un, uniquement ceux qui existent** (git refuse un
 motif sans correspondance ; jamais `-A` ni `.`) :
@@ -82,17 +94,46 @@ motif sans correspondance ; jamais `-A` ni `.`) :
 - chaque `public/images/schemas/<slug>-N.png` et `editorial/schemas/<slug>-N.svg`
   s'ils existent (dossiers et guides)
 - chaque `editorial/relectures/<slug>-*.md`
+- chaque fichier de `editorial/seo/articles/<slug>/`
+- `editorial/seo/mots-cles.md` et `editorial/seo/suivi.md`
 
 ```bash
 git add <fichier1> <fichier2> ...
 git commit -m "<Type> : <titre court>" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
-git push origin master
 ```
 
 `<Type>` est `Brève`, `Article`, `Dossier` ou `Guide`. Le titre court est le
 sujet en quelques mots (exemple : `Brève : baseline Windows 11 26H2 dans Intune`).
 Les avertissements git « LF will be replaced by CRLF » sont normaux sous Windows.
-Après le commit, `git status --porcelain` doit être vide ou ne contenir que les
+
+### 4 bis. Liens entrants (couverts par l'accord de publication)
+
+Si `editorial/seo/articles/<slug>/liens-entrants.md` existe, l'accord « OK
+publie » de Daniel vaut pour ces liens, sauf ceux qu'il a exclus (« sans lien
+N »). Pour chaque lien retenu :
+
+1. Remplace `{{ID}}` par `<id>` dans la cible.
+2. Vérifie que le « texte avant » se trouve tel quel à la ligne indiquée de
+   l'article publié. Sinon, ne l'applique pas et signale-le.
+3. Remplace par le « texte après » avec Edit. Rien d'autre ne change dans
+   l'article : ni `updatedDate`, ni un autre mot.
+
+Puis `npm run build` (doit passer), et
+`node scripts/seo-check.mjs --published` (aucune alerte bloquante). Commit
+séparé, fichier par fichier :
+
+```bash
+git add src/content/blog/<article-modifié-1>.md src/content/blog/<article-modifié-2>.md
+git commit -m "seo: linking — liens entrants vers <id>" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+Enfin, un seul push pour les deux commits :
+
+```bash
+git push origin master
+```
+
+Après le push, `git status --porcelain` doit être vide ou ne contenir que les
 fichiers listés comme « laissés de côté ».
 
 ## 5. Vérification de la mise en ligne
@@ -109,6 +150,34 @@ le hero et la bannière renvoient 200 sur le site. Si rien n'est en ligne après
 six minutes, dis-le : le commit est poussé, le problème est côté Netlify, Daniel
 vérifiera le tableau de bord.
 
+## 5 bis. Contrôles SEO après mise en ligne
+
+Le lanceur du plugin est
+`L="C:/Users/Dany/.claude/plugins/cache/agricidaniel-claude-seo/claude-seo/2.6.2/scripts/claude-seo"`.
+Aucun de ces contrôles ne bloque : un échec est signalé dans le rapport.
+
+1. **Page** : sur `https://tuneincloud.fr/blog/<id>/`, vérifie
+   `og:type` = `article`, `og:image` = le hero local, un bloc
+   `application/ld+json` contenant `BlogPosting`.
+2. **Découverte** : `<id>` apparaît dans `https://tuneincloud.fr/sitemap-0.xml`
+   (avec un `<lastmod>`) et dans `https://tuneincloud.fr/llms.txt`.
+3. **IndexNow** (Bing, Copilot, Yandex, Seznam), avec la clé publiée à la racine
+   (`public/<clé>.txt`, un seul fichier de 32 caractères hexadécimaux) :
+   ```bash
+   KEY=$(basename public/*.txt .txt | grep -E '^[0-9a-f]{32}$')
+   "$L" run indexnow_submit.py --host tuneincloud.fr --key "$KEY" --key-location "https://tuneincloud.fr/$KEY.txt" --urls https://tuneincloud.fr/blog/<id>/ <URL de chaque article qui a reçu un lien entrant> https://tuneincloud.fr/blog/ https://tuneincloud.fr/
+   ```
+4. **Drift** : état de référence de la nouvelle page, puis nouvel état de
+   référence de l'accueil, de `/blog/` et des articles qui ont reçu un lien
+   (ils ont changé légitimement) :
+   ```bash
+   "$L" run drift_baseline.py https://tuneincloud.fr/blog/<id>/ --skip-cwv
+   ```
+5. **Search Console** : seulement si `"$L" run google_auth.py --check` réussit
+   (variable `CLAUDE_SEO_PROFILE_DIR` de `.claude/settings.json`), inspecte
+   l'URL avec `gsc_inspect.py` et note l'état d'indexation. Sinon, écris
+   « Search Console non configurée ».
+
 ## 6. Clôture
 
 - Si un numéro d'issue de relecture t'a été donné : ajoute un commentaire
@@ -123,6 +192,8 @@ vérifiera le tableau de bord.
 
 - Publier sans accord explicite de Daniel dans la demande.
 - Modifier le texte de l'article (hors `pubDate` et nom de fichier).
+- Modifier un autre article publié, sauf les liens entrants de
+  `liens-entrants.md` couverts par l'accord de Daniel (section 4 bis).
 - `git add -A`, `git add .`, `git push --force`, toute action sur une autre
   branche que `master`.
 - Committer des fichiers sans rapport avec l'article.

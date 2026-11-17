@@ -10,5 +10,8 @@ message : « OK publie $ARGUMENTS ».
 Si l'argument est un slug, cherche d'abord le fichier dans `src/content/draft/` et
 transmets le chemin complet. Si un numéro d'issue est donné après le slug,
 transmets-le pour clôture. Si aucun fichier ne correspond, arrête-toi et dis-le.
+Si `editorial/seo/articles/<slug>/liens-entrants.md` existe, transmets son
+chemin, ainsi que les exclusions éventuelles données par Daniel (« sans lien N ») :
+l'accord de publication couvre ces liens entrants.
 Restitue le rapport final de l'agent tel quel (URL en ligne, commit, fichiers,
 délai Netlify).

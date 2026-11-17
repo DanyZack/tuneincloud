@@ -23,6 +23,17 @@ composite avec preuves, signal France, format de sortie.
   proposé que sous l'angle « mise à jour » ou « suite », en le disant. Un sujet
   déjà proposé la semaine précédente et non retenu n'est reproposé que si son
   score a nettement progressé.
+- Lis aussi `editorial/seo/mots-cles.md` (carte des mots-clés). Pour chaque
+  sujet détaillé, ajoute une ligne **« Opportunité SEO »** dans sa fiche :
+  - `trou de cluster` si le sujet correspond à une ligne `à créer` (cite-la) ;
+  - `nouveau mot-clé` si aucune page ne vise ce mot-clé ;
+  - `cannibalisation` si une page publiée vise déjà le même mot-clé : propose
+    alors l'angle « mise à jour » de cette page plutôt qu'un nouvel article ;
+  - `rafraîchissement` si le sujet rend un article existant périmé (statut
+    Preview devenu GA, échéance passée, retrait annoncé).
+  Indique le mot-clé principal pressenti, en français. Cette ligne n'entre pas
+  dans le score de tendance : elle aide Daniel à choisir et prépare le brief
+  SEO de `/tic-pipeline`.
 - Compte 8 à 15 recherches web. Conserve chaque URL : elle fait partie des preuves.
   Les pages Tech Community ne se lisent pas toujours avec WebFetch ; dans ce cas,
   appuie-toi sur les résultats de recherche et sur Microsoft Learn.

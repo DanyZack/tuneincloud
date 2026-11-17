@@ -79,7 +79,25 @@ Console, rapport Pages) et que la propriété `tuneincloud.fr` y est déclarée.
 SEO local, e-commerce, Shopify, Google Business Profile, hreflang
 (site monolingue), publicité payante.
 
+## Automatisation (depuis le 2026-11-17)
+
+| Moment | Qui | Quoi |
+|---|---|---|
+| Chaque article | `/tic-pipeline` | carte des mots-clés, `seo-cluster`, `seo-sxo`, brief (`seo-content-brief`, FLOW), `seo-check`, `seo-geo`, `seo-content`, `seo-image-gen` (audit), liens entrants, simulation du HTML. Intensité selon le format |
+| Publication | `tic-publieur` | `seo-check` final, liens entrants (`seo: linking`), contrôle en ligne, IndexNow, drift baseline, ligne de suivi J+7 et J+30 |
+| Lundi 11 h | tâche planifiée locale `tic-seo-hebdo` (à créer, cf. ci-dessous) | `/tic-seo hebdo` : seo-check du site, drift, fraîcheur, suivis échus, issue numérotée |
+| Premier lundi du mois | même tâche | `/tic-seo mensuel` à la place de `hebdo` : audit complet comparé au précédent, révision des clusters |
+| Chaque push | GitHub Actions `seo-check.yml` | `seo-check --published`, échoue sur alerte bloquante |
+
+- IndexNow : clé publique `public/45ba0dc631fa4ff33464fd5a18bb8a46.txt` (non
+  secrète par conception).
+- DataForSEO : non branché (décision du 2026-11-17). Estimation si activé :
+  4 à 7 $ par mois, recharge prépayée de 50 $ minimum.
+- Search Console : à brancher (`/seo google setup`). Sans elle, les suivis J+7
+  et J+30 ne mesurent ni clics ni positions.
+
 ## Historique des audits
 | Date | Commande | Score | Rapport |
 |---|---|---|---|
 | 2026-11-15 | audit | 53/100 | `editorial/seo/2026-11-15-audit/SYNTHESE.md` |
+| 2026-11-16 | drift baseline | n/a | 24 URLs (accueil, /about/, /blog/, 21 articles), sans CWV, base `~/.cache/claude-seo/drift/baselines.db` |
