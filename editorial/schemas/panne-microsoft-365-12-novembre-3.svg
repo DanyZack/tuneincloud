@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 880" width="1600" height="880">
+  <!-- Schéma 3 : frise de l'incident, 12 nov. 00 h au 14 nov. 06 h UTC (rapport préliminaire du 15/11/2026). Généré, échelle linéaire. -->
+  <defs>
+    <style>
+      .bg { fill: #ede6d6; }
+      .section { font: 600 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 4px; fill: #b8972a; text-anchor: middle; }
+      .rule { stroke: #b8972a; stroke-width: 2; }
+      .block-navy { fill: #1a2b5e; }
+      .block-gold { fill: #b8972a; }
+      .block-bordeaux { fill: #8b1a2b; }
+      .block-royal { fill: #2748c4; }
+      .block-green { fill: #1a5c3a; }
+      .sub { fill: #f6f1e6; stroke: #1a2b5e; stroke-width: 2; }
+      .title-w { font: 700 32px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .title-wl { font: 700 38px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .body-w { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .small-w { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #ffffff; fill-opacity: 0.9; text-anchor: middle; }
+      .title-n { font: 700 28px Georgia, 'Times New Roman', serif; fill: #1a2b5e; text-anchor: middle; }
+      .body-n { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .small-n { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .tag-b { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8b1a2b; text-anchor: middle; }
+      .tag-g { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #1a5c3a; text-anchor: middle; }
+      .tag-o { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8a6d12; text-anchor: middle; }
+      .arrow { stroke: #1a2b5e; stroke-width: 8; fill: none; }
+      .arrow-gold { stroke: #b8972a; stroke-width: 8; fill: none; }
+      .arrow-b { stroke: #8b1a2b; stroke-width: 6; fill: none; stroke-dasharray: 14 10; }
+      .arrow-head { fill: #1a2b5e; }
+      .arrow-head-g { fill: #b8972a; }
+      .arrow-head-b { fill: #8b1a2b; }
+      .legend { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; }
+      .divider-w { stroke: #ffffff; stroke-opacity: 0.35; stroke-width: 2; }
+      .cross { stroke: #8b1a2b; stroke-width: 7; stroke-linecap: round; }
+    </style>
+    <marker id="head" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head"/>
+    </marker>
+    <marker id="headg" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-g"/>
+    </marker>
+    <marker id="headb" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="880"/>
+  <line class="rule" x1="80" y1="52" x2="440" y2="52"/>
+  <text class="section" x="720" y="60">12 AU 14 NOVEMBRE 2026</text>
+  <line class="rule" x1="1000" y1="52" x2="1290" y2="52"/>
+  <text class="title-n" x="403.33333333333337" y="112" style="font-size:24px">jeudi 12 nov.</text>
+  <text class="title-n" x="910.0000000000001" y="112" style="font-size:24px">vendredi 13 nov.</text>
+  <text class="title-n" x="1226.6666666666667" y="112" style="font-size:24px">14 nov.</text>
+  <text class="legend" x="114" y="160" style="text-anchor:end;font-weight:700">UTC</text>
+  <text class="legend" x="114" y="650" style="text-anchor:end;font-weight:700">Paris</text>
+  <line x1="150" y1="172" x2="150" y2="520" stroke="#1a2b5e" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="0"/>
+  <line x1="150" y1="600" x2="150" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="150" y="160" style="text-anchor:middle">00 h</text>
+  <text class="legend" x="150" y="650" style="text-anchor:middle">01 h</text>
+  <line x1="276.6666666666667" y1="172" x2="276.6666666666667" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="276.6666666666667" y1="600" x2="276.6666666666667" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="276.6666666666667" y="160" style="text-anchor:middle">06 h</text>
+  <text class="legend" x="276.6666666666667" y="650" style="text-anchor:middle">07 h</text>
+  <line x1="403.33333333333337" y1="172" x2="403.33333333333337" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="403.33333333333337" y1="600" x2="403.33333333333337" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="403.33333333333337" y="160" style="text-anchor:middle">12 h</text>
+  <text class="legend" x="403.33333333333337" y="650" style="text-anchor:middle">13 h</text>
+  <line x1="530" y1="172" x2="530" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="530" y1="600" x2="530" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="530" y="160" style="text-anchor:middle">18 h</text>
+  <text class="legend" x="530" y="650" style="text-anchor:middle">19 h</text>
+  <line x1="656.6666666666667" y1="172" x2="656.6666666666667" y2="520" stroke="#1a2b5e" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="0"/>
+  <line x1="656.6666666666667" y1="600" x2="656.6666666666667" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="656.6666666666667" y="160" style="text-anchor:middle">00 h</text>
+  <text class="legend" x="656.6666666666667" y="650" style="text-anchor:middle">01 h</text>
+  <line x1="783.3333333333334" y1="172" x2="783.3333333333334" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="783.3333333333334" y1="600" x2="783.3333333333334" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="783.3333333333334" y="160" style="text-anchor:middle">06 h</text>
+  <text class="legend" x="783.3333333333334" y="650" style="text-anchor:middle">07 h</text>
+  <line x1="910" y1="172" x2="910" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="910" y1="600" x2="910" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="910" y="160" style="text-anchor:middle">12 h</text>
+  <text class="legend" x="910" y="650" style="text-anchor:middle">13 h</text>
+  <line x1="1036.6666666666665" y1="172" x2="1036.6666666666665" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="1036.6666666666665" y1="600" x2="1036.6666666666665" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="1036.6666666666665" y="160" style="text-anchor:middle">18 h</text>
+  <text class="legend" x="1036.6666666666665" y="650" style="text-anchor:middle">19 h</text>
+  <line x1="1163.3333333333335" y1="172" x2="1163.3333333333335" y2="520" stroke="#1a2b5e" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="0"/>
+  <line x1="1163.3333333333335" y1="600" x2="1163.3333333333335" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="1163.3333333333335" y="160" style="text-anchor:middle">00 h</text>
+  <text class="legend" x="1163.3333333333335" y="650" style="text-anchor:middle">01 h</text>
+  <line x1="1290" y1="172" x2="1290" y2="520" stroke="#1a2b5e" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="1290" y1="600" x2="1290" y2="614" stroke="#1a2b5e" stroke-width="2"/>
+  <text class="legend" x="1290" y="160" style="text-anchor:middle">06 h</text>
+  <text class="legend" x="1290" y="650" style="text-anchor:middle">07 h</text>
+  <rect x="150" y="520" width="1140" height="80" fill="#d9d0bc"/>
+  <rect class="block-royal" x="173.6" y="520" width="315.3" height="80"/>
+  <text class="title-w" x="331.2" y="571" style="font-size:28px">Incubation</text>
+  <rect class="block-bordeaux" x="488.8" y="520" width="50.7" height="80"/>
+  <rect class="block-gold" x="539.5" y="520" width="138.3" height="80"/>
+  <rect class="block-navy" x="677.8" y="520" width="133.7" height="80"/>
+  <rect class="block-green" x="811.5" y="520" width="186.5" height="80"/>
+  <text class="title-w" x="904.7" y="571" style="font-size:28px">Reprise</text>
+  <line x1="173.6" y1="238" x2="173.6" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="173.6" cy="238" r="6" fill="#b8972a"/>
+  <text class="legend" x="183.6" y="246" style="text-anchor:start;font-weight:700">Teams bascule</text>
+  <line x1="494.8" y1="458" x2="494.8" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="494.8" cy="458" r="6" fill="#b8972a"/>
+  <text class="legend" x="484.8" y="466" style="text-anchor:end;font-weight:700">EX1550543</text>
+  <line x1="538.8" y1="403" x2="538.8" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="538.8" cy="403" r="6" fill="#b8972a"/>
+  <text class="legend" x="528.8" y="411" style="text-anchor:end;font-weight:700">19 650 signalements/min</text>
+  <line x1="539.5" y1="348" x2="539.5" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="539.5" cy="348" r="6" fill="#b8972a"/>
+  <text class="legend" x="529.5" y="356" style="text-anchor:end;font-weight:700">MO1550821</text>
+  <line x1="551.1" y1="238" x2="551.1" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="551.1" cy="238" r="6" fill="#b8972a"/>
+  <text class="legend" x="561.1" y="246" style="text-anchor:start;font-weight:700">gel des changements</text>
+  <line x1="677.8" y1="293" x2="677.8" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="677.8" cy="293" r="6" fill="#b8972a"/>
+  <text class="legend" x="687.8" y="301" style="text-anchor:start;font-weight:700">processus saturé</text>
+  <line x1="811.5" y1="348" x2="811.5" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="811.5" cy="348" r="6" fill="#b8972a"/>
+  <text class="legend" x="821.5" y="356" style="text-anchor:start;font-weight:700">mise à jour</text>
+  <line x1="901.2" y1="403" x2="901.2" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="901.2" cy="403" r="6" fill="#b8972a"/>
+  <text class="legend" x="911.2" y="411" style="text-anchor:start;font-weight:700">Europe rétablie</text>
+  <line x1="998.0" y1="458" x2="998.0" y2="520" stroke="#1a2b5e" stroke-width="3"/>
+  <circle cx="998.0" cy="458" r="6" fill="#b8972a"/>
+  <text class="legend" x="1008.0" y="466" style="text-anchor:start;font-weight:700">fin de l'impact</text>
+  <rect class="block-royal" x="150" y="700" width="30" height="30" rx="3"/>
+  <text class="legend" x="192" y="724" style="font-weight:700">Incubation</text>
+  <text class="legend" x="192" y="756" style="font-style:italic;font-size:20px">01 h 07 à 16 h 03</text>
+  <rect class="block-bordeaux" x="412" y="700" width="30" height="30" rx="3"/>
+  <text class="legend" x="454" y="724" style="font-weight:700">Effondrement</text>
+  <text class="legend" x="454" y="756" style="font-style:italic;font-size:20px">16 h 03 à 18 h 27</text>
+  <rect class="block-gold" x="674" y="700" width="30" height="30" rx="3"/>
+  <text class="legend" x="716" y="724" style="font-weight:700">Tâtonnements</text>
+  <text class="legend" x="716" y="756" style="font-style:italic;font-size:20px">18 h 27 à 01 h 00</text>
+  <rect class="block-navy" x="936" y="700" width="30" height="30" rx="3"/>
+  <text class="legend" x="978" y="724" style="font-weight:700">Attente du correctif</text>
+  <text class="legend" x="978" y="756" style="font-style:italic;font-size:20px">01 h 00 à 07 h 20</text>
+  <rect class="block-green" x="1198" y="700" width="30" height="30" rx="3"/>
+  <text class="legend" x="1240" y="724" style="font-weight:700">Reprise</text>
+  <text class="legend" x="1240" y="756" style="font-style:italic;font-size:20px">07 h 20 à 16 h 10</text>
+  <text class="legend" x="150" y="820" style="font-style:italic;font-size:20px">Heures UTC du rapport préliminaire. Paris à UTC+1. Échelle linéaire.</text>
+  <rect class="block-gold" x="1350" y="250" width="200" height="140" rx="4"/>
+  <text class="title-w" x="1450" y="300" style="font-size:30px">15 nov.</text>
+  <text class="body-w" x="1450" y="336">rapport</text>
+  <text class="body-w" x="1450" y="366">préliminaire</text>
+  <rect class="block-navy" x="1350" y="420" width="200" height="140" rx="4"/>
+  <text class="title-w" x="1450" y="470" style="font-size:30px">20 nov.</text>
+  <text class="body-w" x="1450" y="506">rapport</text>
+  <text class="body-w" x="1450" y="536">définitif</text>
+  <text class="small-n" x="1450" y="600">annoncé</text>
+  <text class="legend" x="1320" y="572" style="text-anchor:middle;font-weight:700;font-size:28px">//</text>
+</svg>

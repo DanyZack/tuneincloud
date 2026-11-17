@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100">
+  <!-- Schéma 2 : enchaînement causal de la panne du 12/11/2026 (rapport préliminaire du 15/11/2026) -->
+  <defs>
+    <style>
+      .bg { fill: #ede6d6; }
+      .section { font: 600 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 4px; fill: #b8972a; text-anchor: middle; }
+      .rule { stroke: #b8972a; stroke-width: 2; }
+      .block-navy { fill: #1a2b5e; }
+      .block-gold { fill: #b8972a; }
+      .block-bordeaux { fill: #8b1a2b; }
+      .block-royal { fill: #2748c4; }
+      .block-green { fill: #1a5c3a; }
+      .sub { fill: #f6f1e6; stroke: #1a2b5e; stroke-width: 2; }
+      .title-w { font: 700 32px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .title-wl { font: 700 38px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .body-w { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .small-w { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #ffffff; fill-opacity: 0.9; text-anchor: middle; }
+      .title-n { font: 700 28px Georgia, 'Times New Roman', serif; fill: #1a2b5e; text-anchor: middle; }
+      .body-n { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .small-n { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .tag-b { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8b1a2b; text-anchor: middle; }
+      .tag-g { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #1a5c3a; text-anchor: middle; }
+      .tag-o { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8a6d12; text-anchor: middle; }
+      .arrow { stroke: #1a2b5e; stroke-width: 8; fill: none; }
+      .arrow-gold { stroke: #b8972a; stroke-width: 8; fill: none; }
+      .arrow-b { stroke: #8b1a2b; stroke-width: 6; fill: none; stroke-dasharray: 14 10; }
+      .arrow-head { fill: #1a2b5e; }
+      .arrow-head-g { fill: #b8972a; }
+      .arrow-head-b { fill: #8b1a2b; }
+      .legend { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; }
+      .divider-w { stroke: #ffffff; stroke-opacity: 0.35; stroke-width: 2; }
+      .cross { stroke: #8b1a2b; stroke-width: 7; stroke-linecap: round; }
+    </style>
+    <marker id="head" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head"/>
+    </marker>
+    <marker id="headg" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-g"/>
+    </marker>
+    <marker id="headb" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-b"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1600" height="1100"/>
+
+  <line class="rule" x1="80" y1="52" x2="560" y2="52"/>
+  <text class="section" x="800" y="60">TROIS FACTEURS</text>
+  <line class="rule" x1="1040" y1="52" x2="1520" y2="52"/>
+
+  <rect class="block-bordeaux" x="80" y="90" width="440" height="150" rx="4"/>
+  <text class="title-w" x="300" y="152">Défaut latent</text>
+  <text class="body-w" x="300" y="196">correctif de juillet</text>
+
+  <rect class="block-gold" x="580" y="90" width="440" height="150" rx="4"/>
+  <text class="title-w" x="800" y="152">Teams basculé</text>
+  <text class="body-w" x="800" y="196">à 01 h 07 UTC</text>
+
+  <rect class="block-royal" x="1080" y="90" width="440" height="150" rx="4"/>
+  <text class="title-w" x="1300" y="152">14 % de capacité</text>
+  <text class="body-w" x="1300" y="196">absente</text>
+
+  <!-- Convergence -->
+  <line class="arrow" x1="300" y1="240" x2="530" y2="318" marker-end="url(#head)"/>
+  <line class="arrow" x1="800" y1="240" x2="800" y2="306" marker-end="url(#head)"/>
+  <line class="arrow" x1="1300" y1="240" x2="1070" y2="318" marker-end="url(#head)"/>
+
+  <rect class="block-navy" x="440" y="335" width="720" height="140" rx="4"/>
+  <text class="title-wl" x="800" y="398">Serveurs saturés</text>
+  <text class="body-w" x="800" y="442">16 h 20 UTC</text>
+
+  <!-- Boucle de redirection -->
+  <path class="arrow" d="M1160,372 C1260,335 1265,480 1188,452" marker-end="url(#head)"/>
+  <text class="title-n" x="1295" y="398" style="text-anchor:start">Redirection</text>
+  <text class="small-n" x="1295" y="434" style="text-anchor:start">les serveurs sains</text>
+  <text class="small-n" x="1295" y="462" style="text-anchor:start">tombent à leur tour</text>
+
+  <line class="arrow" x1="800" y1="475" x2="800" y2="531" marker-end="url(#head)"/>
+
+  <rect class="sub" x="520" y="560" width="560" height="120" rx="4"/>
+  <text class="title-n" x="800" y="612">Cloisons inopérantes</text>
+  <text class="small-n" x="800" y="650">« problème distinct », non décrit</text>
+
+  <line class="arrow" x1="800" y1="680" x2="800" y2="736" marker-end="url(#head)"/>
+
+  <rect class="block-bordeaux" x="440" y="765" width="720" height="140" rx="4"/>
+  <text class="title-wl" x="800" y="828">Plus de 80 % des serveurs muets</text>
+  <text class="small-w" x="800" y="870">panne mondiale en moins de deux heures</text>
+
+  <line class="arrow" x1="800" y1="905" x2="800" y2="951" marker-end="url(#head)"/>
+
+  <rect class="block-green" x="80" y="980" width="1440" height="90" rx="4"/>
+  <text class="title-w" x="800" y="1037">Sortie : code antérieur rétabli, à partir de 07 h 20 UTC le 13 nov.</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" width="1600" height="980">
+  <!-- Schéma 5 : matrice avant / pendant / après pour les administrateurs -->
+  <defs>
+    <style>
+      .bg { fill: #ede6d6; }
+      .section { font: 600 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 4px; fill: #b8972a; text-anchor: middle; }
+      .rule { stroke: #b8972a; stroke-width: 2; }
+      .block-navy { fill: #1a2b5e; }
+      .block-gold { fill: #b8972a; }
+      .block-bordeaux { fill: #8b1a2b; }
+      .block-royal { fill: #2748c4; }
+      .block-green { fill: #1a5c3a; }
+      .sub { fill: #f6f1e6; stroke: #1a2b5e; stroke-width: 2; }
+      .title-w { font: 700 32px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .title-wl { font: 700 38px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .body-w { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .small-w { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #ffffff; fill-opacity: 0.9; text-anchor: middle; }
+      .title-n { font: 700 28px Georgia, 'Times New Roman', serif; fill: #1a2b5e; text-anchor: middle; }
+      .body-n { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .small-n { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .tag-b { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8b1a2b; text-anchor: middle; }
+      .tag-g { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #1a5c3a; text-anchor: middle; }
+      .tag-o { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8a6d12; text-anchor: middle; }
+      .arrow { stroke: #1a2b5e; stroke-width: 8; fill: none; }
+      .arrow-gold { stroke: #b8972a; stroke-width: 8; fill: none; }
+      .arrow-b { stroke: #8b1a2b; stroke-width: 6; fill: none; stroke-dasharray: 14 10; }
+      .arrow-head { fill: #1a2b5e; }
+      .arrow-head-g { fill: #b8972a; }
+      .arrow-head-b { fill: #8b1a2b; }
+      .legend { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; }
+      .divider-w { stroke: #ffffff; stroke-opacity: 0.35; stroke-width: 2; }
+      .cross { stroke: #8b1a2b; stroke-width: 7; stroke-linecap: round; }
+    </style>
+    <marker id="head" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head"/>
+    </marker>
+    <marker id="headg" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-g"/>
+    </marker>
+    <marker id="headb" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+  <line class="arrow-gold" x1="80" y1="80" x2="1488" y2="80" style="stroke-width:14"/>
+  <path d="M1480,52 L1530,80 L1480,108 Z" fill="#b8972a"/>
+  <rect class="block-navy" x="80" y="140" width="440" height="800" rx="4"/>
+  <text class="title-wl" x="300" y="204" style="font-size:40px">Avant</text>
+  <text class="small-w" x="300" y="240">à froid</text>
+  <line class="divider-w" x1="110" y1="266" x2="490" y2="266"/>
+  <rect x="110" y="290" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="300" y="348">Seconde adresse de</text>
+  <text class="body-w" x="300" y="380">notification hors tenant</text>
+  <rect x="110" y="442" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="300" y="500">Supervision Graph</text>
+  <text class="body-w" x="300" y="532">hors Microsoft 365</text>
+  <rect x="110" y="594" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="300" y="652">Canal de crise</text>
+  <text class="body-w" x="300" y="684">hors Microsoft 365</text>
+  <rect x="110" y="746" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="300" y="804">Inventaire des processus</text>
+  <text class="body-w" x="300" y="836">dépendants du courriel</text>
+  <rect class="block-bordeaux" x="580" y="140" width="440" height="800" rx="4"/>
+  <text class="title-wl" x="800" y="204" style="font-size:40px">Pendant</text>
+  <text class="small-w" x="800" y="240">panne de l’éditeur</text>
+  <line class="divider-w" x1="610" y1="266" x2="990" y2="266"/>
+  <rect x="610" y="290" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="800" y="348">status.cloud.microsoft</text>
+  <text class="body-w" x="800" y="380">et @MSFT365Status</text>
+  <rect x="610" y="442" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="800" y="516">Gel des changements</text>
+  <rect x="610" y="594" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="800" y="652">Bascule sur le</text>
+  <text class="body-w" x="800" y="684">canal de crise</text>
+  <rect class="block-green" x="1080" y="140" width="440" height="800" rx="4"/>
+  <text class="title-wl" x="1300" y="204" style="font-size:40px">Après</text>
+  <text class="small-w" x="1300" y="240">au retour du service</text>
+  <line class="divider-w" x1="1110" y1="266" x2="1490" y2="266"/>
+  <rect x="1110" y="290" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="1300" y="364">Traces de messages</text>
+  <rect x="1110" y="442" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="1300" y="500">Non-remises et</text>
+  <text class="body-w" x="1300" y="532">connecteurs entrants</text>
+  <rect x="1110" y="594" width="380" height="130" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <text class="body-w" x="1300" y="668">Archivage des rapports</text>
+</svg>

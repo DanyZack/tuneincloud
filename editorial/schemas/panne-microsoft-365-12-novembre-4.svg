@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" width="1600" height="1080">
+  <!-- Schéma 4 : cartographie des impacts de la panne du 12/11/2026, en anneaux concentriques -->
+  <defs>
+    <style>
+      .bg { fill: #ede6d6; }
+      .section { font: 600 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 4px; fill: #b8972a; text-anchor: middle; }
+      .rule { stroke: #b8972a; stroke-width: 2; }
+      .block-navy { fill: #1a2b5e; }
+      .block-gold { fill: #b8972a; }
+      .block-bordeaux { fill: #8b1a2b; }
+      .block-royal { fill: #2748c4; }
+      .block-green { fill: #1a5c3a; }
+      .sub { fill: #f6f1e6; stroke: #1a2b5e; stroke-width: 2; }
+      .title-w { font: 700 32px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .title-wl { font: 700 38px Georgia, 'Times New Roman', serif; fill: #ffffff; text-anchor: middle; }
+      .body-w { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .small-w { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #ffffff; fill-opacity: 0.9; text-anchor: middle; }
+      .title-n { font: 700 28px Georgia, 'Times New Roman', serif; fill: #1a2b5e; text-anchor: middle; }
+      .body-n { font: 400 24px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .small-n { font: italic 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; text-anchor: middle; }
+      .tag-b { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8b1a2b; text-anchor: middle; }
+      .tag-g { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #1a5c3a; text-anchor: middle; }
+      .tag-o { font: 700 22px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; fill: #8a6d12; text-anchor: middle; }
+      .arrow { stroke: #1a2b5e; stroke-width: 8; fill: none; }
+      .arrow-gold { stroke: #b8972a; stroke-width: 8; fill: none; }
+      .arrow-b { stroke: #8b1a2b; stroke-width: 6; fill: none; stroke-dasharray: 14 10; }
+      .arrow-head { fill: #1a2b5e; }
+      .arrow-head-g { fill: #b8972a; }
+      .arrow-head-b { fill: #8b1a2b; }
+      .legend { font: 400 22px 'Segoe UI', Arial, sans-serif; fill: #1a2b5e; }
+      .divider-w { stroke: #ffffff; stroke-opacity: 0.35; stroke-width: 2; }
+      .cross { stroke: #8b1a2b; stroke-width: 7; stroke-linecap: round; }
+    </style>
+    <marker id="head" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head"/>
+    </marker>
+    <marker id="headg" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-g"/>
+    </marker>
+    <marker id="headb" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L4,2 L0,4 Z" class="arrow-head-b"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1600" height="1080"/>
+
+  <!-- Anneaux, centre (600, 540) -->
+  <circle cx="600" cy="540" r="480" fill="#2748c4" stroke="#ede6d6" stroke-width="6"/>
+  <circle cx="600" cy="540" r="350" fill="#b8972a" stroke="#ede6d6" stroke-width="6"/>
+  <circle cx="600" cy="540" r="220" fill="#8b1a2b" stroke="#ede6d6" stroke-width="6"/>
+  <circle cx="600" cy="540" r="105" fill="#1a2b5e" stroke="#ede6d6" stroke-width="6"/>
+
+  <!-- Centre -->
+  <text class="title-w" x="600" y="534" style="font-size:30px">Passerelle</text>
+  <text class="title-w" x="600" y="570" style="font-size:30px">réseau</text>
+
+  <!-- Anneau 1 -->
+  <text class="small-w" x="600" y="374">Impact principal</text>
+  <text class="title-w" x="600" y="414">Exchange Online</text>
+  <text class="small-w" x="600" y="694">accès aux boîtes</text>
+  <text class="small-w" x="600" y="724">distribution retardée</text>
+
+  <!-- Anneau 2 -->
+  <text class="small-w" x="600" y="245">Impact secondaire</text>
+  <text class="title-w" x="600" y="284" style="font-size:28px">fonctions liées à Exchange</text>
+  <text class="body-w" x="600" y="790">Teams · SharePoint · OneDrive</text>
+  <text class="body-w" x="600" y="823">Copilot · Defender · Purview</text>
+  <text class="body-w" x="600" y="856">Intune et six autres</text>
+
+  <!-- Anneau 3 -->
+  <text class="small-w" x="600" y="118">Effets en chaîne</text>
+  <text class="title-w" x="600" y="156" style="font-size:28px">organisations</text>
+  <text class="body-w" x="600" y="928">STF Brésil · pharmacies NHS</text>
+  <text class="body-w" x="600" y="962">entreprises australiennes</text>
+
+  <!-- Hors anneaux -->
+  <g transform="translate(0,110)">
+  <line class="rule" x1="1160" y1="152" x2="1200" y2="152"/>
+  <text class="section" x="1355" y="160">HORS ANNEAUX</text>
+  <line class="rule" x1="1510" y1="152" x2="1550" y2="152"/>
+
+  <rect class="block-green" x="1160" y="200" width="390" height="190" rx="4"/>
+  <text class="title-w" x="1355" y="262">Non listés</text>
+  <line class="divider-w" x1="1190" y1="292" x2="1520" y2="292"/>
+  <text class="body-w" x="1355" y="336">Entra ID</text>
+  <text class="body-w" x="1355" y="370">Azure</text>
+
+  <rect class="sub" x="1160" y="440" width="390" height="290" rx="4"/>
+  <text class="title-n" x="1355" y="500">Downdetector</text>
+  <line x1="1190" y1="526" x2="1520" y2="526" stroke="#1a2b5e" stroke-opacity="0.3" stroke-width="2"/>
+  <text class="title-n" x="1355" y="580" style="font-size:34px;fill:#8b1a2b">74 pays</text>
+  <text class="small-n" x="1355" y="610">en une heure environ</text>
+  <text class="title-n" x="1355" y="668" style="font-size:34px;fill:#8b1a2b">19 650</text>
+  <text class="small-n" x="1355" y="698">signalements par minute</text>
+
+  <text class="legend" x="1160" y="780" style="font-style:italic;font-size:20px">Pic à 18 h 25 UTC, cinq services cumulés.</text>
+  </g>
+</svg>
