@@ -17,7 +17,7 @@ Il existe 3 modes de jonctions d'appareils dans Azure AD pour les postes de trav
 
 /!\\ _Concernant les autres systèmes d'exploitation (Android, iOS, macOS, Linux, ...) : les appareils remontent systématiquement en "Azure AD registered", et ce peu importe le mode de gestion_.
 
-Ces 3 modes de jonction Azure AD représentent un maillon essentiel dans la mise en place des Accès conditionnels qui pourront se baser sur ces informations afin de contrôler l'accès aux données de l'entreprise.
+Ces 3 modes de jonction Azure AD représentent un maillon essentiel dans la mise en place des Accès conditionnels qui pourront se baser sur ces informations afin de contrôler l'accès aux données de l'entreprise. La jonction Entra et la jonction hybride servent aussi, en préversion, à inscrire un serveur dans [Intune pour Windows Server](/blog/2026-11-19-intune-gestion-windows-server/).
 
 ## I - Description des modes de jonction
 
