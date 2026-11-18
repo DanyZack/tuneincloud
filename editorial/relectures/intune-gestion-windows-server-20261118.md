@@ -188,3 +188,13 @@ Phrase d'introduction du tableau, FAQ sourcée dans la phrase (section Arc), pag
 2. **Neowin** : retiré. Le rétablir seulement après lecture de l'article et avec son URL.
 3. **Longueur** : 1 499 mots. Avec la phrase de terrain, l'article dépassera légèrement la borne de 1 500. C'est acceptable, ou il faut couper ailleurs.
 4. **Bannière `article-intune1.png`** : à créer par l'illustrateur (fichier absent).
+
+## Décisions de Daniel du 2026-11-19
+
+1. **Bloc `[À COMPLÉTER PAR DANIEL]`** : retiré. Le paragraphe précédent (serveur d'agence, scripts planifiés et GPO) se suffit et clôt la section sans raccord supplémentaire. Aucune expérience ajoutée à la place.
+2. **Longueur** : dépassement léger accepté. Après les retraits, le corps est sous la borne (1 481 mots selon `seo-check`, 1 453 selon `style-check`).
+3. **Neowin** : retrait confirmé (déjà absent du brouillon).
+4. **Intune Suite** : mention retirée de la section licence, avec le lien sortant `/blog/2026-04-16-intunesuite-in-m365/`. La phrase constatait seulement que les tenants Intune Suite n'avaient pas plus de réponse que les autres, et le guide Microsoft ne relie à aucun moment la gestion des serveurs à l'Intune Suite : le lecteur n'y gagnait rien, et la phrase suggérait un lien que Microsoft n'établit pas. **Lien entrant 2** (`liens-entrants.md`, depuis l'article Intune Suite) : je le juge non pertinent pour la même raison. Placé dans un point d'attention sur les licences de l'Intune Suite, il laisse croire que les serveurs relèvent de cette question. Je recommande de ne pas l'appliquer (le fichier `liens-entrants.md` n'a pas été modifié).
+5. **Mot-clé dans l'intro** : formulation conservée. L'alerte non bloquante de `seo-check` (« Intune Windows Server » absent des 100 premiers mots) est donc assumée.
+
+**Contrôles après passe finale** : `style-check` sans alerte bloquante (4 alertes non bloquantes sur les intertitres en question, déjà présentes et non modifiées sur consigne). `seo-check --stage final --keyword "Intune Windows Server"` : 1 alerte non bloquante (mot-clé dans l'intro), 0 bloquante, 3 liens internes.

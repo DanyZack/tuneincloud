@@ -1,7 +1,7 @@
 ---
 title: "Intune Windows Server : ce que vaut vraiment la préversion"
 description: "Intune Windows Server en Insider preview, builds vNext seulement et aucune date de GA. Mises à jour, Defender, Azure Arc, licence : faut-il franchir le pas ?"
-pubDate: 2026-11-18
+pubDate: 2026-11-19
 heroImage: "/images/hero/intune-gestion-windows-server.webp"
 category: "actualites"
 subcategory: "articles"
@@ -63,8 +63,6 @@ Une PAW ou une jump box est un poste d'administration sous Windows Server, et el
 
 Le serveur d'agence suit la même logique. Une console, des anneaux avec fenêtres de maintenance, et un inventaire que les [rapports Intune via OData](/blog/2026-04-27-intune-datawarehouse/) exposent déjà pour les postes. Les scripts planifiés et les GPO écrites pour ces cas limites n'auraient plus de raison d'être.
 
-> [À COMPLÉTER PAR DANIEL : une phrase de terrain sur des serveurs de rebond, des RDSH ou des serveurs d'agence gérés aujourd'hui par GPO et scripts chez des clients. Ne rien publier sans validation.]
-
 ## Mon avis : pourquoi ça pourrait ne pas l'être
 
 Un serveur n'est pas un endpoint. Il n'a souvent aucun utilisateur, il survit à plusieurs générations de postes, ses redémarrages passent en comité de changement, et sa panne arrête un service entier. En l'absorbant, Intune cesse d'être un MDM pour devenir l'outil de gestion de tout Windows, et je crains qu'il y perde sa cohérence.
@@ -95,7 +93,7 @@ Le travail utile précède toute inscription : exclure les serveurs des affectat
 
 ## Quelle licence faut-il pour gérer Windows Server avec Intune ?
 
-Pendant l'Insider preview, gérer Windows Server avec Intune ne demande aucun abonnement supplémentaire, selon la FAQ du guide Microsoft Learn. Les droits existants s'appliquent, ceux de Microsoft Intune, de l'accès conditionnel Microsoft Entra et de Microsoft Defender for Endpoint pour les serveurs. Cette réponse, précise la FAQ, ne vaut que pour la préversion. Les tenants qui disposent de l'[Intune Suite incluse dans Microsoft 365 E3 et E5](/blog/2026-04-16-intunesuite-in-m365/) n'ont pas davantage de réponse. La licence de la disponibilité générale reste inconnue au 18 novembre 2026.
+Pendant l'Insider preview, gérer Windows Server avec Intune ne demande aucun abonnement supplémentaire, selon la FAQ du guide Microsoft Learn. Les droits existants s'appliquent, ceux de Microsoft Intune, de l'accès conditionnel Microsoft Entra et de Microsoft Defender for Endpoint pour les serveurs. Cette réponse, précise la FAQ, ne vaut que pour la préversion. La licence de la disponibilité générale reste inconnue au 18 novembre 2026.
 
 ## Sources
 
