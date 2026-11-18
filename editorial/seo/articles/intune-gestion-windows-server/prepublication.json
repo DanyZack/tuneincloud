@@ -1,0 +1,419 @@
+{
+  "title": "Intune Windows Server : ce que vaut vraiment la pr\u00e9version",
+  "meta_description": "Intune Windows Server en Insider preview, builds vNext seulement et aucune date de GA. Mises \u00e0 jour, Defender, Azure Arc, licence : faut-il franchir le pas ?",
+  "meta_robots": null,
+  "canonical": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/",
+  "h1": [
+    "Intune Windows Server : ce que vaut vraiment la pr\u00e9version"
+  ],
+  "h2": [
+    "Ce que Microsoft a annonc\u00e9 le 17 novembre",
+    "Intune Windows Server : quels serveurs et quelles versions ?",
+    "Mises \u00e0 jour et Defender, ce que la pr\u00e9version apporte au parc de serveurs",
+    "Intune, Azure Arc ou Configuration Manager pour vos serveurs ?",
+    "Mon avis : ce que la pr\u00e9version r\u00e8gle",
+    "Mon avis : pourquoi \u00e7a pourrait ne pas l\u2019\u00eatre",
+    "Faut-il franchir le pas demain ?",
+    "Quelle licence faut-il pour g\u00e9rer Windows Server avec Intune ?",
+    "Sources"
+  ],
+  "h3": [],
+  "heading_outline": [
+    {
+      "level": 1,
+      "text": "Intune Windows Server : ce que vaut vraiment la pr\u00e9version"
+    },
+    {
+      "level": 2,
+      "text": "Ce que Microsoft a annonc\u00e9 le 17 novembre"
+    },
+    {
+      "level": 2,
+      "text": "Intune Windows Server : quels serveurs et quelles versions ?"
+    },
+    {
+      "level": 2,
+      "text": "Mises \u00e0 jour et Defender, ce que la pr\u00e9version apporte au parc de serveurs"
+    },
+    {
+      "level": 2,
+      "text": "Intune, Azure Arc ou Configuration Manager pour vos serveurs ?"
+    },
+    {
+      "level": 2,
+      "text": "Mon avis : ce que la pr\u00e9version r\u00e8gle"
+    },
+    {
+      "level": 2,
+      "text": "Mon avis : pourquoi \u00e7a pourrait ne pas l\u2019\u00eatre"
+    },
+    {
+      "level": 2,
+      "text": "Faut-il franchir le pas demain ?"
+    },
+    {
+      "level": 2,
+      "text": "Quelle licence faut-il pour g\u00e9rer Windows Server avec Intune ?"
+    },
+    {
+      "level": 2,
+      "text": "Sources"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://tuneincloud.fr/tuneincloud.png",
+      "alt": "TuneInCloud logo",
+      "width": "64",
+      "height": "45",
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    },
+    {
+      "src": "https://tuneincloud.fr/images/hero/intune-gestion-windows-server.webp",
+      "alt": "",
+      "width": "1200",
+      "height": "630",
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    },
+    {
+      "src": "https://tuneincloud.fr/images/banarticle/article-intune1.png",
+      "alt": "Banniere",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    }
+  ],
+  "links": {
+    "internal": [
+      {
+        "href": "https://tuneincloud.fr/",
+        "text": "TuneinCloud Expertise Microsoft \u00b7 par Daniel Pol\u00f2nio",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites",
+        "text": "Actualit\u00e9s",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites/breves",
+        "text": "Br\u00e8ves",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites/articles",
+        "text": "Articles",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides",
+        "text": "Guides",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/entra",
+        "text": "Microsoft Entra",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/intune",
+        "text": "Microsoft Intune",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/defender",
+        "text": "Microsoft Defender",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/purview",
+        "text": "Microsoft Purview",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/ia",
+        "text": "IA",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/autre",
+        "text": "Autre",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/dossiers",
+        "text": "Dossiers",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/about",
+        "text": "\u00c0 propos",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/about/",
+        "text": "Daniel POL\u00d2NIO",
+        "rel": [
+          "author"
+        ]
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/old-modejonctionwindows/",
+        "text": "jonction hybride Entra ID",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/2026-10-08-intune-baseline-windows-11-26h2/",
+        "text": "baseline de s\u00e9curit\u00e9 Windows 11 dans Intune",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/2026-04-27-intune-datawarehouse/",
+        "text": "rapports Intune via OData",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/2026-04-16-intunesuite-in-m365/",
+        "text": "Intune Suite incluse dans Microsoft 365 E3 et E5",
+        "rel": []
+      }
+    ],
+    "external": [
+      {
+        "href": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "text": "What\u2019s new in Microsoft Intune, semaine du 16 novembre 2026 (Microsoft Learn)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/intune/solutions/end-to-end-guides/windows-server-endpoints-get-started",
+        "text": "End-to-end guide to get started with Windows Server Insider preview (Microsoft Learn, 16 novembre 20",
+        "rel": []
+      },
+      {
+        "href": "https://techcommunity.microsoft.com/blog/IntuneCustomerSuccess/manage-windows-servers-alongside-pcs-with-microsoft-intune/4572643",
+        "text": "Manage Windows Servers alongside PCs with Microsoft Intune (Tech Community, 17 novembre 2026)",
+        "rel": []
+      },
+      {
+        "href": "https://techcommunity.microsoft.com/blog/microsoftintuneblog/what%E2%80%99s-new-in-microsoft-intune-at-microsoft-ignite/4570003",
+        "text": "What\u2019s new in Microsoft Intune at Microsoft Ignite (Tech Community, 17 novembre 2026)",
+        "rel": []
+      },
+      {
+        "href": "https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-2028-a-trusted-foundation-for-an-evolving-enterprise/4574112",
+        "text": "Windows Server 2028: A trusted foundation for an evolving enterprise (Tech Community, 17 novembre 20",
+        "rel": []
+      },
+      {
+        "href": "https://blogs.windows.com/windowsexperience/2026/11/17/windows-security-at-ignite-2026-start-secure-protect-what-matters-prepare-for-ai/",
+        "text": "Windows security at Ignite 2026 (Windows Experience Blog, 17 novembre 2026)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites",
+        "text": "Connected Machine agent prerequisites (Microsoft Learn, Azure Arc)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/azure/azure-arc/servers/modernize-server-management",
+        "text": "How to modernize server management from Configuration Manager to Azure Arc (Microsoft Learn)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/windows-server/get-started/hotpatch",
+        "text": "Hotpatch for Windows Server (Microsoft Learn)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/intune/configmgr/core/plan-design/configs/supported-operating-systems-for-clients-and-devices",
+        "text": "Supported clients and devices, Configuration Manager (Microsoft Learn)",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/intune/configmgr/core/understand/product-and-licensing-faq",
+        "text": "Product and licensing FAQ, Configuration Manager (Microsoft Learn)",
+        "rel": []
+      }
+    ]
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/#article",
+      "headline": "Intune Windows Server : ce que vaut vraiment la pr\u00e9version",
+      "description": "Intune Windows Server en Insider preview, builds vNext seulement et aucune date de GA. Mises \u00e0 jour, Defender, Azure Arc, licence : faut-il franchir le pas ?",
+      "image": "https://tuneincloud.fr/images/hero/intune-gestion-windows-server.webp",
+      "datePublished": "2026-11-18T00:00:00.000Z",
+      "dateModified": "2026-11-18T00:00:00.000Z",
+      "inLanguage": "fr-FR",
+      "articleSection": "Actualit\u00e9s",
+      "author": {
+        "@id": "https://tuneincloud.fr/about/#daniel-polonio"
+      },
+      "publisher": {
+        "@id": "https://tuneincloud.fr/#publisher"
+      },
+      "isPartOf": {
+        "@id": "https://tuneincloud.fr/#website"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://tuneincloud.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://tuneincloud.fr/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Actualit\u00e9s",
+          "item": "https://tuneincloud.fr/blog/category/actualites/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Intune Windows Server : ce que vaut vraiment la pr\u00e9version",
+          "item": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://tuneincloud.fr/about/#daniel-polonio",
+      "name": "Daniel POL\u00d2NIO",
+      "url": "https://tuneincloud.fr/about/",
+      "jobTitle": "Architecte Expert Microsoft Modern Work et Cybers\u00e9curit\u00e9",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Clad\u00e9ys",
+        "url": "https://cladeys.fr"
+      },
+      "knowsAbout": [
+        "Microsoft Intune",
+        "Microsoft Entra ID",
+        "Microsoft Defender",
+        "Microsoft Purview",
+        "Microsoft 365",
+        "Microsoft 365 Copilot",
+        "Zero Trust"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/daniel-pol%C3%B2nio-19b081110/",
+        "https://github.com/DanyZack"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://tuneincloud.fr/#publisher",
+      "name": "TuneInCloud",
+      "url": "https://tuneincloud.fr/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tuneincloud.fr/tuneincloud.png",
+        "width": 428,
+        "height": 303
+      },
+      "founder": {
+        "@id": "https://tuneincloud.fr/about/#daniel-polonio"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://tuneincloud.fr/#website",
+      "url": "https://tuneincloud.fr/",
+      "name": "TuneInCloud",
+      "description": "Blog d'expertise Microsoft (Intune, Entra ID, Defender, Purview, Copilot) en fran\u00e7ais, par Daniel POL\u00d2NIO.",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://tuneincloud.fr/#publisher"
+      }
+    }
+  ],
+  "schema_invalid": {
+    "count": 0,
+    "samples": []
+  },
+  "open_graph": {
+    "og:type": "article",
+    "og:site_name": "TuneInCloud",
+    "og:locale": "fr_FR",
+    "og:url": "https://tuneincloud.fr/blog/2026-11-18-intune-gestion-windows-server/",
+    "og:title": "Intune Windows Server : ce que vaut vraiment la pr\u00e9version",
+    "og:description": "Intune Windows Server en Insider preview, builds vNext seulement et aucune date de GA. Mises \u00e0 jour, Defender, Azure Arc, licence : faut-il franchir le pas ?",
+    "og:image": "https://tuneincloud.fr/images/hero/intune-gestion-windows-server.webp"
+  },
+  "twitter_card": {},
+  "word_count": 1771,
+  "hreflang": [],
+  "hidden_text": {
+    "chars": 306,
+    "by_source": {
+      "comment": 306,
+      "template": 0,
+      "noscript": 0,
+      "hidden_attr": 0,
+      "aria_hidden": 0,
+      "inline_style": 0,
+      "sr_only_class": 0
+    },
+    "collapsed_chars": 0,
+    "samples": [
+      {
+        "source": "comment",
+        "chars": 48,
+        "text": "Banni\u00e8re automatique selon cat\u00e9gorie/subcategory"
+      },
+      {
+        "source": "comment",
+        "chars": 40,
+        "text": "Image de fond si fournie, sinon fond uni"
+      },
+      {
+        "source": "comment",
+        "chars": 39,
+        "text": "Badge Br\u00e8ve avec ic\u00f4nes crayon + \u00e9clair"
+      },
+      {
+        "source": "comment",
+        "chars": 30,
+        "text": "Donn\u00e9es structur\u00e9es Schema.org"
+      },
+      {
+        "source": "comment",
+        "chars": 22,
+        "text": "Motif grille d\u00e9coratif"
+      }
+    ]
+  }
+}

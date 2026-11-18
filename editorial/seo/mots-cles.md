@@ -36,6 +36,7 @@ deviennent ses rayons.
 | Intune Suite Microsoft 365 E3 E5 | `/blog/2026-04-16-intunesuite-in-m365/` | publié | Sécurité et licences | n/d | n/d |
 | Endpoint Privilege Management Intune | à créer (guide intune) | à créer | Sécurité et licences | n/d | n/d |
 | Intune Data Warehouse OData | `/blog/2026-04-27-intune-datawarehouse/` | publié | Sécurité et licences | n/d | n/d |
+| Intune Windows Server | à venir (article) | planifié | Sécurité et licences | n/d | n/d |
 
 ## Pilier Entra ID
 
