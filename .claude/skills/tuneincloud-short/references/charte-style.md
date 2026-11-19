@@ -157,6 +157,18 @@ donne la date suivante, l'action à faire, ou la question qui reste ouverte.
   (« Le réglage est ouvert à tous par défaut »), sans jeu de mots, sans
   question rhétorique, sans formule ternaire (« Un paramètre, trois options, une
   décision »).
+- **Sources et dates : une fois, puis on avance.** Nommer la source principale
+  une ou deux fois au début (« Microsoft l'a annoncé mi-novembre dans le What's
+  new d'Intune »), puis énoncer les faits sans répéter « selon le guide »,
+  « d'après le billet », « la FAQ précise ». Toutes les références vont dans la
+  section Sources. Une attribution dans le corps ne revient que si la source
+  change le sens du fait (deux sources Microsoft qui se contredisent, chiffre
+  tiers « à confirmer »). Les dates suivent la même règle : la date utile au
+  lecteur, à la granularité utile (« mi-novembre 2026 » plutôt que trois dates
+  de publication différentes), et jamais répétée. Pas de « au 18 novembre »
+  sur un tableau ou une phrase qui ne change pas de sens sans. Cette règle prime
+  sur les recommandations GEO qui demandent la source et la date dans chaque
+  phrase.
 - **Ponctuation imposée par Daniel.** Pas de point-virgule (Flaubert l'aimait,
   TuneInCloud s'en passe : couper en deux phrases ou relancer par « et »). Pas de
   tiret cadratin en milieu de phrase. Guillemets français « » avec espaces
@@ -231,6 +243,8 @@ Après :
 5. Compter les verbes faibles (section 2) et les remplacer.
 6. Vérifier que chaque adjectif d'appréciation a été remplacé par un fait.
 7. Vérifier le gras, les deux-points, les puces et les émojis (section 6).
+   Compter les attributions (« selon », « d'après », « précise ») et les dates
+   dans le corps : plus de deux ou trois pour la même source, couper.
 8. Chercher une juxtaposition possible entre la communication Microsoft et la
    documentation. Si elle existe, l'utiliser une fois.
 9. Vérifier la voix : « je » présent au moment décisif, aucun « nous ».

@@ -156,6 +156,12 @@ Tout rédacteur la lit avant d'écrire. Tout brouillon passe
 - Zéro jargon marketing. Chaque fait daté est sourcé Microsoft (Learn, Message
   Center, roadmap). Dates tierces signalées « à confirmer ».
 - Licence requise, statut GA/Preview, versions précises : toujours indiqués.
+- **Sources et dates sans lourdeur** (décision de Daniel du 2026-11-19). Sourcer
+  ne veut pas dire répéter la source : la nommer une ou deux fois au début, puis
+  énoncer les faits et tout renvoyer à la section Sources. Pas de « selon le
+  guide », « d'après le billet », « la FAQ précise » à chaque paragraphe. Dates à
+  la granularité utile (« mi-novembre ») et dites une fois. Cette règle prime sur
+  les recommandations GEO « source et date dans la phrase même ».
 - Vouvoiement, ton expert direct. Ironie rare et ciblée.
 - Blog d'un seul expert : jamais de « nous », « notre », « nos » pour parler de
   TuneInCloud. Écrire « je », « mon dossier », « ce que je défends ».
