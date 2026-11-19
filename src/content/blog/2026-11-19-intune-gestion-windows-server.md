@@ -8,7 +8,7 @@ category: "actualites"
 subcategory: "articles"
 ---
 
-Microsoft Intune peut désormais gérer Windows Server, mais en Insider preview seulement. Microsoft l'a annoncé mi-novembre 2026, à Ignite, dans le What's new d'Intune et un guide Microsoft Learn. La préversion se limite aux serveurs de test sous Windows Server vNext Insider, build 29621.1000 ou ultérieure, en Desktop Experience. Windows Server 2019, 2022 et 2025 restent hors périmètre. Aucune date n'est fixée, ni pour une préversion publique ni pour la disponibilité générale. Pour les postes d'administration et les serveurs d'agence, l'annonce comble un vide. Pour le reste du parc, elle fait sortir Intune de son métier de gestion des endpoints, et ce déplacement a un prix.
+Microsoft Intune peut désormais gérer Windows Server, mais en Insider preview seulement. Microsoft l'a annoncé mi-novembre 2026, à Ignite, dans le What's new d'Intune et un guide Microsoft Learn. La préversion se limite aux serveurs de test sous Windows Server vNext Insider, build 29621.1000 ou ultérieure, en Desktop Experience. Windows Server 2019, 2022 et 2025 restent hors périmètre. Aucune date n'est fixée, ni pour une préversion publique ni pour la disponibilité générale. Pour l'instant, j'y vois surtout un recouvrement de plus entre Intune, Azure Arc et Configuration Manager.
 
 ![Banniere](/images/banarticle/article-intune1.png)
 
@@ -52,15 +52,19 @@ Intune vise les serveurs « de type poste » associés à une identité utilisat
 
 Dans sa page consacrée au passage de Configuration Manager à Azure Arc, Microsoft présente d'ailleurs Azure comme l'équivalent, pour les serveurs, de ce qu'Intune est pour les postes.
 
-## Mon avis : ce que la préversion règle
+## Mon avis : ce que la préversion règle, et pour qui
 
-Une PAW ou une jump box est un poste d'administration sous Windows Server, et elle échappe souvent à la rigueur imposée au parc client. Intune lui applique les réglages du catalogue pris en charge, la même rotation LAPS, et une conformité que l'accès conditionnel exige avant d'ouvrir les ressources protégées. Les modèles de baseline, dont la [baseline de sécurité Windows 11 dans Intune](/blog/2026-10-08-intune-baseline-windows-11-26h2/), manquent à la liste. Chaque réglage sera repris à la main, puis testé sur le serveur.
+Microsoft range les PAW parmi ses cibles. Un PAW est pourtant, en général, un poste Windows 11 Enterprise qu'Intune gère déjà comme un client, et la question ne se pose guère. Les cas serveurs sont les serveurs de rebond et les hôtes RDSH d'administration, qui échappent souvent à la rigueur imposée au parc client. Intune leur applique les réglages du catalogue, la rotation LAPS et une conformité exigée par l'accès conditionnel. Les modèles de baseline, dont la [baseline de sécurité Windows 11 dans Intune](/blog/2026-10-08-intune-baseline-windows-11-26h2/), manquent à la liste, et chaque réglage sera repris à la main.
 
-Le serveur d'agence suit la même logique, avec une console, des anneaux et leurs fenêtres de maintenance, et un inventaire que les [rapports Intune via OData](/blog/2026-04-27-intune-datawarehouse/) exposent déjà pour les postes. Les scripts planifiés et les GPO écrites pour ces cas limites n'auraient plus de raison d'être.
+Inscrire dans Intune une machine dédiée à réduire la surface d'attaque ne se défend que si Intune est traité comme un plan de contrôle du même niveau de confiance, car quiconque l'administre peut y pousser un script exécuté en SYSTEM ou effacer la machine. Multi Admin Approval, qui soumet les scripts Windows et l'effacement à un second administrateur, devient alors un préalable.
 
-## Mon avis : pourquoi ça pourrait ne pas l'être
+Le serveur d'agence gagnerait une console, des anneaux avec leurs fenêtres de maintenance, et un inventaire que les [rapports Intune via OData](/blog/2026-04-27-intune-datawarehouse/) exposent déjà pour les postes. Azure Arc lui donne l'essentiel aujourd'hui, de Windows Server 2012 R2 à 2025, Server Core compris.
 
-Un serveur n'est pas un endpoint. Il n'a souvent aucun utilisateur, il survit à plusieurs générations de postes, ses redémarrages passent en comité de changement, et sa panne arrête un service entier. En l'absorbant, Intune cesse d'être un MDM pour devenir l'outil de gestion de tout Windows, et je crains qu'il y perde sa cohérence.
+## Mon avis : pourquoi je n'y vois pas de plus-value
+
+Un serveur n'est pas un endpoint. Il n'a souvent aucun utilisateur, il survit à plusieurs générations de postes, ses redémarrages passent en comité de changement, et sa panne arrête un service entier. En l'absorbant, Intune cesse d'être un MDM pour devenir l'outil de gestion de tout Windows, et sa portée se dilue.
+
+On reproche souvent à Microsoft des frontières de plus en plus floues entre ses produits, et Azure Arc, Intune et Configuration Manager savent désormais tous prendre en charge le même serveur Windows. Le besoin existe, mais le découpage existant y répondait presque entièrement. Microsoft recommande toujours Arc pour la production.
 
 Microsoft documente lui-même les risques. Les stratégies affectées à « All devices », aux utilisateurs ou à des groupes dynamiques atteignent les serveurs dès leur inscription. Les scripts PowerShell et les ensembles de stratégies ne prennent pas en charge les filtres d'affectation. Une stratégie d'accès conditionnel qui exige la MFA peut interrompre la synchronisation d'un serveur sans inviter l'utilisateur à se reconnecter.
 
@@ -70,25 +74,15 @@ Pour une entité soumise à NIS2, je ne m'appuierais pas sur une préversion que
 
 ## Faut-il franchir le pas demain ?
 
-Pas en production, que Microsoft exclut pendant l'Insider preview. En laboratoire, sur un tenant de test distinct comme Microsoft le recommande, oui.
+Non, pas pour l'instant. La production est exclue pendant l'Insider preview, et je ne conseille pas non plus de jouer les bêta-testeurs de la gestion des serveurs dans Intune. Le hotpatch exige Azure Arc. Un serveur géré par Defender ne peut pas encore basculer vers l'inscription MDM, et la licence de la disponibilité générale reste inconnue.
 
-Avantages si le périmètre s'élargit :
-
-- PAW, jump boxes et RDSH persistants alignés sur les stratégies des postes
-- anneaux de mises à jour avec fenêtres de maintenance, sans WSUS
-- conformité du serveur exigée par l'accès conditionnel
-
-Inconvénients à mesurer :
-
-- débordement des stratégies existantes sur les serveurs inscrits
-- RBAC Intune qui donne la main sur des VM Azure
-- deux plans de gestion, Intune et Arc, à départager charge par charge
-
-Le travail utile précède toute inscription : exclure les serveurs des affectations larges, revoir le RBAC et les balises d'étendue, inventorier les candidats et les autres. Je range les contrôleurs de domaine parmi les autres. Microsoft ne les mentionne pas, mais un DC n'a pas d'utilisateur principal et l'inscription sans utilisateur est exclue. C'est mon analyse, pas une position de Microsoft.
+Si vous testez malgré tout, sur un tenant distinct comme Microsoft le recommande, le travail utile précède l'inscription : exclure les serveurs des affectations larges, revoir le RBAC et les balises d'étendue, inventorier les candidats et les autres. Je range les contrôleurs de domaine parmi les autres. Microsoft ne les mentionne pas, mais un DC n'a pas d'utilisateur principal et l'inscription sans utilisateur est exclue.
 
 ## Quelle licence faut-il pour gérer Windows Server avec Intune ?
 
 Pendant l'Insider preview, gérer Windows Server avec Intune ne demande aucun abonnement supplémentaire. Les droits existants s'appliquent, ceux de Microsoft Intune, de l'accès conditionnel Microsoft Entra et de Microsoft Defender for Endpoint pour les serveurs. Cette réponse ne vaut que pour la préversion, et la licence de la disponibilité générale reste inconnue.
+
+La gestion des serveurs dans Intune peut encore évoluer, et je reverrai mon avis à la disponibilité générale. Aujourd'hui, je n'en vois pas la plus-value face à Azure Arc.
 
 ## Sources
 
@@ -98,6 +92,7 @@ Pendant l'Insider preview, gérer Windows Server avec Intune ne demande aucun ab
 - [Nouveautés Intune à Ignite, mention de Windows Autopatch (Tech Community, 17 novembre 2026)](https://techcommunity.microsoft.com/blog/microsoftintuneblog/what%E2%80%99s-new-in-microsoft-intune-at-microsoft-ignite/4570003)
 - [Windows Server 2028 en préversion publique (Tech Community, 17 novembre 2026)](https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-2028-a-trusted-foundation-for-an-evolving-enterprise/4574112)
 - [Sécurité Windows à Ignite 2026 (Windows Experience Blog, 17 novembre 2026)](https://blogs.windows.com/windowsexperience/2026/11/17/windows-security-at-ignite-2026-start-secure-protect-what-matters-prepare-for-ai/)
+- [Multi Admin Approval dans Intune, scripts Windows et effacement soumis à un second administrateur (Microsoft Learn)](https://learn.microsoft.com/en-us/intune/fundamentals/role-based-access-control/multi-admin-approval)
 - [Prérequis de l'agent Azure Arc, versions de Windows Server prises en charge (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites)
 - [Passer de Configuration Manager à Azure Arc (Microsoft Learn, août 2025)](https://learn.microsoft.com/en-us/azure/azure-arc/servers/modernize-server-management)
 - [Hotpatch pour Windows Server, connexion Azure Arc hors Azure (Microsoft Learn)](https://learn.microsoft.com/en-us/windows-server/get-started/hotpatch)

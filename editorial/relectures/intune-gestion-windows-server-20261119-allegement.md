@@ -50,3 +50,17 @@ Les quatre mentions restantes sont voulues : l'attribution unique de l'intro (Wh
 ## Extrait de l'intro réécrite
 
 > Microsoft Intune peut désormais gérer Windows Server, mais en Insider preview seulement. Microsoft l'a annoncé mi-novembre 2026, à Ignite, dans le What's new d'Intune et un guide Microsoft Learn. La préversion se limite aux serveurs de test sous Windows Server vNext Insider, build 29621.1000 ou ultérieure, en Desktop Experience. Windows Server 2019, 2022 et 2025 restent hors périmètre. Aucune date n'est fixée, ni pour une préversion publique ni pour la disponibilité générale.
+
+## Réorientation de l'avis, 2026-11-19
+
+Demande de Daniel : faire évoluer l'avis d'expert (pas le fond), corriger le traitement des PAW. Fichier modifié en local, sans git. Faits, H2, tableau, liens internes et frontmatter inchangés (`updatedDate: 2026-11-19` déjà présent, `pubDate` intact).
+
+- **Intro** : « l'annonce comble un vide [...] ce déplacement a un prix » remplacé par « Pour l'instant, j'y vois surtout un recouvrement de plus entre Intune, Azure Arc et Configuration Manager. »
+- **PAW** (« Mon avis : ce que la préversion règle ») : un PAW est en général un poste Windows 11 Enterprise déjà géré comme un client, la question ne se pose guère. Les cas serveurs sont les serveurs de rebond et les hôtes RDSH d'administration. Le fait que Microsoft cite les PAW dans ses cibles reste (section annonce).
+- **Plan de contrôle** : trois phrases ajoutées (Intune doit être traité comme un plan de contrôle de même niveau de confiance, script en SYSTEM ou effacement possibles, Multi Admin Approval en préalable). Multi Admin Approval vérifié sur Microsoft Learn (page mise à jour le 30 juillet 2026 : access policies « Scripts » pour Windows et « Device actions » wipe/retire/delete) et ajouté en Sources. PIM non cité.
+- **Serveur d'agence** : « les scripts planifiés et les GPO [...] n'auraient plus de raison d'être » remplacé par le rappel qu'Azure Arc couvre déjà Windows Server 2012 R2 à 2025, Server Core compris (fait du tableau).
+- **« pourquoi ça pourrait ne pas l'être »** : « je crains qu'il y perde sa cohérence » devient « sa portée se dilue », et un paragraphe sur le flou des frontières entre Arc, Intune et Configuration Manager (le besoin existe, le découpage existant y répondait presque entièrement, Arc reste recommandé pour la production).
+- **« Faut-il franchir le pas demain ? »** : réponse « Non, pas pour l'instant », pas de bêta-test conseillé, arguments factuels existants (hotpatch via Arc, pas de bascule depuis la gestion Defender, licence GA inconnue). Listes Avantages / Inconvénients supprimées (redondantes avec la nouvelle position et nécessaires pour rester sous 1 500 mots). Le paragraphe de préparation devient « Si vous testez malgré tout, sur un tenant distinct comme Microsoft le recommande [...] ». Phrase « C'est mon analyse, pas une position de Microsoft » retirée (le « Je range » suffit).
+- **Conclusion** (après la section licence) : « La gestion des serveurs dans Intune peut encore évoluer, et je reverrai mon avis à la disponibilité générale. Aujourd'hui, je n'en vois pas la plus-value face à Azure Arc. »
+
+Contrôles : style-check 0 bloquante (4 alertes intertitres en question, inchangées, structure H2 conservée), 1 394 mots. seo-check `--stage final --keyword "Intune Windows Server"` 0 bloquante, 1 480 mots (fourchette 800-1 500), 1 alerte (mot-clé exact hors des 100 premiers mots, préexistante). Tirets cadratins 0, points-virgules 0. `npm run build` : OK, 39 pages.
