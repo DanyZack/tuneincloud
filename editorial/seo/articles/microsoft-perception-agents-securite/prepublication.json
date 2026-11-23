@@ -1,0 +1,419 @@
+{
+  "title": "Microsoft Perception en GA : ce que les agents font seuls",
+  "meta_description": "Microsoft Perception en GA : quels agents Defender et Sentinel agissent seuls, quels garde-fous r\u00e9gler et comment lire la facturation au r\u00e9sultat pour un SOC.",
+  "meta_robots": null,
+  "canonical": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/",
+  "h1": [
+    "Microsoft Perception en GA : ce que les agents font seuls"
+  ],
+  "h2": [
+    "Six agents de Microsoft Perception en GA, le reste en preview",
+    "Ce que chaque agent fait sans validation humaine",
+    "Les garde-fous que l\u2019administrateur r\u00e8gle",
+    "Quelle licence pour Microsoft Perception ?",
+    "Security Copilot reste, l\u2019agent de triage de 2025 s\u2019efface",
+    "Des agents pour gouverner des agents, mon avis",
+    "Par quel agent commencer dans un SOC de taille moyenne ?",
+    "Sources"
+  ],
+  "h3": [],
+  "heading_outline": [
+    {
+      "level": 1,
+      "text": "Microsoft Perception en GA : ce que les agents font seuls"
+    },
+    {
+      "level": 2,
+      "text": "Six agents de Microsoft Perception en GA, le reste en preview"
+    },
+    {
+      "level": 2,
+      "text": "Ce que chaque agent fait sans validation humaine"
+    },
+    {
+      "level": 2,
+      "text": "Les garde-fous que l\u2019administrateur r\u00e8gle"
+    },
+    {
+      "level": 2,
+      "text": "Quelle licence pour Microsoft Perception ?"
+    },
+    {
+      "level": 2,
+      "text": "Security Copilot reste, l\u2019agent de triage de 2025 s\u2019efface"
+    },
+    {
+      "level": 2,
+      "text": "Des agents pour gouverner des agents, mon avis"
+    },
+    {
+      "level": 2,
+      "text": "Par quel agent commencer dans un SOC de taille moyenne ?"
+    },
+    {
+      "level": 2,
+      "text": "Sources"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://tuneincloud.fr/tuneincloud.png",
+      "alt": "TuneInCloud logo",
+      "width": "64",
+      "height": "45",
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    },
+    {
+      "src": "https://tuneincloud.fr/images/hero/microsoft-perception-agents-securite.webp",
+      "alt": "",
+      "width": "1200",
+      "height": "630",
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    },
+    {
+      "src": "https://tuneincloud.fr/images/banarticle/article-defender2.png",
+      "alt": "Banniere",
+      "width": null,
+      "height": null,
+      "loading": null,
+      "lazy_method": "none",
+      "resolved_src": null,
+      "srcset_candidates": [],
+      "decorative": false
+    }
+  ],
+  "links": {
+    "internal": [
+      {
+        "href": "https://tuneincloud.fr/",
+        "text": "TuneinCloud Expertise Microsoft \u00b7 par Daniel Pol\u00f2nio",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites",
+        "text": "Actualit\u00e9s",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites/breves",
+        "text": "Br\u00e8ves",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/actualites/articles",
+        "text": "Articles",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides",
+        "text": "Guides",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/entra",
+        "text": "Microsoft Entra",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/intune",
+        "text": "Microsoft Intune",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/defender",
+        "text": "Microsoft Defender",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/purview",
+        "text": "Microsoft Purview",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/ia",
+        "text": "IA",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/guides/autre",
+        "text": "Autre",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/category/dossiers",
+        "text": "Dossiers",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/about",
+        "text": "\u00c0 propos",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/about/",
+        "text": "Daniel POL\u00d2NIO",
+        "rel": [
+          "author"
+        ]
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/dossier-2026-04-15-entra-agent-id/",
+        "text": "identit\u00e9 d\u2019agent dans Entra",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/2026-04-29-article-phishing-triage-agent/",
+        "text": "le premier agent de triage Defender",
+        "rel": []
+      },
+      {
+        "href": "https://tuneincloud.fr/blog/2026-10-19-copilot-televersement-agents-avances/",
+        "text": "qui a le droit de d\u00e9ployer des agents",
+        "rel": []
+      }
+    ],
+    "external": [
+      {
+        "href": "https://www.microsoft.com/en-us/security/blog/2026/11/17/security-for-the-agentic-era-powered-by-microsoft-perception/",
+        "text": "Security for the agentic era, powered by Microsoft Perception",
+        "rel": []
+      },
+      {
+        "href": "https://techcommunity.microsoft.com/blog/perception-blog/whats-new-with-microsoft-perception-at-ignite-2026/4571834",
+        "text": "What\u2019s new with Microsoft Perception at Ignite 2026",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-overview",
+        "text": "What is Perception?",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-agent-categories",
+        "text": "Agent categories in Project Perception",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/triage-agent",
+        "text": "Triage Agent",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/attack-investigation-agent",
+        "text": "Attack Investigation Agent",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/risk-reduction-agent",
+        "text": "Risk Reduction Agent",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-get-started",
+        "text": "Get started with Project Perception",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-supervise-work",
+        "text": "Approve, reject, or stop agentic work",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-outcomes",
+        "text": "Perception agent outcomes and cost factors",
+        "rel": []
+      },
+      {
+        "href": "https://learn.microsoft.com/en-us/security/agentic-security/agentic-security-manage-costs",
+        "text": "Manage Microsoft Perception costs",
+        "rel": []
+      },
+      {
+        "href": "https://www.microsoft.com/fr-fr/security/business/microsoft-perception-agentic-system",
+        "text": "Microsoft Perception, page produit",
+        "rel": []
+      },
+      {
+        "href": "https://www.darkreading.com/cybersecurity-operations/ai-agents-insider-threats-inside-microsoft-unified-security-stack",
+        "text": "Inside Microsoft\u2019s Bet on a Unified Security Stack to Contain AI Agents",
+        "rel": []
+      }
+    ]
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/#article",
+      "headline": "Microsoft Perception en GA : ce que les agents font seuls",
+      "description": "Microsoft Perception en GA : quels agents Defender et Sentinel agissent seuls, quels garde-fous r\u00e9gler et comment lire la facturation au r\u00e9sultat pour un SOC.",
+      "image": "https://tuneincloud.fr/images/hero/microsoft-perception-agents-securite.webp",
+      "datePublished": "2026-11-23T00:00:00.000Z",
+      "dateModified": "2026-11-23T00:00:00.000Z",
+      "inLanguage": "fr-FR",
+      "articleSection": "Actualit\u00e9s",
+      "author": {
+        "@id": "https://tuneincloud.fr/about/#daniel-polonio"
+      },
+      "publisher": {
+        "@id": "https://tuneincloud.fr/#publisher"
+      },
+      "isPartOf": {
+        "@id": "https://tuneincloud.fr/#website"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://tuneincloud.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://tuneincloud.fr/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Actualit\u00e9s",
+          "item": "https://tuneincloud.fr/blog/category/actualites/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Microsoft Perception en GA : ce que les agents font seuls",
+          "item": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://tuneincloud.fr/about/#daniel-polonio",
+      "name": "Daniel POL\u00d2NIO",
+      "url": "https://tuneincloud.fr/about/",
+      "jobTitle": "Architecte Expert Microsoft Modern Work et Cybers\u00e9curit\u00e9",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Clad\u00e9ys",
+        "url": "https://cladeys.fr"
+      },
+      "knowsAbout": [
+        "Microsoft Intune",
+        "Microsoft Entra ID",
+        "Microsoft Defender",
+        "Microsoft Purview",
+        "Microsoft 365",
+        "Microsoft 365 Copilot",
+        "Zero Trust"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/daniel-pol%C3%B2nio-19b081110/",
+        "https://github.com/DanyZack"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://tuneincloud.fr/#publisher",
+      "name": "TuneInCloud",
+      "url": "https://tuneincloud.fr/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tuneincloud.fr/tuneincloud.png",
+        "width": 428,
+        "height": 303
+      },
+      "founder": {
+        "@id": "https://tuneincloud.fr/about/#daniel-polonio"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://tuneincloud.fr/#website",
+      "url": "https://tuneincloud.fr/",
+      "name": "TuneInCloud",
+      "description": "Blog d'expertise Microsoft (Intune, Entra ID, Defender, Purview, Copilot) en fran\u00e7ais, par Daniel POL\u00d2NIO.",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://tuneincloud.fr/#publisher"
+      }
+    }
+  ],
+  "schema_invalid": {
+    "count": 0,
+    "samples": []
+  },
+  "open_graph": {
+    "og:type": "article",
+    "og:site_name": "TuneInCloud",
+    "og:locale": "fr_FR",
+    "og:url": "https://tuneincloud.fr/blog/2026-11-23-microsoft-perception-agents-securite/",
+    "og:title": "Microsoft Perception en GA : ce que les agents font seuls",
+    "og:description": "Microsoft Perception en GA : quels agents Defender et Sentinel agissent seuls, quels garde-fous r\u00e9gler et comment lire la facturation au r\u00e9sultat pour un SOC.",
+    "og:image": "https://tuneincloud.fr/images/hero/microsoft-perception-agents-securite.webp"
+  },
+  "twitter_card": {},
+  "word_count": 1664,
+  "hreflang": [],
+  "hidden_text": {
+    "chars": 306,
+    "by_source": {
+      "comment": 306,
+      "template": 0,
+      "noscript": 0,
+      "hidden_attr": 0,
+      "aria_hidden": 0,
+      "inline_style": 0,
+      "sr_only_class": 0
+    },
+    "collapsed_chars": 0,
+    "samples": [
+      {
+        "source": "comment",
+        "chars": 48,
+        "text": "Banni\u00e8re automatique selon cat\u00e9gorie/subcategory"
+      },
+      {
+        "source": "comment",
+        "chars": 40,
+        "text": "Image de fond si fournie, sinon fond uni"
+      },
+      {
+        "source": "comment",
+        "chars": 39,
+        "text": "Badge Br\u00e8ve avec ic\u00f4nes crayon + \u00e9clair"
+      },
+      {
+        "source": "comment",
+        "chars": 30,
+        "text": "Donn\u00e9es structur\u00e9es Schema.org"
+      },
+      {
+        "source": "comment",
+        "chars": 22,
+        "text": "Motif grille d\u00e9coratif"
+      }
+    ]
+  }
+}

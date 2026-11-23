@@ -71,6 +71,7 @@ encore assez d'articles pour un pilier propre.
 | téléverser agents Copilot | `/blog/2026-10-19-copilot-televersement-agents-avances/` | publié | Gouvernance Copilot | n/d | n/d |
 | Phishing Triage Agent Defender | `/blog/2026-04-29-article-phishing-triage-agent/` | publié | Agents de sécurité | n/d | n/d |
 | Security Copilot Microsoft 365 E5 | à créer (article) | à créer | Agents de sécurité | n/d | n/d |
+| Microsoft Perception | à venir (article) | planifié | Agents de sécurité | n/d | n/d |
 
 ## Microsoft 365 (transverse)
 
